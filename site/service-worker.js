@@ -1,8 +1,10 @@
-const CACHE_NAME = "blender-course-v10-smile-curve";
+const CACHE_NAME = "blender-course-v11-rocket-week";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./week-01.html",
+  "./week-02.html",
+  "./week-02.css",
   "./styles.css",
   "./theme.css",
   "./course.js",
@@ -13,6 +15,7 @@ const CORE_ASSETS = [
   "./icon-192.png",
   "./icon-512.png",
   "./assets/robot-mascot.jpg",
+  "./assets/rocket-mascot.svg",
   "./assets/step-1.svg",
   "./assets/step-2.svg",
   "./assets/step-3.svg",

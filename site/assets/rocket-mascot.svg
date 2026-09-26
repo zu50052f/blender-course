@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" role="img" aria-labelledby="title desc">
+  <title id="title">Весёлая ракета до Луны</title>
+  <desc id="desc">Сиреневая ракета с круглым голубым окном, оранжевым носом и жёлтыми крыльями летит среди звёзд.</desc>
+  <defs>
+    <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#edf5ff"/><stop offset="1" stop-color="#f7eaff"/></linearGradient>
+    <linearGradient id="body" x2="1"><stop stop-color="#a58bea"/><stop offset="1" stop-color="#6e4ac7"/></linearGradient>
+    <linearGradient id="fire" x2="0" y2="1"><stop stop-color="#ffe379"/><stop offset="1" stop-color="#ff8b6d"/></linearGradient>
+  </defs>
+  <rect width="720" height="620" rx="48" fill="url(#sky)"/>
+  <circle cx="591" cy="130" r="58" fill="#ffe59a"/>
+  <circle cx="574" cy="112" r="8" fill="#efd584"/><circle cx="610" cy="149" r="11" fill="#efd584"/>
+  <g fill="#ffca60"><path d="M103 131v16h-16v8h16v16h8v-16h16v-8h-16v-16z"/><path d="M541 293v13h-13v7h13v13h7v-13h13v-7h-13v-13z"/><path d="M167 315v12h-12v6h12v12h6v-12h12v-6h-12v-12z"/></g>
+  <g transform="translate(360 298) rotate(13)">
+    <path d="M-64 182l-22 126q38-16 86-13 48-3 86 13L64 182" fill="url(#fire)" stroke="#e9745b" stroke-width="8"/>
+    <path d="M-112 95l-74 125 94-27 27-66zM112 95l74 125-94-27-27-66z" fill="#ffc84f" stroke="#9b5a4b" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M-96-113Q-82-206 0-266q82 60 96 153v240q-24 67-96 84-72-17-96-84z" fill="url(#body)" stroke="#4c3799" stroke-width="10"/>
+    <path d="M-96-113Q-82-206 0-266q82 60 96 153z" fill="#ff9d77" stroke="#b9544b" stroke-width="10"/>
+    <circle cy="-18" r="58" fill="#ffe06b" stroke="#4c3799" stroke-width="9"/>
+    <circle cy="-18" r="44" fill="#83def5" stroke="#2a6ca0" stroke-width="7"/>
+    <circle cx="-15" cy="-26" r="5" fill="#334168"/><circle cx="16" cy="-26" r="5" fill="#334168"/>
+    <path d="M-16-6q16 16 32 0" fill="none" stroke="#334168" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="-27" cy="2" r="8" fill="#ef9bb4" opacity=".8"/><circle cx="27" cy="2" r="8" fill="#ef9bb4" opacity=".8"/>
+    <path d="M-96 118q96 32 192 0" fill="none" stroke="#f8d886" stroke-width="10"/>
+  </g>
+  <path d="M84 495q89-45 178-16M481 522q96-24 170 10" fill="none" stroke="#b5a2de" stroke-width="13" stroke-linecap="round" opacity=".7"/>
+</svg>

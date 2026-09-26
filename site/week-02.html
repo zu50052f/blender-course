@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="ru"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fffaf0">
+    <meta name="description" content="Неделя 2 курса Blender для детей 6–10 лет: собираем смешную ракету из цилиндра, конуса и кубиков.">
+    <title>Неделя 2 — Ракета до Луны · Кубик</title>
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="visual-guides.css">
+    <link rel="stylesheet" href="week-02.css">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script src="course.js" defer=""></script>
+    <script src="visual-guides.js" defer=""></script>
+  </head>
+  <body class="rocket-lesson" data-progress-key="kubik-week02-progress-v1" data-reset-message="Убрать отметки этой недели? Ракета в Blender останется на месте.">
+    <a href="#main" class="skip">К содержимому</a>
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">◇</span><span>кубик<small>мастерская 3D</small></span></a>
+        <nav class="top-links" aria-label="Главное меню">
+          <a href="index.html#worlds">Все приключения</a><a href="#grownups">Для взрослых</a><span class="age">Для детей 6–10 лет</span>
+          <button type="button" class="theme-switch" id="theme-switch" aria-label="Тёмная тема" aria-pressed="false" title="Тёмная тема">
+            <span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Тёмная тема</span>
+          </button>
+        </nav>
+      </header>
+      <div class="breadcrumb">
+        <a href="index.html#worlds">← Все приключения</a>
+      </div>
+      <main id="main">
+        <section class="hero week-hero">
+          <div>
+            <div class="eyebrow">Неделя 02 · Космическая мастерская</div>
+            <h1>Ракета<br><span class="accent">до Луны!</span></h1>
+            <p class="intro">
+              Кубик станет стартовой площадкой, цилиндр — корпусом, а конус —
+              носом. Кто выглянет из иллюминатора?
+            </p>
+            <div class="actions">
+              <a class="button" href="#mission-1">Начать запуск <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="facts">
+              <span>✦ <b>4</b> маленькие миссии</span><span>◷ <b>15–25</b> минут</span><span>♡ Помощь рядом</span>
+            </div>
+          </div>
+          <figure class="hero-art">
+            <img src="assets/rocket-mascot.svg" width="720" height="620" alt="Сиреневая ракета с улыбающимся пассажиром в голубом окне летит к Луне"><span class="art-sticker">Бип, пристегни ремни!</span>
+            <figcaption class="art-note">
+              Ракета для вдохновения. Твоя может быть совсем другой.
+            </figcaption>
+          </figure>
+        </section>
+        <nav class="mission-nav" aria-label="Выбери миссию">
+          <a class="mission-link" href="#mission-1" data-mission="1"><span class="mission-number">1</span><span>Корпус<small>Миссия 1 из 4</small></span></a>
+          <a class="mission-link" href="#mission-2" data-mission="2"><span class="mission-number">2</span><span>Нос и крылья<small>Миссия 2 из 4</small></span></a>
+          <a class="mission-link" href="#mission-3" data-mission="3"><span class="mission-number">3</span><span>Пассажир<small>Миссия 3 из 4</small></span></a>
+          <a class="mission-link" href="#mission-4" data-mission="4"><span class="mission-number">4</span><span>Цвет и запуск<small>Миссия 4 из 4</small></span></a>
+        </nav>
+        <noscript><p class="noscript">
+            Все четыре миссии открыты ниже. Для сохранения отметок в браузере
+            нужен JavaScript.
+          </p></noscript>
+        <div class="lesson-layout">
+          <div class="missions">
+            <section class="mission" id="mission-1" aria-labelledby="title-1">
+              <div class="section-kicker">
+                Миссия 1 / 4 · 15–25 минут с перерывом
+              </div>
+              <h2 id="title-1" tabindex="-1">Построй корпус</h2>
+              <p class="mission-intro">
+                Сегодня ты превратишь знакомый куб в площадку и откроешь новую
+                форму — цилиндр. Какая ракета тебе нравится: высокая или
+                пузатая?
+              </p>
+              <div class="goal">
+                <b>Маленькая победа</b><span>Круглый корпус стоит на площадке или сам по себе.</span>
+              </div>
+              <figure class="lesson-visual">
+                <div class="rocket-figure-image">
+                  <img src="assets/blender/rocket/03-body.jpg" width="2880" height="1680" alt="Скриншот Blender: цилиндрический корпус ракеты стоит на площадке">
+                </div>
+                <figcaption>
+                  <h3>Банка, которая мечтает летать</h3>
+                  <p>
+                    Это пример из Blender. Форма и размеры твоей ракеты могут
+                    отличаться.
+                  </p>
+                </figcaption>
+              </figure>
+              <ol class="steps">
+                <li>
+                  <h3>Подготовь стартовую площадку</h3>
+                  <p>
+                    Открой новую сцену Blender. Выбери знакомый куб. Нажми
+                    <kbd>S</kbd>, затем <kbd>Z</kbd> и приплюсни его. Расширь
+                    через <kbd>S</kbd>, <kbd>X</kbd>, а потом <kbd>S</kbd>,
+                    <kbd>Y</kbd>. Если захочешь, опусти через <kbd>G</kbd>,
+                    <kbd>Z</kbd>.
+                  </p>
+                  <details class="visual-help" data-shots="pad">
+                    <summary>Покажи мне: плоская площадка</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Куб стал стартовой площадкой</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/01-pad.jpg" data-screenshot="rocket-pad" data-caption="Куб стал стартовой площадкой — В новой сцене выбери куб. Нажми S, затем Z и сделай его плоским. Через S, X и S, Y расширь площадку. На фото получилось с числами: S Z 0.12, S X 1.7, S Y 1.7, G Z -0.12." aria-label="Увеличить: Куб стал стартовой площадкой" style="aspect-ratio: 149760 / 67200;"><img src="assets/blender/rocket/01-pad.jpg" alt="Скриншот Blender 5.2: Куб стал стартовой площадкой" width="2880" height="1680" style="width: 192.30769230769232%; max-width: none; position: absolute; left: -46.15384615384615%; top: -90%;"></a><p class="screenshot-caption">В новой сцене выбери куб. Нажми S, затем Z и сделай его плоским. Через S, X и S, Y расширь площадку. На фото получилось с числами: S Z 0.12, S X 1.7, S Y 1.7, G Z -0.12.</p><p class="screenshot-result"><strong>Проверь: </strong>Видна широкая низкая площадка. Если не хочется площадку, можно оставить куб для следующего проекта и начать с цилиндра.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Познакомься с цилиндром</h3>
+                  <p>
+                    В режиме <b>Object Mode</b> открой
+                    <b>Add → Mesh → Cylinder</b> (Добавить → Сетка → Цилиндр).
+                    Это круглый корпус ракеты. Новый цилиндр может сперва
+                    скрываться внутри площадки.
+                  </p>
+                  <details class="visual-help" data-shots="cylinder-menu">
+                    <summary>Покажи мне: где цилиндр</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Добавь Cylinder</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/02-cylinder-menu.jpg" data-screenshot="rocket-cylinder-menu" data-caption="Добавь Cylinder — В Object Mode открой Add → Mesh → Cylinder. Cylinder — это цилиндр, круглая банка для корпуса ракеты." aria-label="Увеличить: Добавь Cylinder" style="aspect-ratio: 72000 / 58800;"><img src="assets/blender/rocket/02-cylinder-menu.jpg" alt="Скриншот Blender 5.2: Добавь Cylinder" width="2880" height="1680" style="width: 400%; max-width: none; position: absolute; left: -8%; top: -151.42857142857142%;"></a><p class="screenshot-caption">В Object Mode открой Add → Mesh → Cylinder. Cylinder — это цилиндр, круглая банка для корпуса ракеты.</p><p class="screenshot-result"><strong>Проверь: </strong>Новый цилиндр выбран; пока он может прятаться внутри площадки.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Пусть корпус вырастет</h3>
+                  <p>
+                    Пока цилиндр выбран, уменьши его через <kbd>S</kbd>, растяни
+                    вверх через <kbd>S</kbd>, <kbd>Z</kbd> и подними через
+                    <kbd>G</kbd>, <kbd>Z</kbd>. Посмотри спереди: низ корпуса
+                    должен касаться площадки.
+                  </p>
+                  <details class="visual-help" data-shots="body">
+                    <summary>Покажи мне: поднять корпус</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Вырастим корпус</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/03-body.jpg" data-screenshot="rocket-body" data-caption="Вырастим корпус — Уменьши цилиндр клавишей S, затем растяни его вверх: S, Z. Подними через G, Z, чтобы он стоял на площадке. Для модели на фото подошло S 0.65, S Z 2, G Z 1.3." aria-label="Увеличить: Вырастим корпус" style="aspect-ratio: 132480 / 131040;"><img src="assets/blender/rocket/03-body.jpg" alt="Скриншот Blender 5.2: Вырастим корпус" width="2880" height="1680" style="width: 217.3913043478261%; max-width: none; position: absolute; left: -58.69565217391305%; top: -12.820512820512821%;"></a><p class="screenshot-caption">Уменьши цилиндр клавишей S, затем растяни его вверх: S, Z. Подними через G, Z, чтобы он стоял на площадке. Для модели на фото подошло S 0.65, S Z 2, G Z 1.3.</p><p class="screenshot-result"><strong>Проверь: </strong>Корпус высокий, а его низ касается площадки. Можно сделать свою ракету шире или ниже.</p></li></ol></details>
+                </li>
+              </ol>
+              <div class="break">
+                <span aria-hidden="true">☀</span><strong>Минутка без экрана.</strong> Встань и покажи, как
+                ракета медленно готовится к старту!
+              </div>
+              <div class="checklist">
+                <h3>Что у меня получилось</h3>
+                <label class="check"><input type="checkbox" data-progress="pad"><span>Я сделал площадку или решил обойтись без неё.</span></label><label class="check"><input type="checkbox" data-progress="body"><span>У моей ракеты есть круглый корпус.</span></label>
+              </div>
+              <div class="next-row">
+                <small>Можно сохранить файл и продолжить в другой день.</small><a class="button" href="#mission-2">Следующая миссия →</a>
+              </div>
+            </section>
+            <section class="mission" id="mission-2" aria-labelledby="title-2">
+              <div class="section-kicker">
+                Миссия 2 / 4 · 15–25 минут с перерывом
+              </div>
+              <h2 id="title-2" tabindex="-1">Нос и крылья</h2>
+              <p class="mission-intro">
+                Без острого носа ракета похожа на банку. Конус и два маленьких
+                крыла помогут ей приготовиться к воображаемому полёту.
+              </p>
+              <div class="goal">
+                <b>Маленькая победа</b><span>Конус на корпусе и хотя бы одно крыло.</span>
+              </div>
+              <figure class="lesson-visual">
+                <div class="rocket-figure-image">
+                  <img src="assets/blender/rocket/07-two-fins.jpg" width="2880" height="1680" alt="Скриншот Blender: ракета с конусом и двумя крыльями">
+                </div>
+                <figcaption>
+                  <h3>Уже почти взлёт!</h3>
+                  <p>
+                    Одно крыло тоже подходит. Можно сделать ракете очень большой
+                    нос.
+                  </p>
+                </figcaption>
+              </figure>
+              <ol class="steps">
+                <li>
+                  <h3>Найди конус</h3>
+                  <p>
+                    Открой <b>Add → Mesh → Cone</b> (Добавить → Сетка → Конус).
+                    Клавишей <kbd>S</kbd> сделай его примерно шириной с корпус.
+                    Через <kbd>G</kbd>, <kbd>Z</kbd> поставь наверх. Если нос
+                    слишком высокий, поможет <kbd>S</kbd>, <kbd>Z</kbd>.
+                  </p>
+                  <details class="visual-help" data-shots="cone-menu nose">
+                    <summary>Покажи мне: конус на верхушке</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Добавь Cone</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/04-cone-menu.jpg" data-screenshot="rocket-cone-menu" data-caption="Добавь Cone — Открой Add → Mesh → Cone. Cone — это конус, будущий острый нос ракеты." aria-label="Увеличить: Добавь Cone" style="aspect-ratio: 72000 / 58800;"><img src="assets/blender/rocket/04-cone-menu.jpg" alt="Скриншот Blender 5.2: Добавь Cone" width="2880" height="1680" style="width: 400%; max-width: none; position: absolute; left: -8%; top: -151.42857142857142%;"></a><p class="screenshot-caption">Открой Add → Mesh → Cone. Cone — это конус, будущий острый нос ракеты.</p><p class="screenshot-result"><strong>Проверь: </strong>Новый конус появился и выбран.</p></li><li><h4>Посади нос на корпус</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/05-nose.jpg" data-screenshot="rocket-nose" data-caption="Посади нос на корпус — Клавишей S сделай конус примерно шириной с корпус. Через S, Z настрой высоту, затем G, Z подними его на верхушку. На фото нос опирается на корпус, а не висит отдельно." aria-label="Увеличить: Посади нос на корпус" style="aspect-ratio: 132480 / 137760;"><img src="assets/blender/rocket/05-nose.jpg" alt="Скриншот Blender 5.2: Посади нос на корпус" width="2880" height="1680" style="width: 217.3913043478261%; max-width: none; position: absolute; left: -58.69565217391305%; top: -8.536585365853659%;"></a><p class="screenshot-caption">Клавишей S сделай конус примерно шириной с корпус. Через S, Z настрой высоту, затем G, Z подними его на верхушку. На фото нос опирается на корпус, а не висит отдельно.</p><p class="screenshot-result"><strong>Проверь: </strong>Ракета стала похожа на карандаш с острым носом.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Добавь первое крыло</h3>
+                  <p>
+                    Добавь <b>Cube</b>. Уменьши его клавишей <kbd>S</kbd>,
+                    передвинь к нижнему краю корпуса через <kbd>G</kbd>,
+                    <kbd>X</kbd> и <kbd>G</kbd>, <kbd>Z</kbd>. Оно может быть
+                    смешным и толстым.
+                  </p>
+                  <details class="visual-help" data-shots="fin">
+                    <summary>Покажи мне: первое крыло</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Добавь первое крыло</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/06-fin.jpg" data-screenshot="rocket-fin" data-caption="Добавь первое крыло — Добавь Cube. Уменьши его с помощью S, сделай широким через S, Y и передвинь к нижнему боку ракеты через G, X и G, Z. Это первое крыло-стабилизатор." aria-label="Увеличить: Добавь первое крыло" style="aspect-ratio: 138240 / 109200;"><img src="assets/blender/rocket/06-fin.jpg" alt="Скриншот Blender 5.2: Добавь первое крыло" width="2880" height="1680" style="width: 208.33333333333334%; max-width: none; position: absolute; left: -54.166666666666664%; top: -33.84615384615385%;"></a><p class="screenshot-caption">Добавь Cube. Уменьши его с помощью S, сделай широким через S, Y и передвинь к нижнему боку ракеты через G, X и G, Z. Это первое крыло-стабилизатор.</p><p class="screenshot-result"><strong>Проверь: </strong>Слева или справа от нижней части корпуса есть маленький куб-крыло.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Сделай крыло-близнеца</h3>
+                  <p>
+                    Выбери крыло, нажми <kbd>Shift</kbd>+<kbd>D</kbd>, потом
+                    <kbd>X</kbd>. Передвинь копию на другую сторону и щёлкни.
+                    Если оба крыла не одинаковые — это ракета с характером!
+                  </p>
+                  <details class="visual-help" data-shots="two-fins">
+                    <summary>Покажи мне: второе крыло</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Сделай второе крыло</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/07-two-fins.jpg" data-screenshot="rocket-two-fins" data-caption="Сделай второе крыло — Выбери первое крыло, нажми Shift+D, затем X. Передвинь копию на другую сторону и щёлкни. Не требуется идеальная симметрия — это твоя ракета." aria-label="Увеличить: Сделай второе крыло" style="aspect-ratio: 138240 / 109200;"><img src="assets/blender/rocket/07-two-fins.jpg" alt="Скриншот Blender 5.2: Сделай второе крыло" width="2880" height="1680" style="width: 208.33333333333334%; max-width: none; position: absolute; left: -54.166666666666664%; top: -33.84615384615385%;"></a><p class="screenshot-caption">Выбери первое крыло, нажми Shift+D, затем X. Передвинь копию на другую сторону и щёлкни. Не требуется идеальная симметрия — это твоя ракета.</p><p class="screenshot-result"><strong>Проверь: </strong>У корпуса теперь два крыла, а первое осталось на месте.</p></li></ol></details>
+                </li>
+              </ol>
+              <div class="break">
+                <span aria-hidden="true">☀</span><strong>Перерыв для космонавта.</strong> Расправь руки, как
+                крылья, и потянись к потолку.
+              </div>
+              <div class="checklist">
+                <h3>Что у меня получилось</h3>
+                <label class="check"><input type="checkbox" data-progress="nose"><span>Я поставил конус на корпус.</span></label><label class="check"><input type="checkbox" data-progress="fins"><span>Я добавил хотя бы одно крыло.</span></label>
+              </div>
+              <div class="next-row">
+                <small>Можно сохранить файл и продолжить в другой день.</small><a class="button" href="#mission-3">Следующая миссия →</a>
+              </div>
+            </section>
+            <section class="mission" id="mission-3" aria-labelledby="title-3">
+              <div class="section-kicker">
+                Миссия 3 / 4 · 15–25 минут с перерывом
+              </div>
+              <h2 id="title-3" tabindex="-1">Кто смотрит в окошко?</h2>
+              <p class="mission-intro">
+                Добавь круглое окошко и придумай пассажира. Это может быть робот
+                Бип, кот в шлеме или космический бутерброд.
+              </p>
+              <div class="goal">
+                <b>Маленькая победа</b><span>Иллюминатор виден спереди, а пассажир получил имя.</span>
+              </div>
+              <figure class="lesson-visual">
+                <div class="rocket-figure-image">
+                  <img src="assets/blender/rocket/09-window.jpg" width="2880" height="1680" alt="Скриншот Blender: на корпусе ракеты круглое окошко">
+                </div>
+                <figcaption>
+                  <h3>Космическое окно</h3>
+                  <p>
+                    Чтобы придумать пассажира, не нужно моделировать его
+                    целиком.
+                  </p>
+                </figcaption>
+              </figure>
+              <ol class="steps">
+                <li>
+                  <h3>Сделай круглое окошко</h3>
+                  <p>
+                    Открой <b>Add → Mesh → UV Sphere</b>. Уменьши шар клавишей
+                    <kbd>S</kbd> и слегка приплюсни через <kbd>S</kbd>,
+                    <kbd>Y</kbd>. Получится аккуратный иллюминатор.
+                  </p>
+                  <details class="visual-help" data-shots="sphere-menu">
+                    <summary>Покажи мне: где найти шар</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Добавь круглый иллюминатор</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/08-sphere-menu.jpg" data-screenshot="rocket-sphere-menu" data-caption="Добавь круглый иллюминатор — Открой Add → Mesh → UV Sphere. Маленький шар станет окошком для космического пассажира." aria-label="Увеличить: Добавь круглый иллюминатор" style="aspect-ratio: 72000 / 58800;"><img src="assets/blender/rocket/08-sphere-menu.jpg" alt="Скриншот Blender 5.2: Добавь круглый иллюминатор" width="2880" height="1680" style="width: 400%; max-width: none; position: absolute; left: -8%; top: -151.42857142857142%;"></a><p class="screenshot-caption">Открой Add → Mesh → UV Sphere. Маленький шар станет окошком для космического пассажира.</p><p class="screenshot-result"><strong>Проверь: </strong>Новая сфера выбрана.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Поставь его на корпус</h3>
+                  <p>
+                    Нажми <kbd>G</kbd>, <kbd>Z</kbd> и подними окошко. Затем
+                    <kbd>G</kbd>, <kbd>Y</kbd> вынеси его перед корпусом.
+                    Проверь спереди и сбоку: окошко не должно прятаться внутри.
+                  </p>
+                  <details class="visual-help" data-shots="window window-side">
+                    <summary>Покажи мне: окно спереди и сбоку</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Поставь окошко спереди</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/09-window.jpg" data-screenshot="rocket-window" data-caption="Поставь окошко спереди — Уменьши сферу через S. Приплюсни её через S, Y, чтобы она не торчала слишком далеко. Подними через G, Z и вынеси перед корпусом через G, Y. На фото помогли S 0.32, S Y 0.375, G Z 1.55 и G Y -0.68." aria-label="Увеличить: Поставь окошко спереди" style="aspect-ratio: 138240 / 131040;"><img src="assets/blender/rocket/09-window.jpg" alt="Скриншот Blender 5.2: Поставь окошко спереди" width="2880" height="1680" style="width: 208.33333333333334%; max-width: none; position: absolute; left: -54.166666666666664%; top: -12.820512820512821%;"></a><p class="screenshot-caption">Уменьши сферу через S. Приплюсни её через S, Y, чтобы она не торчала слишком далеко. Подними через G, Z и вынеси перед корпусом через G, Y. На фото помогли S 0.32, S Y 0.375, G Z 1.55 и G Y -0.68.</p><p class="screenshot-result"><strong>Проверь: </strong>На виде Front окошко видно на корпусе.</p></li><li><h4>Проверь окошко сбоку</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/10-window-side.jpg" data-screenshot="rocket-window-side" data-caption="Проверь окошко сбоку — Открой View → Viewpoint → Right. Сбоку видно, спрятана ли сфера в корпусе. Если да, вернись на Front и подвинь её через G, Y. Выбирай нужную сторону мышью." aria-label="Увеличить: Проверь окошко сбоку" style="aspect-ratio: 138240 / 131040;"><img src="assets/blender/rocket/10-window-side.jpg" alt="Скриншот Blender 5.2: Проверь окошко сбоку" width="2880" height="1680" style="width: 208.33333333333334%; max-width: none; position: absolute; left: -54.166666666666664%; top: -12.820512820512821%;"></a><p class="screenshot-caption">Открой View → Viewpoint → Right. Сбоку видно, спрятана ли сфера в корпусе. Если да, вернись на Front и подвинь её через G, Y. Выбирай нужную сторону мышью.</p><p class="screenshot-result"><strong>Проверь: </strong>Окошко немного выступает из корпуса и не висит далеко от него.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Придумай пассажира</h3>
+                  <p>
+                    Скажи вслух: «В моей ракете летит… Его зовут…» Выбери, куда
+                    она отправится. Может, это планета мармеладных вулканов?
+                  </p>
+                  <details class="hint">
+                    <summary>Хочу добавить ещё одно окошко</summary>
+                    <p>
+                      Выбери первое окошко, нажми <kbd>Shift</kbd>+<kbd>D</kbd>,
+                      затем <kbd>Z</kbd> и подними копию. Это тот же приём
+                      копирования, что и для крыльев. Второе окно необязательно;
+                      достаточно истории и одного окошка.
+                    </p>
+                    <details class="visual-help" data-shots="two-fins">
+                      <summary>Покажи мне: как работает копия</summary>
+
+
+                    <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Сделай второе крыло</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/07-two-fins.jpg" data-screenshot="rocket-two-fins" data-caption="Сделай второе крыло — Выбери первое крыло, нажми Shift+D, затем X. Передвинь копию на другую сторону и щёлкни. Не требуется идеальная симметрия — это твоя ракета." aria-label="Увеличить: Сделай второе крыло" style="aspect-ratio: 138240 / 109200;"><img src="assets/blender/rocket/07-two-fins.jpg" alt="Скриншот Blender 5.2: Сделай второе крыло" width="2880" height="1680" style="width: 208.33333333333334%; max-width: none; position: absolute; left: -54.166666666666664%; top: -33.84615384615385%;"></a><p class="screenshot-caption">Выбери первое крыло, нажми Shift+D, затем X. Передвинь копию на другую сторону и щёлкни. Не требуется идеальная симметрия — это твоя ракета.</p><p class="screenshot-result"><strong>Проверь: </strong>У корпуса теперь два крыла, а первое осталось на месте.</p></li></ol></details>
+                  </details>
+                </li>
+              </ol>
+              <div class="break">
+                <span aria-hidden="true">☀</span><strong>Минутка без экрана.</strong> Назови три вещи, которые
+                пассажир возьмёт в полёт.
+              </div>
+              <div class="checklist">
+                <h3>Что у меня получилось</h3>
+                <label class="check"><input type="checkbox" data-progress="window"><span>Окошко видно на ракете.</span></label><label class="check"><input type="checkbox" data-progress="passenger"><span>Я придумал пассажира и место полёта.</span></label>
+              </div>
+              <div class="next-row">
+                <small>Можно сохранить файл и продолжить в другой день.</small><a class="button" href="#mission-4">Следующая миссия →</a>
+              </div>
+            </section>
+            <section class="mission" id="mission-4" aria-labelledby="title-4">
+              <div class="section-kicker">
+                Миссия 4 / 4 · 15–25 минут с перерывом
+              </div>
+              <h2 id="title-4" tabindex="-1">Раскрась и отправь в полёт</h2>
+              <p class="mission-intro">
+                Осталось выбрать цвет, сохранить ракету и устроить маленькую
+                премьеру. Цветов может быть столько, сколько тебе хочется.
+              </p>
+              <div class="goal">
+                <b>Маленькая победа</b><span>Цветной корпус, сохранённый файл и история запуска.</span>
+              </div>
+              <figure class="lesson-visual">
+                <div class="rocket-figure-image">
+                  <img src="assets/blender/rocket/14-final.jpg" width="2880" height="1680" alt="Скриншот Blender: готовая цветная ракета">
+                </div>
+                <figcaption>
+                  <h3>Пять, четыре, три…</h3>
+                  <p>
+                    Это одна из ракет. Твоя может быть полосатой, огромной или
+                    совсем крошечной.
+                  </p>
+                </figcaption>
+              </figure>
+              <ol class="steps">
+                <li>
+                  <h3>Выбери цвет корпуса</h3>
+                  <p>
+                    Выбери корпус. Справа открой <b>Material Properties</b> —
+                    значок красного шарика. Нажми <b>New</b>, затем
+                    <b>Base Color</b> и выбери цвет. Если трудно, делайте вместе
+                    со взрослым.
+                  </p>
+                  <details class="visual-help" data-shots="material-tab body-color">
+                    <summary>Покажи мне: цвет корпуса</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Открой свойства материала</h4><a class="screenshot-frame" href="assets/blender/rocket/11-material-tab.jpg" data-screenshot="rocket-material-tab" data-caption="Открой свойства материала — Снова посмотри спереди. Выбери корпус и справа нажми значок красного шарика Material Properties, затем New. Цвет можно выбрать вместе со взрослым." aria-label="Увеличить: Открой свойства материала"><img src="assets/blender/rocket/11-material-tab.jpg" alt="Скриншот Blender 5.2: Открой свойства материала" width="2880" height="1680"><span class="screenshot-target" aria-hidden="true" style="--x: 81%; --y: 68%; --w: 17%; --h: 13%;"></span></a><p class="screenshot-caption">Снова посмотри спереди. Выбери корпус и справа нажми значок красного шарика Material Properties, затем New. Цвет можно выбрать вместе со взрослым.</p><p class="screenshot-result"><strong>Проверь: </strong>У корпуса появился свой материал.</p></li><li><h4>Выбери цвет корпуса</h4><a class="screenshot-frame" href="assets/blender/rocket/12-body-color.jpg" data-screenshot="rocket-body-color" data-caption="Выбери цвет корпуса — В материале найди Base Color и нажми на цветной прямоугольник. Выбери любимый цвет. Название материала можно придумать своё: например, «Лунная ягода»." aria-label="Увеличить: Выбери цвет корпуса"><img src="assets/blender/rocket/12-body-color.jpg" alt="Скриншот Blender 5.2: Выбери цвет корпуса" width="2880" height="1680"><span class="screenshot-target" aria-hidden="true" style="--x: 84%; --y: 48%; --w: 14%; --h: 14%;"></span></a><p class="screenshot-caption">В материале найди Base Color и нажми на цветной прямоугольник. Выбери любимый цвет. Название материала можно придумать своё: например, «Лунная ягода».</p><p class="screenshot-result"><strong>Проверь: </strong>В Base Color показан выбранный цвет. Другие детали пока могут оставаться серыми.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Посмотри на цветную ракету</h3>
+                  <p>
+                    Нажми шарик <b>Material Preview</b> справа вверху рабочей
+                    области. Хочешь — покрась нос, крылья и окошко по одному.
+                    Если нет, одного цвета достаточно.
+                  </p>
+                  <details class="visual-help" data-shots="preview final">
+                    <summary>Покажи мне: цветной вид</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Включи цветной вид</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/13-preview.jpg" data-screenshot="rocket-preview" data-caption="Включи цветной вид — В правом верхнем углу рабочей области нажми шарик Material Preview. Если хочется, выбери нос, крылья и окошко по одному и дай каждому свой цвет." aria-label="Увеличить: Включи цветной вид" style="aspect-ratio: 172800 / 137760;"><img src="assets/blender/rocket/13-preview.jpg" alt="Скриншот Blender 5.2: Включи цветной вид" width="2880" height="1680" style="width: 166.66666666666666%; max-width: none; position: absolute; left: -36.666666666666664%; top: -10.975609756097562%;"></a><p class="screenshot-caption">В правом верхнем углу рабочей области нажми шарик Material Preview. Если хочется, выбери нос, крылья и окошко по одному и дай каждому свой цвет.</p><p class="screenshot-result"><strong>Проверь: </strong>Ракета выглядит цветной прямо в рабочей области.</p></li><li><h4>Проверь свою ракету</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/14-final.jpg" data-screenshot="rocket-final" data-caption="Проверь свою ракету — Посмотри на ракету целиком. Нос наверху, крылья внизу, окошко спереди. Цвета и число украшений выбираешь ты." aria-label="Увеличить: Проверь свою ракету" style="aspect-ratio: 172800 / 137760;"><img src="assets/blender/rocket/14-final.jpg" alt="Скриншот Blender 5.2: Проверь свою ракету" width="2880" height="1680" style="width: 166.66666666666666%; max-width: none; position: absolute; left: -36.666666666666664%; top: -10.975609756097562%;"></a><p class="screenshot-caption">Посмотри на ракету целиком. Нос наверху, крылья внизу, окошко спереди. Цвета и число украшений выбираешь ты.</p><p class="screenshot-result"><strong>Проверь: </strong>У ракеты есть форма и собственный характер — можно назвать её и отправить в воображаемый полёт.</p></li></ol></details>
+                </li>
+                <li>
+                  <h3>Сохрани и объяви запуск</h3>
+                  <p>
+                    Открой <b>File → Save As</b>. Вместе со взрослым выбери
+                    папку и имя <b>rocket.blend</b>. Расскажи, кто летит и куда.
+                    Звуки старта приветствуются!
+                  </p>
+                  <details class="visual-help" data-shots="file-menu">
+                    <summary>Покажи мне: сохранить ракету</summary>
+
+
+                  <p class="guide-intro">Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть её крупнее. Твоя модель может выглядеть иначе.</p><ol class="screenshot-steps"><li><h4>Открой File → Save As</h4><a class="screenshot-frame screenshot-cropped" href="assets/blender/rocket/15-file-menu.jpg" data-screenshot="rocket-file-menu" data-caption="Открой File → Save As — Открой File в верхнем левом углу и выбери Save As. Вместе со взрослым выбери папку и сохрани файл rocket.blend. Для уже сохранённого файла в следующий раз достаточно File → Save." aria-label="Увеличить: Открой File → Save As" style="aspect-ratio: 80640 / 137760;"><img src="assets/blender/rocket/15-file-menu.jpg" alt="Скриншот Blender 5.2: Открой File → Save As" width="2880" height="1680" style="width: 357.14285714285717%; max-width: none; position: absolute; left: 0%; top: -4.878048780487805%;"></a><p class="screenshot-caption">Открой File в верхнем левом углу и выбери Save As. Вместе со взрослым выбери папку и сохрани файл rocket.blend. Для уже сохранённого файла в следующий раз достаточно File → Save.</p><p class="screenshot-result"><strong>Проверь: </strong>В выбранной папке есть файл rocket.blend. Запомни эту папку.</p></li></ol></details>
+                </li>
+              </ol>
+              <div class="checklist">
+                <h3>Что у меня получилось</h3>
+                <label class="check"><input type="checkbox" data-progress="color"><span>Я выбрал цвет для ракеты.</span></label><label class="check"><input type="checkbox" data-progress="saved"><span>Я сохранил файл и рассказал о полёте.</span></label>
+              </div>
+              <div class="all-done">
+                <h3>Ура, ракета готова к старту!</h3>
+                <p>
+                  Что пассажир увидит первым? Если хочется продолжить, придумай
+                  планету из большого шара. А можно просто полюбоваться ракетой.
+                </p>
+                <div class="actions">
+                  <a class="button secondary" href="index.html#worlds">На карту приключений →</a>
+                </div>
+              </div>
+            </section>
+          </div>
+          <aside class="sidebar" aria-label="Твои открытия">
+            <div class="passport">
+              <div class="passport-icon" aria-hidden="true">✦</div>
+              <h2>Паспорт космонавта</h2>
+              <p>Каждая попытка — маленькое открытие.</p>
+              <div>
+                <div class="progress-track" role="progressbar" aria-label="Выполненные шаги" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0">
+                  <div class="progress-fill"></div>
+                </div>
+                <div class="progress-label" aria-live="polite" id="progress-label">
+                  0 из 8 открытий
+                </div>
+              </div>
+              <div class="badges" aria-label="Значки за миссии">
+                <span class="badge" title="Корпус" aria-label="Корпус: впереди">◯</span><span class="badge" title="Нос и крылья" aria-label="Нос и крылья: впереди">✦</span><span class="badge" title="Пассажир" aria-label="Пассажир: впереди">☺</span><span class="badge" title="Цвет и запуск" aria-label="Цвет и запуск: впереди">🚀</span>
+              </div>
+              <p class="celebration" id="celebration" hidden="">
+                Все четыре миссии пройдены. Твоя ракета улетела к новым идеям!
+              </p>
+              <p class="storage-note" id="storage-note">
+                Отметки сохраняются на этом устройстве.
+              </p>
+              <button class="text-button" id="reset-progress" type="button">
+                Начать отметки заново
+              </button>
+            </div>
+            <div class="side-note">
+              <strong>Твоя ракета может быть другой.</strong>Один иллюминатор?
+              Три крыла? Очень длинный нос? Отличная идея!
+              <div class="mini-title">Три знакомые кнопки</div>
+              <div class="key-grid">
+                <span><kbd>G</kbd>Двигай</span><span><kbd>R</kbd>Поворачивай</span><span><kbd>S</kbd>Меняй размер</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <details class="adult-box" id="grownups">
+          <summary>Для взрослых: подготовка и помощь</summary>
+          <p>
+            Это четыре короткие встречи, а не одна длинная сборка. Для 6–7 лет
+            читайте шаги вслух и помогайте с клавиатурой; для 8–10 лет
+            оставляйте ребёнку выбор формы, цвета и истории. Можно остановиться
+            после любого удачного шага.
+          </p>
+          <h3>Перед началом</h3>
+          <ul>
+            <li>
+              Откройте Blender 5.2 LTS в Layout и Object Mode. Начинайте с новой
+              стандартной сцены; куб используется как площадка. Если его нет,
+              добавьте Cube через Add → Mesh.
+            </li>
+            <li>
+              Вид Front помогает поставить детали по X и Z; вид Right помогает
+              проверить глубину по Y. Числа на снимках подходят только примерной
+              модели, не задают «правильный» размер.
+            </li>
+            <li>
+              Во второй неделе достаточно примитивов. Extrude в Edit Mode можно
+              показать отдельно, если ребёнок просит, но для готовой ракеты он
+              не нужен.
+            </li>
+            <li>
+              Сохраните отдельный файл rocket.blend. Изображения в подсказках
+              сняты в настоящем Blender на отдельной учебной сцене, а модель
+              ребёнка может отличаться.
+            </li>
+          </ul>
+          <h3>Что считать успехом</h3>
+          <p>
+            Ребёнок выбрал пропорции, добавил цилиндр и конус, придумал
+            пассажира и сохранил работу вместе со взрослым. Второе крыло,
+            несколько цветов и ровная симметрия не обязательны.
+          </p>
+        </details>
+      </main>
+      <footer>
+        <span>Кубик · Большие идеи начинаются с маленького куба.</span><span>Blender 5.2 LTS · На русском · Без регистрации</span>
+      </footer>
+    </div>
+    <dialog id="screenshot-viewer" aria-labelledby="screenshot-caption">
+      <div class="screenshot-toolbar">
+        <p id="screenshot-caption"></p>
+        <button type="button" autofocus="">Закрыть ✕</button>
+      </div>
+      <div class="screenshot-scroll"><img alt=""></div>
+      <p class="image-zoom-note">
+        На маленьком экране картинку можно прокрутить в стороны. Esc — закрыть.
+      </p>
+    </dialog>
+
+
+
+</body></html>
