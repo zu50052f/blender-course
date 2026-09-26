@@ -5,6 +5,7 @@ const vm = require("vm");
 const root = require("node:path").join(__dirname, "../site/");
 const html = fs.readFileSync(root + "week-01.html", "utf8");
 const js = fs.readFileSync(root + "course.js", "utf8");
+const themeJs = fs.readFileSync(root + "theme.js", "utf8");
 function setup(saved, fail = false, hash = "") {
   const d = new JSDOM(html, {
     url: "http://localhost:8080/week-01.html" + hash,
@@ -26,6 +27,47 @@ function setup(saved, fail = false, hash = "") {
   return w;
 }
 (async () => {
+  function themePage(file, saved, denied = false) {
+    const page = new JSDOM(fs.readFileSync(root + file, "utf8"), {
+      url: "http://localhost:8080/" + file,
+      runScripts: "outside-only",
+    });
+    if (saved) page.window.localStorage.setItem("kubik-theme", saved);
+    if (denied)
+      Object.defineProperty(page.window, "localStorage", {
+        get() {
+          throw Error("disabled");
+        },
+      });
+    page.window.eval(themeJs);
+    page.window.document.dispatchEvent(
+      new page.window.Event("DOMContentLoaded"),
+    );
+    return page.window;
+  }
+  let themed = themePage("index.html");
+  assert.equal(themed.document.documentElement.dataset.theme, "light");
+  themed.document.querySelector("#theme-switch").click();
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  assert.equal(
+    themed.document.querySelector("#theme-switch").getAttribute("aria-pressed"),
+    "true",
+  );
+  assert.equal(themed.localStorage.getItem("kubik-theme"), "dark");
+  themed.close();
+  themed = themePage("week-01.html", "dark");
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  assert.equal(
+    themed.document.querySelector('meta[name="theme-color"]').content,
+    "#1b192b",
+  );
+  themed.document.querySelector("#theme-switch").click();
+  assert.equal(themed.document.documentElement.dataset.theme, "light");
+  themed.close();
+  themed = themePage("index.html", "invalid", true);
+  themed.document.querySelector("#theme-switch").click();
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  themed.close();
   for (const bad of ["null", "false", "[]", "invalid", "42"]) {
     let w = setup(bad);
     assert.equal(
@@ -99,20 +141,40 @@ function setup(saved, fail = false, hash = "") {
     0,
   );
   nojs.window.close();
-  const visual = new JSDOM(html, { url: "http://localhost:8080/week-01.html", runScripts: "outside-only" });
+  const visual = new JSDOM(html, {
+    url: "http://localhost:8080/week-01.html",
+    runScripts: "outside-only",
+  });
   const visualDoc = visual.window.document;
-  const shots = JSON.parse(fs.readFileSync(root + "assets/blender/screenshots.json", "utf8"));
-  assert.equal(visualDoc.querySelectorAll(".mission .steps>li>.visual-help").length, 11);
-  assert.ok(visualDoc.querySelectorAll("details.hint .visual-help").length >= 10);
+  const shots = JSON.parse(
+    fs.readFileSync(root + "assets/blender/screenshots.json", "utf8"),
+  );
+  assert.equal(
+    visualDoc.querySelectorAll(".mission .steps>li>.visual-help").length,
+    11,
+  );
+  assert.ok(
+    visualDoc.querySelectorAll("details.hint .visual-help").length >= 10,
+  );
   for (const [id, shot] of Object.entries(shots)) {
-    assert.ok(fs.existsSync(root + "assets/blender/" + shot.file), `missing screenshot ${id}`);
-    assert.ok(visualDoc.querySelector(`a[data-screenshot="${id}"]`), `unused screenshot ${id}`);
+    assert.ok(
+      fs.existsSync(root + "assets/blender/" + shot.file),
+      `missing screenshot ${id}`,
+    );
+    assert.ok(
+      visualDoc.querySelector(`a[data-screenshot="${id}"]`),
+      `unused screenshot ${id}`,
+    );
   }
   let opened = false;
   let closed = false;
   const viewer = visualDoc.querySelector("#screenshot-viewer");
-  viewer.showModal = () => { opened = true; };
-  viewer.close = () => { closed = true; };
+  viewer.showModal = () => {
+    opened = true;
+  };
+  viewer.close = () => {
+    closed = true;
+  };
   visual.window.eval(fs.readFileSync(root + "visual-guides.js", "utf8"));
   const sample = visualDoc.querySelector('a[data-screenshot="select"]');
   sample.click();
@@ -145,14 +207,15 @@ function setup(saved, fail = false, hash = "") {
   const deleted = [];
   const keys = ["blender-course-v1", "unrelated-app"];
   const cache = {
-    addAll: async (paths) => {
-      for (const p of paths) {
-        assert.ok(
-          fs.existsSync(
-            root + (p === "./" ? "index.html" : p.replace("./", "")),
-          ),
-        );
-        data.set(new URL(p, "http://localhost:8080/").href, { path: p });
+    addAll: async (requests) => {
+      for (const request of requests) {
+        const p =
+          new URL(request.url).pathname.replace(/^\//, "") || "index.html";
+        assert.equal(request.cache, "reload");
+        assert.ok(fs.existsSync(root + p));
+        data.set(request.url, {
+          path: p === "index.html" ? "./index.html" : "./" + p,
+        });
       }
     },
     match: async (r) =>
@@ -177,6 +240,7 @@ function setup(saved, fail = false, hash = "") {
       delete: async (k) => deleted.push(k),
     },
     URL,
+    Request,
     Response,
     fetch: async () => {
       throw Error("offline");
@@ -204,12 +268,28 @@ function setup(saved, fail = false, hash = "") {
   );
   assert.equal((await request("missing", "navigate")).path, "./index.html");
   assert.equal((await request("missing.png", "no-cors")).type, "error");
-  ctx.fetch = async () => ({ ok: true, clone() { return this; }, source: "network" });
-  assert.equal((await request("assets/blender/01-select.jpg", "no-cors")).source, "network");
-  ctx.fetch = async () => { throw Error("offline"); };
-  assert.equal((await request("assets/blender/01-select.jpg", "no-cors")).source, "network");
+  ctx.fetch = async () => ({
+    ok: true,
+    clone() {
+      return this;
+    },
+    source: "network",
+  });
+  assert.equal((await request("week-01.html", "navigate")).source, "network");
+  assert.equal(
+    (await request("assets/blender/01-select.jpg", "no-cors")).source,
+    "network",
+  );
+  ctx.fetch = async () => {
+    throw Error("offline");
+  };
+  assert.equal((await request("week-01.html", "navigate")).source, "network");
+  assert.equal(
+    (await request("assets/blender/01-select.jpg", "no-cors")).source,
+    "network",
+  );
   console.log(
-    "PASS: navigation, stable progress, reload state, reset/cancel, all badges, malformed/denied storage, legacy anchors, no-JS content, local links/assets, SW precache, scoped cleanup, offline fallbacks.",
+    "PASS: theme switching/persistence/fallback, navigation, progress, reset, storage failures, local assets, SW precache and offline fallbacks.",
   );
 })().catch((e) => {
   console.error(e);

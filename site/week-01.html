@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#fffaf0" />
     <meta
       name="description"
       content="Добрый и понятный курс Blender для детей 6–10 лет. Короткие миссии, смешные герои и маленькие открытия."
     />
     <title>Неделя 1 — Робот, давай дружить! · Кубик</title>
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="icon-192.png" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -18,6 +19,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script src="course.js" defer=""></script>
     <link href="visual-guides.css" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css" />
     <script src="visual-guides.js" defer=""></script>
   </head>
   <body>
@@ -32,6 +34,17 @@
           <a href="index.html#worlds">Все приключения</a
           ><a href="#grownups">Для взрослых</a
           ><span class="age">Для детей 6–10 лет</span>
+          <button
+            type="button"
+            class="theme-switch"
+            id="theme-switch"
+            aria-label="Тёмная тема"
+            aria-pressed="false"
+            title="Тёмная тема"
+          >
+            <span class="theme-icon" aria-hidden="true">☾</span
+            ><span class="theme-label">Тёмная тема</span>
+          </button>
         </nav>
       </header>
       <div class="breadcrumb">

@@ -1,0 +1,228 @@
+/* A quiet night palette for reading beside Blender. */
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.theme-switch[hidden] {
+  display: none;
+}
+.theme-switch:hover {
+  border-color: var(--purple);
+}
+.theme-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .top-links {
+    gap: 9px;
+  }
+  .theme-switch {
+    width: 43px;
+    padding: 6px;
+  }
+  .theme-label {
+    display: none;
+  }
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f7f2ff;
+  --muted: #c8bfd8;
+  --paper: #1b192b;
+  --purple: #7557c8;
+  --purple-dark: #d8c7ff;
+  --lavender: #36304b;
+  --line: #514a64;
+  --green: #a9dab4;
+  --white: #292639;
+  --shadow: 0 8px 0 #0f0d1b66;
+}
+html[data-theme="dark"] .skip,
+html[data-theme="dark"] .world-card,
+html[data-theme="dark"] .adult-box,
+html[data-theme="dark"] .mission,
+html[data-theme="dark"] .mission-link,
+html[data-theme="dark"] .button.secondary,
+html[data-theme="dark"] .key-grid span {
+  background: #292639;
+  color: var(--ink);
+}
+html[data-theme="dark"] .accent {
+  color: #d8c7ff;
+}
+html[data-theme="dark"] .button:hover {
+  background: #6346b7;
+}
+html[data-theme="dark"] .button.secondary {
+  box-shadow: 0 3px 0 #171423;
+}
+html[data-theme="dark"] .hero-art img {
+  mix-blend-mode: normal;
+  background: #fff9ed;
+}
+html[data-theme="dark"] .art-sticker {
+  color: #302b49;
+  border-color: #302b49;
+  box-shadow: 4px 4px 0 #302b49;
+}
+html[data-theme="dark"] .age,
+html[data-theme="dark"] .goal,
+html[data-theme="dark"] .break,
+html[data-theme="dark"] .noscript,
+html[data-theme="dark"] .all-done {
+  background: #463b37;
+  border-color: #76604a;
+  color: #ffefcc;
+}
+html[data-theme="dark"] .welcome-strip,
+html[data-theme="dark"] .checklist {
+  background: #263c33;
+  border-color: #496e58;
+}
+html[data-theme="dark"] .welcome-strip p,
+html[data-theme="dark"] .check:has(input:checked) span,
+html[data-theme="dark"] .celebration {
+  color: #bce8bc !important;
+}
+html[data-theme="dark"] .world-visual,
+html[data-theme="dark"] .world-card:nth-child(3n + 2) .world-visual,
+html[data-theme="dark"] .world-card:nth-child(3n) .world-visual,
+html[data-theme="dark"] .lesson-visual {
+  background: #36304b;
+  border-color: #5e527a;
+}
+html[data-theme="dark"] .world-card.available {
+  border-color: #a88ce6;
+}
+html[data-theme="dark"] .status {
+  background: #3b3748;
+  color: #d4cada;
+}
+html[data-theme="dark"] .available .status {
+  background: #294534;
+  color: #bce8bc;
+}
+html[data-theme="dark"] .mission-link[aria-current="step"] {
+  background: #40345d;
+  border-color: #b49bee;
+}
+html[data-theme="dark"] .mission-number,
+html[data-theme="dark"] .steps > li:before {
+  background: #493c63;
+  color: #e8daff;
+}
+html[data-theme="dark"] .mission-link.is-done .mission-number {
+  background: #31573d;
+  color: #d4f3d5;
+}
+html[data-theme="dark"] kbd {
+  background: #423b53;
+  border-color: #736986;
+  color: #f1eaff;
+}
+html[data-theme="dark"] .hint {
+  background: #343045;
+}
+html[data-theme="dark"] .passport {
+  background: #352d4e;
+  border-color: #655783;
+}
+html[data-theme="dark"] .passport p,
+html[data-theme="dark"] .text-button {
+  color: #d7caed;
+}
+html[data-theme="dark"] .progress-track {
+  background: #1e1a2f;
+}
+html[data-theme="dark"] .badge {
+  background: #403751;
+  border-color: #8e7aa8;
+  color: #d3c3e6;
+}
+html[data-theme="dark"] .badge.earned {
+  background: #ffdc7a;
+  border-color: #eac460;
+  color: #654d16;
+}
+html[data-theme="dark"] a:focus-visible,
+html[data-theme="dark"] button:focus-visible,
+html[data-theme="dark"] input:focus-visible,
+html[data-theme="dark"] summary:focus-visible {
+  outline-color: #ffcf59;
+}
+@media print {
+  html[data-theme="dark"] {
+    color-scheme: light;
+  }
+  html[data-theme="dark"] body {
+    background: white;
+    color: black;
+  }
+  html[data-theme="dark"] .mission,
+  html[data-theme="dark"] .lesson-visual,
+  html[data-theme="dark"] .goal,
+  html[data-theme="dark"] .hint,
+  html[data-theme="dark"] .break,
+  html[data-theme="dark"] .checklist,
+  html[data-theme="dark"] .all-done {
+    background: white;
+    color: black;
+  }
+}
+
+html[data-theme="dark"] .visual-help {
+  background: #352e49;
+  border-color: #716284;
+}
+html[data-theme="dark"] .visual-help > summary {
+  color: #e8d9ff;
+}
+html[data-theme="dark"] .visual-help[open] > summary {
+  background: #42375b;
+  border-color: #716284;
+}
+html[data-theme="dark"] .visual-help .guide-intro,
+html[data-theme="dark"] .image-zoom-note {
+  color: #c9bfd9;
+}
+html[data-theme="dark"] .visual-help .screenshot-caption {
+  color: #f0e9fa;
+}
+html[data-theme="dark"] .visual-help .screenshot-result {
+  background: #294636;
+  color: #d0efd5;
+}
+html[data-theme="dark"] .screenshot-frame {
+  border-color: #88799d;
+}
+html[data-theme="dark"] #screenshot-viewer {
+  background: #292639;
+  color: #f7f2ff;
+}
+html[data-theme="dark"] .screenshot-toolbar button {
+  background: #7557c8;
+  color: white;
+}
+@media print {
+  html[data-theme="dark"] .visual-help {
+    background: white;
+    color: black;
+    border-color: #ccc;
+  }
+  html[data-theme="dark"] .visual-help > summary,
+  html[data-theme="dark"] .visual-help .screenshot-caption {
+    color: black;
+  }
+}

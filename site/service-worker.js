@@ -1,10 +1,12 @@
-const CACHE_NAME = "blender-course-v5-visual-guides";
+const CACHE_NAME = "blender-course-v9-dark-theme";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./week-01.html",
   "./styles.css",
+  "./theme.css",
   "./course.js",
+  "./theme.js",
   "./visual-guides.css",
   "./visual-guides.js",
   "./manifest.webmanifest",
@@ -20,7 +22,16 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
-      .then((cache) => cache.addAll(CORE_ASSETS))
+      .then((cache) =>
+        cache.addAll(
+          CORE_ASSETS.map(
+            (asset) =>
+              new Request(new URL(asset, self.registration.scope), {
+                cache: "reload",
+              }),
+          ),
+        ),
+      )
       .then(() => self.skipWaiting()),
   );
 });
@@ -50,6 +61,24 @@ self.addEventListener("fetch", (event) => {
     return;
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
+      if (event.request.mode === "navigate") {
+        try {
+          const response = await fetch(event.request);
+          if (response.ok) {
+            try {
+              await cache.put(event.request, response.clone());
+            } catch (_) {
+              // Keep showing the fetched page if caching is unavailable.
+            }
+          }
+          return response;
+        } catch (_) {
+          return (
+            (await cache.match(event.request)) ||
+            (await cache.match("./index.html"))
+          );
+        }
+      }
       const cached = await cache.match(event.request);
       if (cached) return cached;
       try {
@@ -62,8 +91,6 @@ self.addEventListener("fetch", (event) => {
           }
         return response;
       } catch (_) {
-        if (event.request.mode === "navigate")
-          return await cache.match("./index.html");
         return Response.error();
       }
     }),
