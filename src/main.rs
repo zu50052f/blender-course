@@ -72,9 +72,5 @@ async fn static_handler(request: Request) -> Response {
         }
     }
 
-    (
-        StatusCode::NOT_FOUND,
-        "404 — такой страницы курса пока нет",
-    )
-        .into_response()
+    (StatusCode::NOT_FOUND, "404 — такой страницы курса пока нет").into_response()
 }
