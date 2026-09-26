@@ -217,7 +217,7 @@ function setup(saved, fail = false, hash = "") {
   );
   assert.equal(
     rocket.window.document.querySelectorAll(".visual-help").length,
-    12,
+    13,
   );
   for (const [id, shot] of Object.entries(rocketShots)) {
     assert.ok(

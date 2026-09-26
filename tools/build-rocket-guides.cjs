@@ -4,6 +4,8 @@ const { JSDOM } = require("jsdom");
 
 const root = path.join(__dirname, "..", "site");
 const page = path.join(root, "week-02.html");
+const screenshotWidth = 2992;
+const screenshotHeight = 1680;
 const shots = JSON.parse(
   fs.readFileSync(
     path.join(root, "assets/blender/rocket/screenshots.json"),
@@ -15,9 +17,11 @@ const doc = dom.window.document;
 
 for (const details of doc.querySelectorAll(".visual-help[data-shots]")) {
   const ids = details.dataset.shots.split(/\s+/);
-  details
-    .querySelectorAll(":scope > :not(summary)")
-    .forEach((el) => el.remove());
+  const summary = details.querySelector(":scope > summary");
+  if (!summary) throw Error("Screenshot guide has no summary");
+  for (const node of [...details.childNodes]) {
+    if (node !== summary) node.remove();
+  }
   const intro = doc.createElement("p");
   intro.className = "guide-intro";
   intro.textContent =
@@ -43,13 +47,13 @@ for (const details of doc.querySelectorAll(".visual-help[data-shots]")) {
     image.alt = `Скриншот Blender 5.2: ${shot.title}`;
     image.loading = "lazy";
     image.decoding = "async";
-    image.width = 2880;
-    image.height = 1680;
+    image.width = screenshotWidth;
+    image.height = screenshotHeight;
     link.append(image);
     if (shot.crop) {
       const [x, y, w, h] = shot.crop;
       link.classList.add("screenshot-cropped");
-      link.style.aspectRatio = `${w * 2880} / ${h * 1680}`;
+      link.style.aspectRatio = `${w * screenshotWidth} / ${h * screenshotHeight}`;
       image.style.cssText = `width:${10000 / w}%;max-width:none;position:absolute;left:${(-x * 100) / w}%;top:${(-y * 100) / h}%;`;
     }
     if (shot.target) {
@@ -78,10 +82,9 @@ for (const details of doc.querySelectorAll(".visual-help[data-shots]")) {
 
 fs.writeFileSync(
   page,
-  ("<!doctype html>\n" + doc.documentElement.outerHTML + "\n").replace(
-    /[\t ]+$/gm,
-    "",
-  ),
+  ("<!doctype html>\n" + doc.documentElement.outerHTML + "\n")
+    .replace(/[\t ]+$/gm, "")
+    .replace(/\n+<\/body>/, "\n</body>"),
 );
 console.log(
   `Generated ${doc.querySelectorAll(".visual-help").length} rocket guides with ${Object.keys(shots).length} Blender screenshots.`,
