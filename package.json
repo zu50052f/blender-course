@@ -1,0 +1,7 @@
+{
+  "name": "kubik-blender-course",
+  "private": true,
+  "scripts": {"test": "node tools/test-course.cjs"},
+  "devDependencies": {"jsdom": "^29.0.0"},
+  "engines": {"node": ">=22"}
+}
