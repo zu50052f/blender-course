@@ -64,6 +64,9 @@ function setup(saved, fail = false, hash = "") {
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "light");
   themed.close();
+  themed = themePage("week-02.html", "dark");
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  themed.close();
   themed = themePage("index.html", "invalid", true);
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -183,7 +186,53 @@ function setup(saved, fail = false, hash = "") {
   viewer.querySelector("button").click();
   assert.ok(closed);
   visual.window.close();
-  for (const file of ["index.html", "week-01.html"]) {
+  const rocketHtml = fs.readFileSync(root + "week-02.html", "utf8");
+  const rocketShots = JSON.parse(
+    fs.readFileSync(root + "assets/blender/rocket/screenshots.json", "utf8"),
+  );
+  const rocket = new JSDOM(rocketHtml, {
+    url: "http://localhost:8080/week-02.html#mission-2",
+    runScripts: "outside-only",
+    pretendToBeVisual: true,
+  });
+  rocket.window.HTMLElement.prototype.scrollIntoView = function () {};
+  rocket.window.confirm = () => true;
+  rocket.window.eval(js);
+  assert.equal(
+    rocket.window.document.querySelector(".mission:not([hidden])").id,
+    "mission-2",
+  );
+  const rocketChecks =
+    rocket.window.document.querySelectorAll("[data-progress]");
+  assert.equal(rocketChecks.length, 8);
+  rocketChecks[0].click();
+  assert.equal(
+    JSON.parse(rocket.window.localStorage.getItem("kubik-week02-progress-v1"))
+      .pad,
+    true,
+  );
+  assert.equal(
+    rocket.window.localStorage.getItem("kubik-week01-progress-v2"),
+    null,
+  );
+  assert.equal(
+    rocket.window.document.querySelectorAll(".visual-help").length,
+    12,
+  );
+  for (const [id, shot] of Object.entries(rocketShots)) {
+    assert.ok(
+      fs.existsSync(root + "assets/blender/rocket/" + shot.file),
+      `missing rocket screenshot ${id}`,
+    );
+    assert.ok(
+      rocket.window.document.querySelector(`a[data-screenshot="rocket-${id}"]`),
+      `unused rocket screenshot ${id}`,
+    );
+  }
+  rocket.window.document.querySelector("#reset-progress").click();
+  assert.equal(rocketChecks[0].checked, false);
+  rocket.window.close();
+  for (const file of ["index.html", "week-01.html", "week-02.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
     for (const el of doc.querySelectorAll("[src],a[href],link[href]")) {

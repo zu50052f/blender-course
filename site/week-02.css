@@ -1,0 +1,29 @@
+.rocket-figure-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+
+.rocket-figure-image img {
+  display: block;
+  position: absolute;
+  left: -45%;
+  top: 50%;
+  width: 190%;
+  max-width: none;
+  max-height: none;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 680px) {
+  .lesson-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .rocket-figure-image {
+    height: 210px;
+  }
+}

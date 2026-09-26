@@ -4,7 +4,8 @@
   if (missions.length) {
     const links = [...document.querySelectorAll(".mission-link")];
     const checks = [...document.querySelectorAll("[data-progress]")];
-    const storageKey = "kubik-week01-progress-v2";
+    const storageKey =
+      document.body.dataset.progressKey || "kubik-week01-progress-v2";
     let saved = {};
     let storageAvailable = true;
     try {
@@ -55,7 +56,10 @@
     });
     document.querySelector("#reset-progress").addEventListener("click", () => {
       if (
-        !confirm("Убрать все отметки? Сам робот в Blender останется на месте.")
+        !confirm(
+          document.body.dataset.resetMessage ||
+            "Убрать все отметки? Сам робот в Blender останется на месте.",
+        )
       )
         return;
       saved = {};
