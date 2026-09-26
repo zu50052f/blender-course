@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v11-rocket-week";
+const CACHE_NAME = "blender-course-v12-rocket-shapes";
 const CORE_ASSETS = [
   "./",
   "./index.html",

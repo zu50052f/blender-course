@@ -10,4 +10,6 @@ Generation prompt:
 
 Original embedded pseudo-interface diagrams were removed. The screenshots in `blender/` are genuine captures of Blender 5.2.2 from a separate demo scene created for this course. Menu and file browser captures were taken from Blender’s own rendered UI; the browser screenshots were assembled from the UI regions without invented controls. Their JPEG files retain the real pixels. The lesson displays focused crops with CSS and leaves the full image available by clicking. The screenshots are examples; student models can differ. Official Blender documentation remains linked for adults.
 
+The rocket lesson screenshots were also captured from a separate Blender 5.2.2 demo scene. Its cone fins and small cylinder engine illustrate how familiar primitives can give the rocket a more recognizable silhouette; the engine is optional in the lesson. The rocket mascot SVG is an original course illustration.
+
 The generated PNG was exported as JPEG for a smaller offline download; the original generated file is retained outside the repository. App icons are original geometric cube drawings.
