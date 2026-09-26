@@ -15,6 +15,12 @@ a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:
 footer{border-top:1px solid var(--line);padding:26px 0 50px;color:#8793a7;font-size:.9rem}
 @media(max-width:760px){.wrap{padding:22px}.hero{padding-top:38px}.grid{grid-template-columns:1fr}.path{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Blender Course">
 </head>
 <body>
 <div class="wrap">
@@ -36,6 +42,17 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;color:#8793a7;font-s
 <div class="path">
 <span>Идея</span><span>Формы</span><span>Модель</span><span>Материалы</span><span>Текстура</span>
 <span>Свет</span><span>Камера</span><span>Рендер</span><span>Серия кадров</span><span>Свой проект</span>
+</div>
+</section>
+
+
+<section class="panel">
+<h2>Установить на iPad</h2>
+<p>Открой эту страницу в Safari, нажми <strong>Поделиться</strong> и выбери <strong>«На экран Домой»</strong>. После первого открытия основные страницы курса сохраняются для офлайн-доступа.</p>
+<div class="chips">
+<span class="chip"><b>1.</b> Safari</span>
+<span class="chip"><b>2.</b> Поделиться</span>
+<span class="chip"><b>3.</b> На экран Домой</span>
 </div>
 </section>
 
@@ -61,5 +78,10 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;color:#8793a7;font-s
 
 <footer>Blender Course · учебный проект на Rust · подробная методика хранится в <code>COURSE.md</code></footer>
 </div>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+}
+</script>
 </body>
 </html>
