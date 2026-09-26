@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v9-dark-theme";
+const CACHE_NAME = "blender-course-v10-smile-curve";
 const CORE_ASSETS = [
   "./",
   "./index.html",

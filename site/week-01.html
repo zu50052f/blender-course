@@ -1447,7 +1447,7 @@
                     <summary>Ещё одна идея, если хочется</summary>
                     <p>
                       Добавь куб для стержня антенны и сферу сверху. Или сделай
-                      кубические уши. Улыбка, зрачки и пуговица на схеме —
+                      кубические уши. Зрачки и пуговица на схеме —
                       необязательные украшения. Достаточно одной своей детали.
                     </p>
 
@@ -1522,6 +1522,234 @@
                           <p class="screenshot-result">
                             <strong>Проверь: </strong>Повернулась только
                             выбранная рука.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="hint">
+                    <summary>Хочу сделать улыбку кривой</summary>
+                    <p>
+                      Это дополнительный трюк: кривая похожа на мягкую
+                      верёвочку. Сначала она прямая, а ты опустишь её серединку
+                      и получишь улыбку. Если сегодня хватит — робот уже готов и
+                      без неё!
+                    </p>
+                    <p>
+                      Смотри на робота спереди. В примере ниже голова стоит над
+                      центром сцены; если твоя голова в другом месте, передвинь
+                      улыбку к ней. Открывай картинки по очереди.
+                    </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="curve-menu smile-place smile-subdivide smile-points smile-bevel smile-final"
+                    >
+                      <summary>Покажи мне: сделать улыбку кривой</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Add → Curve → Bézier</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/32-curve-menu.jpg"
+                            data-screenshot="curve-menu"
+                            data-caption="Add → Curve → Bézier — В режиме Object Mode открой Add над рабочей областью, наведи на Curve и выбери Bézier. Это новая гибкая линия, а не куб. Если она спряталась в теле робота, всё в порядке: сейчас мы её передвинем."
+                            aria-label="Увеличить: Add → Curve → Bézier"
+                            style="aspect-ratio: 72000 / 55440"
+                            ><img
+                              src="assets/blender/32-curve-menu.jpg"
+                              alt="Скриншот Blender 5.2: меню Add → Curve → Bézier"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 400%;
+                                max-width: none;
+                                position: absolute;
+                                left: -8%;
+                                top: -157.57575757575756%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            В режиме Object Mode открой Add над рабочей
+                            областью, наведи на Curve и выбери Bézier. Это новая
+                            гибкая линия, а не куб. Если она спряталась в теле
+                            робота, всё в порядке: сейчас мы её передвинем.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>В списке объектов
+                            появилась BézierCurve; новая кривая выбрана.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Положи линию на лицо</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/33-smile-place.jpg"
+                            data-screenshot="smile-place"
+                            data-caption="Положи линию на лицо — Пока кривая выбрана, нажми R, X, 90, Enter — поверни её к лицу. Уменьши клавишей S, подними к голове через G, Z, а через G, Y вынеси чуть перед лицом. Для робота на фото подошли S 0.45, G Z 1.85 и G Y -0.85. У твоего робота числа могут отличаться."
+                            aria-label="Увеличить: Положи линию на лицо"
+                            style="aspect-ratio: 74880 / 58800"
+                            ><img
+                              src="assets/blender/33-smile-place.jpg"
+                              alt="Скриншот Blender 5.2: кривая лежит поперёк лица робота"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 384.61538461538464%;
+                                max-width: none;
+                                position: absolute;
+                                left: -107.6923076923077%;
+                                top: -80%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Пока кривая выбрана, нажми R, X, 90, Enter — поверни
+                            её к лицу. Уменьши клавишей S, подними к голове
+                            через G, Z, а через G, Y вынеси чуть перед лицом.
+                            Для робота на фото подошли S 0.45, G Z 1.85 и G Y
+                            -0.85. У твоего робота числа могут отличаться.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Линия лежит поперёк лица
+                            ниже глаз. Если её не видно, сдвинь немного вперёд
+                            через G, Y.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Добавь точку посередине</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/34-smile-subdivide.jpg"
+                            data-screenshot="smile-subdivide"
+                            data-caption="Добавь точку посередине — Нажми Tab — это Edit Mode. Нажми A, затем V и выбери Automatic: линия выпрямится. Нажми F3, напиши Subdivide и Enter. Нажми Alt+A, чтобы снять выделение, и щёлкни по средней точке. Она станет оранжевой, как на фото."
+                            aria-label="Увеличить: Добавь точку посередине"
+                            style="aspect-ratio: 69120 / 52080"
+                            ><img
+                              src="assets/blender/34-smile-subdivide.jpg"
+                              alt="Скриншот Blender 5.2: три точки прямой кривой, выделена средняя"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 416.6666666666667%;
+                                max-width: none;
+                                position: absolute;
+                                left: -125%;
+                                top: -93.54838709677419%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Нажми Tab — это Edit Mode. Нажми A, затем V и выбери
+                            Automatic: линия выпрямится. Нажми F3, напиши
+                            Subdivide и Enter. Нажми Alt+A, чтобы снять
+                            выделение, и щёлкни по средней точке. Она станет
+                            оранжевой, как на фото.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>У линии три главные точки;
+                            выбрана только средняя.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Опусти серединку</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/35-smile-points.jpg"
+                            data-screenshot="smile-points"
+                            data-caption="Опусти серединку — Когда выбрана только средняя точка, нажми G, затем Z, немного опусти мышь и щёлкни. Если потянулся край, Ctrl+Z вернёт точку назад: снова щёлкни по середине."
+                            aria-label="Увеличить: Опусти серединку"
+                            style="aspect-ratio: 69120 / 52080"
+                            ><img
+                              src="assets/blender/35-smile-points.jpg"
+                              alt="Скриншот Blender 5.2: средняя точка кривой опущена и образует улыбку"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 416.6666666666667%;
+                                max-width: none;
+                                position: absolute;
+                                left: -125%;
+                                top: -93.54838709677419%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Когда выбрана только средняя точка, нажми G, затем
+                            Z, немного опусти мышь и щёлкни. Если потянулся
+                            край, Ctrl+Z вернёт точку назад: снова щёлкни по
+                            середине.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Между двумя краями есть
+                            третья точка ниже — получилась дуга улыбки.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Добавь верёвочке толщину</h4>
+                          <a
+                            class="screenshot-frame"
+                            href="assets/blender/36-smile-bevel.jpg"
+                            data-screenshot="smile-bevel"
+                            data-caption="Добавь верёвочке толщину — Нажми Tab, чтобы вернуться в Object Mode. Пока выбрана улыбка, справа нажми зелёный значок кривой, открой Geometry → Bevel и поставь Depth примерно 0.035. Если строку Bevel не видно, прокрути панель вниз. Число можно менять: толстая улыбка смешнее!"
+                            aria-label="Увеличить: Добавь верёвочке толщину"
+                            ><img
+                              src="assets/blender/36-smile-bevel.jpg"
+                              alt="Скриншот Blender 5.2: кривая улыбки с толщиной и вкладкой свойств кривой справа"
+                              width="2880"
+                              height="1680" /><span
+                              class="screenshot-target"
+                              aria-hidden="true"
+                              style="--x: 82%; --y: 64%; --w: 17%; --h: 13%"
+                            ></span
+                          ></a>
+                          <p class="screenshot-caption">
+                            Нажми Tab, чтобы вернуться в Object Mode. Пока
+                            выбрана улыбка, справа нажми зелёный значок кривой,
+                            открой Geometry → Bevel и поставь Depth примерно
+                            0.035. Если строку Bevel не видно, прокрути панель
+                            вниз. Число можно менять: толстая улыбка смешнее!
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Тонкая линия стала круглой
+                            и видимой на лице. На фото справа показан зелёный
+                            значок и раздел Geometry, который надо открыть.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Проверь улыбку спереди</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/37-smile-final.jpg"
+                            data-screenshot="smile-final"
+                            data-caption="Проверь улыбку спереди — Посмотри на лицо спереди. Если улыбка оказалась за головой, выбери кривую и нажми G, Y, чтобы вынести её вперёд. Если велика или мала — S поможет изменить размер."
+                            aria-label="Увеличить: Проверь улыбку спереди"
+                            style="aspect-ratio: 112320 / 122640"
+                            ><img
+                              src="assets/blender/37-smile-final.jpg"
+                              alt="Скриншот Blender 5.2: улыбающийся робот с кривой на лице"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 256.4102564102564%;
+                                max-width: none;
+                                position: absolute;
+                                left: -58.97435897435897%;
+                                top: -23.28767123287671%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Посмотри на лицо спереди. Если улыбка оказалась за
+                            головой, выбери кривую и нажми G, Y, чтобы вынести
+                            её вперёд. Если велика или мала — S поможет изменить
+                            размер.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>У робота есть улыбка.
+                            Сохрани проект через File → Save As!
                           </p>
                         </li>
                       </ol>
