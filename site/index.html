@@ -1,87 +1,231 @@
 <!doctype html>
 <html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0c12">
-<title>Blender 5.2 LTS · Курс на 10 недель</title>
-<style>
-:root{--bg:#0a0c12;--panel:#121722;--panel2:#181f2d;--text:#f5f7fb;--muted:#9ca7ba;--line:#2a3345;--cyan:#55e7ff;--violet:#9d7bff;--lime:#b7ff6a;--orange:#ffad5c;--pink:#ff78ad}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,rgba(85,231,255,.09),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(157,123,255,.11),transparent 34rem),var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:inherit;text-decoration:none}.wrap{max-width:1240px;margin:auto;padding:32px}.hero{padding:62px 0 34px}.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:var(--cyan)}h1{font-size:clamp(2.8rem,8vw,6.2rem);line-height:.92;letter-spacing:-.06em;margin:12px 0 20px;max-width:1000px}.outline{color:transparent;-webkit-text-stroke:1px var(--violet)}.lead{max-width:800px;color:#c8d0de;font-size:1.12rem}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.chip{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#0e121b;color:#d9e0ec;font-weight:750;font-size:.88rem}.chip b{color:var(--lime)}
-.panel{border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(19,24,35,.97),rgba(12,15,23,.97));padding:28px;margin:22px 0;box-shadow:0 18px 55px rgba(0,0,0,.23)}.panel h2{margin:0 0 8px;font-size:1.55rem}.panel p{color:#bdc6d5;margin:6px 0}.path{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:22px}.path span{padding:12px;border:1px solid var(--line);border-radius:14px;background:#0d111a;text-align:center;color:#dce4ef;font-weight:800;font-size:.86rem}.path span:nth-child(1),.path span:nth-child(6){border-color:rgba(85,231,255,.45)}.path span:nth-child(2),.path span:nth-child(7){border-color:rgba(157,123,255,.45)}.path span:nth-child(3),.path span:nth-child(8){border-color:rgba(183,255,106,.35)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0 56px}.week{position:relative;overflow:hidden;min-height:240px;padding:25px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#151b27,#0e121b);transition:.2s transform,.2s border-color}.week.available:hover{transform:translateY(-3px);border-color:var(--cyan)}.number{font-size:.72rem;letter-spacing:.18em;color:var(--muted);font-weight:900}.week h3{font-size:1.5rem;line-height:1.15;margin:10px 0}.week p{color:#aeb8c8;margin:0 0 18px}.tag{display:inline-flex;padding:7px 10px;border-radius:10px;border:1px solid var(--line);font-size:.78rem;font-weight:850;color:#cdd6e5;background:#0a0d14}.available .tag{color:#071016;background:var(--cyan);border-color:transparent}.go{display:inline-flex;margin-top:22px;color:var(--cyan);font-weight:900}.locked{opacity:.68}.week:after{content:"";position:absolute;width:150px;height:150px;border:35px solid rgba(157,123,255,.045);border-radius:50%;right:-58px;bottom:-75px}.available:after{border-color:rgba(85,231,255,.08)}
-footer{border-top:1px solid var(--line);padding:26px 0 50px;color:#8793a7;font-size:.9rem}
-@media(max-width:760px){.wrap{padding:22px}.hero{padding-top:38px}.grid{grid-template-columns:1fr}.path{grid-template-columns:repeat(2,1fr)}}
-</style>
-
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Blender Course">
-</head>
-<body>
-<div class="wrap">
-<header class="hero">
-<div class="eyebrow">Blender 5.2 LTS · 10 недель</div>
-<h1>Сделай 3D <span class="outline">своим инструментом.</span></h1>
-<p class="lead">Курс для 10–14 лет: от первых примитивов и навигации до собственной сцены, материалов, света и финального рендера. Без гонки за сотней кнопок и без ритуального поклонения интерфейсу.</p>
-<div class="chips">
-<span class="chip"><b>4</b> обязательных занятия / неделя</span>
-<span class="chip"><b>45–60</b> минут</span>
-<span class="chip"><b>1</b> проект каждую неделю</span>
-<span class="chip">язык курса: <b>русский</b></span>
-</div>
-</header>
-
-<section class="panel">
-<h2>Куда мы идём</h2>
-<p>В конце курса ученик должен уметь не просто повторять последовательность кликов, а разбить идею на формы, выбрать подходящие инструменты и довести сцену до изображения.</p>
-<div class="path">
-<span>Идея</span><span>Формы</span><span>Модель</span><span>Материалы</span><span>Текстура</span>
-<span>Свет</span><span>Камера</span><span>Рендер</span><span>Серия кадров</span><span>Свой проект</span>
-</div>
-</section>
-
-
-<section class="panel">
-<h2>Установить на iPad</h2>
-<p>Открой эту страницу в Safari, нажми <strong>Поделиться</strong> и выбери <strong>«На экран Домой»</strong>. После первого открытия основные страницы курса сохраняются для офлайн-доступа.</p>
-<div class="chips">
-<span class="chip"><b>1.</b> Safari</span>
-<span class="chip"><b>2.</b> Поделиться</span>
-<span class="chip"><b>3.</b> На экран Домой</span>
-</div>
-</section>
-
-<section class="grid">
-<a class="week available" href="week-01.html">
-<div class="number">WEEK 01 · ДОСТУПНО</div>
-<h3>Интерфейс, примитивы и первый рендер</h3>
-<p>Viewport, навигация, Move / Rotate / Scale, простые формы, робот, материалы, камера и первый PNG.</p>
-<span class="tag">Проект: робот</span>
-<div class="go">Открыть неделю →</div>
-</a>
-
-<article class="week locked"><div class="number">WEEK 02 · ROADMAP</div><h3>Edit Mode и mesh</h3><p>Vertex, Edge, Face, Extrude, Inset, Loop Cut и Bevel.</p><span class="tag">Проект: ракета</span></article>
-<article class="week locked"><div class="number">WEEK 03 · ROADMAP</div><h3>Модификаторы и точность</h3><p>Mirror, Array, Solidify, Apply Scale, Origin и Snapping.</p><span class="tag">Проект: мини-улица</span></article>
-<article class="week locked"><div class="number">WEEK 04 · ROADMAP</div><h3>Hard Surface</h3><p>Blockout, панели, рамки, фаски и простой Boolean.</p><span class="tag">Проект: контейнер</span></article>
-<article class="week locked"><div class="number">WEEK 05 · ROADMAP</div><h3>Плавные формы и Curves</h3><p>Subdivision Surface, supporting loops, Mirror и кривые.</p><span class="tag">Проект: космолёт</span></article>
-<article class="week locked"><div class="number">WEEK 06 · ROADMAP</div><h3>Материалы</h3><p>Base Color, Roughness, Metallic, Emission и Transmission.</p><span class="tag">Проект: игрушка будущего</span></article>
-<article class="week locked"><div class="number">WEEK 07 · ROADMAP</div><h3>UV и собственная текстура</h3><p>UV-развёртка, Image Texture и собственный дизайн упаковки.</p><span class="tag">Проект: бренд</span></article>
-<article class="week locked"><div class="number">WEEK 08 · ROADMAP</div><h3>Камера, свет и рендер</h3><p>Ракурс, Key / Fill / Rim, EEVEE и короткое сравнение с Cycles.</p><span class="tag">Проект: 3 настроения</span></article>
-<article class="week locked"><div class="number">WEEK 09 · ROADMAP</div><h3>Рекламная визуализация</h3><p>Hero, Detail и Alternate: серия связанных кадров одного объекта.</p><span class="tag">Проект: рекламная серия</span></article>
-<article class="week locked"><div class="number">WEEK 10 · ROADMAP</div><h3>Самостоятельный проект</h3><p>Идея, план, blockout, модель, материалы, свет, рендер и короткая защита.</p><span class="tag">Проект: своя сцена</span></article>
-</section>
-
-<footer>Blender Course · учебный проект на Rust · подробная методика хранится в <code>COURSE.md</code></footer>
-</div>
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
-}
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#fffaf0" />
+    <meta
+      name="description"
+      content="Добрый и понятный курс Blender для детей 6–10 лет. Короткие миссии, смешные герои и маленькие открытия."
+    />
+    <title>Придумывай. Играй. Создавай · Кубик</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script src="course.js" defer></script>
+  </head>
+  <body>
+    <a href="#main" class="skip">К содержимому</a>
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark" aria-hidden="true">◇</span
+          ><span>кубик<small>мастерская 3D</small></span></a
+        >
+        <nav class="top-links" aria-label="Главное меню">
+          <a href="index.html#worlds">Все приключения</a
+          ><a href="#grownups">Для взрослых</a
+          ><span class="age">Для детей 6–10 лет</span>
+        </nav>
+      </header>
+      <main id="main">
+        <section class="hero">
+          <div>
+            <div class="eyebrow">Blender для маленьких выдумщиков</div>
+            <h1>А что, если<br />кубик <span class="accent">оживёт?</span></h1>
+            <p class="intro">
+              Преврати простые формы в смешных роботов, ракеты и целые миры. По
+              одному маленькому открытию за раз.
+            </p>
+            <div class="actions">
+              <a class="button" href="week-01.html"
+                >Создать первого друга <span aria-hidden="true">→</span></a
+              ><a href="#worlds" class="card-link">Карта приключений</a>
+            </div>
+            <div class="facts">
+              <span>✦ <b>10</b> творческих недель</span
+              ><span>◷ <b>15–25</b> минут за раз</span
+              ><span>♡ Вместе со взрослым</span>
+            </div>
+          </div>
+          <figure class="hero-art">
+            <img
+              src="assets/robot-mascot.jpg"
+              width="1024"
+              height="1024"
+              alt="Весёлый сиреневый робот с жёлтой антенной машет рукой"
+            /><span class="art-sticker">Бип-бип. Давай дружить!</span>
+          </figure>
+        </section>
+        <div class="welcome-strip">
+          <span class="strip-icon" aria-hidden="true">🌱</span>
+          <div>
+            <strong
+              >Здесь можно пробовать, ошибаться и придумывать своё.</strong
+            >
+            <p>
+              Не нужно делать «как на картинке». У твоего робота вполне могут
+              быть три глаза!
+            </p>
+          </div>
+        </div>
+        <section id="worlds">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Твоя карта открытий</div>
+              <h2>10 недель. Столько идей!</h2>
+            </div>
+            <p>
+              Начни с робота. Первая неделя уже открыта, остальные приключения
+              готовятся.
+            </p>
+          </div>
+          <div class="world-grid">
+            <article class="world-card available">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 01</span
+                ><span class="status">Готово · 4 миссии</span>
+              </div>
+              <div class="world-visual">
+                <img
+                  src="assets/robot-mascot.jpg"
+                  width="1024"
+                  height="1024"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+              <h3>Робот, давай дружить!</h3>
+              <p>
+                Собери друга из кубиков. Придумай ему имя и любимое занятие.
+              </p>
+              <a class="card-link" href="week-01.html">В гости к роботу →</a>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 02</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🚀</span></div>
+              <h3>Ракета до Луны</h3>
+              <p>Вытяни корпус и придумай, кто полетит с тобой.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 03</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🏡</span></div>
+              <h3>Город крошечных домов</h3>
+              <p>Построй домик и целую улицу с помощью копий.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 04</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🎁</span></div>
+              <h3>Сундук сокровищ</h3>
+              <p>Спрячь в коробочке своё воображаемое сокровище.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 05</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">✈️</span></div>
+              <h3>Облачный самолёт</h3>
+              <p>Сделай крылья и придумай необычный маршрут.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 06</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🎨</span></div>
+              <h3>Фабрика цвета</h3>
+              <p>Примерь игрушке солнечные, ягодные и морские цвета.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 07</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🌈</span></div>
+              <h3>Наклейки для героя</h3>
+              <p>Нарисуй значок и укрась свою модель.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 08</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">☀️</span></div>
+              <h3>Фотостудия игрушек</h3>
+              <p>Поиграй со светом и найди любимый ракурс.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 09</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">📸</span></div>
+              <h3>История в трёх картинках</h3>
+              <p>Расскажи маленькую историю со своим героем.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+            <article class="world-card">
+              <div class="card-top">
+                <span>НЕДЕЛЯ 10</span><span class="status">Скоро</span>
+              </div>
+              <div class="world-visual"><span aria-hidden="true">🌍</span></div>
+              <h3>Мой маленький мир</h3>
+              <p>Соедини любимые идеи и устрой домашнюю выставку.</p>
+              <small>Ещё в мастерской</small>
+            </article>
+          </div>
+        </section>
+        <details class="adult-box" id="grownups">
+          <summary>Для взрослых: как устроена мастерская</summary>
+          <p>
+            Курс рассчитан на детей 6–10 лет. Предлагаемый ритм: 4 короткие
+            встречи в неделю, по 15–25 минут, с перерывом на движение. Можно
+            разбить любую миссию на два дня. Для 6–7 лет взрослый читает шаги и
+            помогает с мышью; в 8–10 лет ребёнок может пробовать сам.
+          </p>
+          <h3>Что понадобится</h3>
+          <p>
+            Компьютер с Blender 5.2 LTS, клавиатура и мышь с колёсиком. На iPad
+            можно читать курс; моделируем в Blender на компьютере. Перед первым
+            занятием взрослый устанавливает Blender и помогает сохранить файл.
+          </p>
+          <h3>Не всё сразу</h3>
+          <p>
+            Обязательная часть — маленькая модель и одно собственное решение
+            ребёнка. Камеру, свет и сложные настройки можно доверить взрослому.
+            Дополнительные задания всегда необязательны. У нас нет экзаменов,
+            таймеров и оценок.
+          </p>
+          <h3>Курс на домашнем экране</h3>
+          <p>
+            На iPad: Safari → Поделиться → На экран «Домой». После загрузки
+            страницы курс подготовит основные материалы для чтения без сети.
+            Прогресс остаётся в этом браузере.
+          </p>
+          <p>
+            <a href="https://www.blender.org/download/lts/"
+              >Скачать Blender с официального сайта</a
+            >
+          </p>
+        </details>
+      </main>
+      <footer class="footer">
+        <span>Кубик · Большие идеи начинаются с маленького куба.</span
+        ><span>Blender 5.2 LTS · На русском · Без регистрации</span>
+      </footer>
+    </div>
+  </body>
 </html>

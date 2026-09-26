@@ -1,40 +1,62 @@
-const CACHE_NAME = "blender-course-v1";
+const CACHE_NAME = "blender-course-v4-kubik";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./week-01.html",
+  "./styles.css",
+  "./course.js",
   "./manifest.webmanifest",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./assets/robot-mascot.jpg",
+  "./assets/step-1.svg",
+  "./assets/step-2.svg",
+  "./assets/step-3.svg",
+  "./assets/step-4.svg",
 ];
-
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(CORE_ASSETS))
-      .then(() => self.skipWaiting())
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => cache.addAll(CORE_ASSETS))
+      .then(() => self.skipWaiting()),
   );
 });
-
-self.addEventListener("activate", event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter(
+              (key) => key.startsWith("blender-course-") && key !== CACHE_NAME,
+            )
+            .map((key) => caches.delete(key)),
+        ),
+      )
+      .then(() => self.clients.claim()),
   );
 });
-
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  if (
+    event.request.method !== "GET" ||
+    url.origin !== self.location.origin ||
+    !url.href.startsWith(self.registration.scope)
+  )
+    return;
   event.respondWith(
-    caches.match(event.request).then(cached => {
+    caches.open(CACHE_NAME).then(async (cache) => {
+      const cached = await cache.match(event.request);
       if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type === "opaque") return response;
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-        return response;
-      }).catch(() => caches.match("./index.html"));
-    })
+      try {
+        return await fetch(event.request);
+      } catch (_) {
+        if (event.request.mode === "navigate")
+          return await cache.match("./index.html");
+        return Response.error();
+      }
+    }),
   );
 });
