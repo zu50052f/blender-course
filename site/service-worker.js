@@ -1,10 +1,12 @@
-const CACHE_NAME = "blender-course-v4-kubik";
+const CACHE_NAME = "blender-course-v5-visual-guides";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./week-01.html",
   "./styles.css",
   "./course.js",
+  "./visual-guides.css",
+  "./visual-guides.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
@@ -51,7 +53,14 @@ self.addEventListener("fetch", (event) => {
       const cached = await cache.match(event.request);
       if (cached) return cached;
       try {
-        return await fetch(event.request);
+        const response = await fetch(event.request);
+        if (response.ok && url.pathname.includes("/assets/blender/"))
+          try {
+            await cache.put(event.request, response.clone());
+          } catch (_) {
+            /* Cache may be full; keep the network image. */
+          }
+        return response;
       } catch (_) {
         if (event.request.mode === "navigate")
           return await cache.match("./index.html");

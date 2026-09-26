@@ -16,7 +16,9 @@
     <link rel="apple-touch-icon" href="icon-192.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <script src="course.js" defer></script>
+    <script src="course.js" defer=""></script>
+    <link href="visual-guides.css" rel="stylesheet" />
+    <script src="visual-guides.js" defer=""></script>
   </head>
   <body>
     <a href="#main" class="skip">К содержимому</a>
@@ -134,6 +136,125 @@
                       такой мыши? Потяни мышью за цветные оси в правом верхнем
                       углу рабочей области.
                     </p>
+
+                    <details class="visual-help" data-actions="orbit">
+                      <summary>Покажи мне: осмотреть куб</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Посмотри с другой стороны</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/03-orbit.jpg"
+                            data-screenshot="orbit"
+                            data-caption="Посмотри с другой стороны — Зажми колёсико и подвигай мышь. Или потяни за цветные оси в правом верхнем углу."
+                            aria-label="Увеличить: Посмотри с другой стороны"
+                            style="aspect-ratio: 195840 / 124320"
+                            ><img
+                              src="assets/blender/03-orbit.jpg"
+                              alt="Скриншот Blender 5.2: Посмотри с другой стороны"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 147.05882352941177%;
+                                max-width: none;
+                                position: absolute;
+                                left: -20.58823529411765%;
+                                top: -5.405405405405405%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Зажми колёсико и подвигай мышь. Или потяни за
+                            цветные оси в правом верхнем углу.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Теперь видны другие
+                            стороны того же кубика.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="select zoom">
+                    <summary>Покажи мне: выбрать и приблизить куб</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Щёлкни по кубу</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/01-select.jpg"
+                          data-screenshot="select"
+                          data-caption="Щёлкни по кубу — Нажми левой кнопкой мыши прямо на куб. На фото выбранное тело обведено оранжевым. Здесь мы смотрим спереди, поэтому куб похож на квадрат."
+                          aria-label="Увеличить: Щёлкни по кубу"
+                          style="aspect-ratio: 103680 / 67200"
+                          ><img
+                            src="assets/blender/01-select.jpg"
+                            alt="Скриншот Blender 5.2: Щёлкни по кубу"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 277.77777777777777%;
+                              max-width: none;
+                              position: absolute;
+                              left: -66.66666666666667%;
+                              top: -80%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Нажми левой кнопкой мыши прямо на куб. На фото
+                          выбранное тело обведено оранжевым. Здесь мы смотрим
+                          спереди, поэтому куб похож на квадрат.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Вокруг нужной детали
+                          появилась оранжевая обводка.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Подойди поближе</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/02-zoom.jpg"
+                          data-screenshot="zoom"
+                          data-caption="Подойди поближе — Наведи мышь на рабочую область и покрути колёсико. Куб станет крупнее на экране."
+                          aria-label="Увеличить: Подойди поближе"
+                          style="aspect-ratio: 103680 / 67200"
+                          ><img
+                            src="assets/blender/02-zoom.jpg"
+                            alt="Скриншот Blender 5.2: Подойди поближе"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 277.77777777777777%;
+                              max-width: none;
+                              position: absolute;
+                              left: -66.66666666666667%;
+                              top: -80%;
+                            " /><span
+                            class="screenshot-target"
+                            aria-hidden="true"
+                            style="--x: 21%; --y: 8%; --w: 58%; --h: 77%"
+                          ></span
+                        ></a>
+                        <p class="screenshot-caption">
+                          Наведи мышь на рабочую область и покрути колёсико. Куб
+                          станет крупнее на экране.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Меняется только твой вид;
+                          сам куб не становится больше.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -153,6 +274,126 @@
                       <kbd>S</kbd>, затем <kbd>X</kbd>, подвигай мышь и щёлкни.
                       Это необязательно.
                     </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="undo-menu stretch"
+                    >
+                      <summary>
+                        Покажи мне: отменить действие и растянуть куб
+                      </summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Edit → Undo — шаг назад</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/05-undo-menu.jpg"
+                            data-screenshot="undo-menu"
+                            data-caption="Edit → Undo — шаг назад — В верхней строке открой Edit и выбери Undo. Если ты ещё двигаешь деталь и не щёлкнул, просто нажми Esc."
+                            aria-label="Увеличить: Edit → Undo — шаг назад"
+                            style="aspect-ratio: 60480 / 57120"
+                            ><img
+                              src="assets/blender/05-undo-menu.jpg"
+                              alt="Скриншот Blender 5.2: Edit → Undo — шаг назад"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 476.1904761904762%;
+                                max-width: none;
+                                position: absolute;
+                                left: -4.761904761904762%;
+                                top: -173.52941176470588%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            В верхней строке открой Edit и выбери Undo. Если ты
+                            ещё двигаешь деталь и не щёлкнул, просто нажми Esc.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Последнее действие
+                            отменилось.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>S, затем Z — вытягивай</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/10-stretch.jpg"
+                            data-screenshot="stretch"
+                            data-caption="S, затем Z — вытягивай — Выбери руку. Нажми S, затем Z, подвигай мышь и щёлкни. Для ширины тела используй S, затем X."
+                            aria-label="Увеличить: S, затем Z — вытягивай"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/10-stretch.jpg"
+                              alt="Скриншот Blender 5.2: S, затем Z — вытягивай"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери руку. Нажми S, затем Z, подвигай мышь и
+                            щёлкни. Для ширины тела используй S, затем X.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Деталь вытянулась только в
+                            одном направлении.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="scale">
+                    <summary>Покажи мне: изменить размер</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>S — меняй размер</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/04-scale.jpg"
+                          data-screenshot="scale"
+                          data-caption="S — меняй размер — Выбери куб. Нажми S, подвигай мышь и щёлкни. На фото тело уже широкое: чтобы растянуть только вбок, нажми S, затем X."
+                          aria-label="Увеличить: S — меняй размер"
+                          style="aspect-ratio: 103680 / 67200"
+                          ><img
+                            src="assets/blender/04-scale.jpg"
+                            alt="Скриншот Blender 5.2: S — меняй размер"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 277.77777777777777%;
+                              max-width: none;
+                              position: absolute;
+                              left: -66.66666666666667%;
+                              top: -80%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Выбери куб. Нажми S, подвигай мышь и щёлкни. На фото
+                          тело уже широкое: чтобы растянуть только вбок, нажми
+                          S, затем X.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Объект действительно изменил
+                          размер, а оранжевая обводка осталась.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -172,6 +413,191 @@
                       Чтобы видеть спереди, выбери View → Viewpoint → Front.
                       Цифровая клавиатура не нужна.
                     </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="view-root view-menu"
+                    >
+                      <summary>Покажи мне: посмотреть спереди</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Открой View → Viewpoint</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/08a-view-root.jpg"
+                            data-screenshot="view-root"
+                            data-caption="Открой View → Viewpoint — Найди меню View над рабочей областью, затем пункт Viewpoint."
+                            aria-label="Увеличить: Открой View → Viewpoint"
+                            style="aspect-ratio: 66240 / 85680"
+                            ><img
+                              src="assets/blender/08a-view-root.jpg"
+                              alt="Скриншот Blender 5.2: Открой View → Viewpoint"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 434.7826086956522%;
+                                max-width: none;
+                                position: absolute;
+                                left: 0%;
+                                top: -84.31372549019608%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Найди меню View над рабочей областью, затем пункт
+                            Viewpoint.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Откроется список
+                            направлений, откуда можно посмотреть.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Front — спереди, Right — сбоку</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/08-view-menu.jpg"
+                            data-screenshot="view-menu"
+                            data-caption="Front — спереди, Right — сбоку — Нажми Front, чтобы смотреть на лицо. Right покажет робота сбоку. Это поворачивает твой взгляд, а не модель."
+                            aria-label="Увеличить: Front — спереди, Right — сбоку"
+                            style="aspect-ratio: 60480 / 57120"
+                            ><img
+                              src="assets/blender/08-view-menu.jpg"
+                              alt="Скриншот Blender 5.2: Front — спереди, Right — сбоку"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 476.1904761904762%;
+                                max-width: none;
+                                position: absolute;
+                                left: -4.761904761904762%;
+                                top: -173.52941176470588%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Нажми Front, чтобы смотреть на лицо. Right покажет
+                            робота сбоку. Это поворачивает твой взгляд, а не
+                            модель.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Над рабочей областью
+                            написано Front Orthographic или Right Orthographic.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details
+                    class="visual-help"
+                    data-actions="add-menu cube-menu move-up"
+                  >
+                    <summary>Покажи мне: добавить куб и поднять голову</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Открой Add → Mesh</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/06a-add-menu.jpg"
+                          data-screenshot="add-menu"
+                          data-caption="Открой Add → Mesh — Найди Add над рабочей областью. Наведи на Mesh — откроется список форм."
+                          aria-label="Увеличить: Открой Add → Mesh"
+                          style="aspect-ratio: 57600 / 82320"
+                          ><img
+                            src="assets/blender/06a-add-menu.jpg"
+                            alt="Скриншот Blender 5.2: Открой Add → Mesh"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 500%;
+                              max-width: none;
+                              position: absolute;
+                              left: -5%;
+                              top: -89.79591836734694%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Найди Add над рабочей областью. Наведи на Mesh —
+                          откроется список форм.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>В списке форм можно найти
+                          Cube и UV Sphere.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Выбери Cube</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/06-add-mesh-menu.jpg"
+                          data-screenshot="cube-menu"
+                          data-caption="Выбери Cube — В меню Mesh нажми Cube. Новый куб появится в центре и сразу будет выбран."
+                          aria-label="Увеличить: Выбери Cube"
+                          style="aspect-ratio: 60480 / 57120"
+                          ><img
+                            src="assets/blender/06-add-mesh-menu.jpg"
+                            alt="Скриншот Blender 5.2: Выбери Cube"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 476.1904761904762%;
+                              max-width: none;
+                              position: absolute;
+                              left: -4.761904761904762%;
+                              top: -173.52941176470588%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          В меню Mesh нажми Cube. Новый куб появится в центре и
+                          сразу будет выбран.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Появился ещё один куб. Пока
+                          он может прятаться внутри тела.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>G, затем Z — подними голову</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/07-move-up.jpg"
+                          data-screenshot="move-up"
+                          data-caption="G, затем Z — подними голову — Не снимая выделения с нового куба, нажми G, затем Z. Подвинь мышь вверх и щёлкни. S поможет уменьшить голову. На фото показан готовый результат, а не момент нажатия клавиш."
+                          aria-label="Увеличить: G, затем Z — подними голову"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/07-move-up.jpg"
+                            alt="Скриншот Blender 5.2: G, затем Z — подними голову"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Не снимая выделения с нового куба, нажми G, затем Z.
+                          Подвинь мышь вверх и щёлкни. S поможет уменьшить
+                          голову. На фото показан готовый результат, а не момент
+                          нажатия клавиш.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Голова находится над телом;
+                          на фото синяя стрелка показывает вертикаль Z.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
               </ol>
@@ -187,6 +613,98 @@
                   As. В следующий раз: File → Open и этот файл. Если он уже
                   сохранён, достаточно File → Save.
                 </p>
+
+                <details
+                  class="visual-help"
+                  data-actions="file-menu save-dialog open-dialog"
+                >
+                  <summary>Покажи мне: сохранить и снова открыть</summary>
+                  <p class="guide-intro">
+                    Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть
+                    её крупнее. Твоя модель может выглядеть иначе.
+                  </p>
+                  <ol class="screenshot-steps">
+                    <li>
+                      <h4>File → Save As</h4>
+                      <a
+                        class="screenshot-frame screenshot-cropped"
+                        href="assets/blender/21-file-menu.jpg"
+                        data-screenshot="file-menu"
+                        data-caption="File → Save As — Открой File в самом верхнем левом углу и выбери Save As. Для уже сохранённого файла достаточно Save."
+                        aria-label="Увеличить: File → Save As"
+                        style="aspect-ratio: 69120 / 87360"
+                        ><img
+                          src="assets/blender/21-file-menu.jpg"
+                          alt="Скриншот Blender 5.2: File → Save As"
+                          width="2880"
+                          height="1680"
+                          style="
+                            width: 416.6666666666667%;
+                            max-width: none;
+                            position: absolute;
+                            left: -4.166666666666667%;
+                            top: -80.76923076923077%;
+                          "
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File в самом верхнем левом углу и выбери Save As.
+                        Для уже сохранённого файла достаточно Save.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Открылось окно, где можно
+                        выбрать папку и имя файла.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Назови и сохрани файл</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/22-save-dialog.jpg"
+                        data-screenshot="save-dialog"
+                        data-caption="Назови и сохрани файл — Вместе со взрослым выбери свою папку. Внизу дай файлу имя, например robot.blend, и нажми Save As. Если появится вопрос о замене существующего файла, решите вместе со взрослым."
+                        aria-label="Увеличить: Назови и сохрани файл"
+                        ><img
+                          src="assets/blender/22-save-dialog.jpg"
+                          alt="Скриншот Blender 5.2: Назови файл robot.blend"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Вместе со взрослым выбери свою папку. Внизу дай файлу
+                        имя, например robot.blend, и нажми Save As. Если
+                        появится вопрос о замене существующего файла, решите
+                        вместе со взрослым.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Файл сохранён в выбранной
+                        папке. Запомни её вместе со взрослым.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>File → Open — продолжи завтра</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/23-open-dialog.jpg"
+                        data-screenshot="open-dialog"
+                        data-caption="File → Open — продолжи завтра — Открой File → Open. Найди свою папку, выбери robot.blend и нажми Open."
+                        aria-label="Увеличить: File → Open — продолжи завтра"
+                        ><img
+                          src="assets/blender/23-open-dialog.jpg"
+                          alt="Скриншот Blender 5.2: File → Open — продолжи завтра"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File → Open. Найди свою папку, выбери robot.blend
+                        и нажми Open.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Твой сохранённый робот снова
+                        появился в Blender.
+                      </p>
+                    </li>
+                  </ol>
+                </details>
               </details>
               <div class="checklist">
                 <h3>Что у меня получилось</h3>
@@ -249,6 +767,89 @@
                       понравится. С помощью G, затем Z подними руку к телу.
                       Каждое действие подтверждай отдельным щелчком.
                     </p>
+
+                    <details class="visual-help" data-actions="stretch">
+                      <summary>Покажи мне: вытянуть руку</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>S, затем Z — вытягивай</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/10-stretch.jpg"
+                            data-screenshot="stretch"
+                            data-caption="S, затем Z — вытягивай — Выбери руку. Нажми S, затем Z, подвигай мышь и щёлкни. Для ширины тела используй S, затем X."
+                            aria-label="Увеличить: S, затем Z — вытягивай"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/10-stretch.jpg"
+                              alt="Скриншот Blender 5.2: S, затем Z — вытягивай"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери руку. Нажми S, затем Z, подвигай мышь и
+                            щёлкни. Для ширины тела используй S, затем X.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Деталь вытянулась только в
+                            одном направлении.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="move-side">
+                    <summary>Покажи мне: поставить руку сбоку</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>G, затем X — сдвинь в сторону</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/09-move-side.jpg"
+                          data-screenshot="move-side"
+                          data-caption="G, затем X — сдвинь в сторону — Добавь маленький куб. Нажми G, затем X и передвинь его влево или вправо от тела. Щёлкни, чтобы закончить."
+                          aria-label="Увеличить: G, затем X — сдвинь в сторону"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/09-move-side.jpg"
+                            alt="Скриншот Blender 5.2: G, затем X — сдвинь в сторону"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Добавь маленький куб. Нажми G, затем X и передвинь его
+                          влево или вправо от тела. Щёлкни, чтобы закончить.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Рука стоит сбоку. Красная
+                          стрелка показывает ось X.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -266,6 +867,89 @@
                       Esc, нажми G, затем X и передвинь выбранную копию. Ошибся?
                       Edit → Undo отменит последнее действие.
                     </p>
+
+                    <details class="visual-help" data-actions="copy">
+                      <summary>Покажи мне: передвинуть копию</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Shift+D — сделай близнеца</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/11-copy.jpg"
+                            data-screenshot="copy"
+                            data-caption="Shift+D — сделай близнеца — Выбери руку. Нажми Shift+D, затем X и передвинь копию на другую сторону. Подтверди щелчком."
+                            aria-label="Увеличить: Shift+D — сделай близнеца"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/11-copy.jpg"
+                              alt="Скриншот Blender 5.2: Shift+D — сделай близнеца"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери руку. Нажми Shift+D, затем X и передвинь
+                            копию на другую сторону. Подтверди щелчком.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Первая рука осталась, а
+                            вторая появилась с другой стороны.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="copy">
+                    <summary>Покажи мне: сделать вторую руку</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Shift+D — сделай близнеца</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/11-copy.jpg"
+                          data-screenshot="copy"
+                          data-caption="Shift+D — сделай близнеца — Выбери руку. Нажми Shift+D, затем X и передвинь копию на другую сторону. Подтверди щелчком."
+                          aria-label="Увеличить: Shift+D — сделай близнеца"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/11-copy.jpg"
+                            alt="Скриншот Blender 5.2: Shift+D — сделай близнеца"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Выбери руку. Нажми Shift+D, затем X и передвинь копию
+                          на другую сторону. Подтверди щелчком.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Первая рука осталась, а
+                          вторая появилась с другой стороны.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -283,6 +967,91 @@
                       дополнительная идея, делать их не обязательно. Важнее,
                       чтобы ты узнал своего героя.
                     </p>
+
+                    <details class="visual-help" data-actions="legs">
+                      <summary>Покажи мне: сравнить с Blender</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Собери пару ног</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/12-legs.jpg"
+                            data-screenshot="legs"
+                            data-caption="Собери пару ног — Добавь маленький куб, передвинь вниз: G, затем Z. Сдвинь в сторону: G, затем X. Сделай копию для второй ноги."
+                            aria-label="Увеличить: Собери пару ног"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/12-legs.jpg"
+                              alt="Скриншот Blender 5.2: Собери пару ног"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Добавь маленький куб, передвинь вниз: G, затем Z.
+                            Сдвинь в сторону: G, затем X. Сделай копию для
+                            второй ноги.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Под телом появились ноги.
+                            Длина и число деталей могут отличаться.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="legs">
+                    <summary>Покажи мне: поставить ноги</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Собери пару ног</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/12-legs.jpg"
+                          data-screenshot="legs"
+                          data-caption="Собери пару ног — Добавь маленький куб, передвинь вниз: G, затем Z. Сдвинь в сторону: G, затем X. Сделай копию для второй ноги."
+                          aria-label="Увеличить: Собери пару ног"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/12-legs.jpg"
+                            alt="Скриншот Blender 5.2: Собери пару ног"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Добавь маленький куб, передвинь вниз: G, затем Z.
+                          Сдвинь в сторону: G, затем X. Сделай копию для второй
+                          ноги.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Под телом появились ноги.
+                          Длина и число деталей могут отличаться.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
               </ol>
@@ -298,6 +1067,98 @@
                   As. В следующий раз: File → Open и этот файл. Если он уже
                   сохранён, достаточно File → Save.
                 </p>
+
+                <details
+                  class="visual-help"
+                  data-actions="file-menu save-dialog open-dialog"
+                >
+                  <summary>Покажи мне: сохранить и снова открыть</summary>
+                  <p class="guide-intro">
+                    Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть
+                    её крупнее. Твоя модель может выглядеть иначе.
+                  </p>
+                  <ol class="screenshot-steps">
+                    <li>
+                      <h4>File → Save As</h4>
+                      <a
+                        class="screenshot-frame screenshot-cropped"
+                        href="assets/blender/21-file-menu.jpg"
+                        data-screenshot="file-menu"
+                        data-caption="File → Save As — Открой File в самом верхнем левом углу и выбери Save As. Для уже сохранённого файла достаточно Save."
+                        aria-label="Увеличить: File → Save As"
+                        style="aspect-ratio: 69120 / 87360"
+                        ><img
+                          src="assets/blender/21-file-menu.jpg"
+                          alt="Скриншот Blender 5.2: File → Save As"
+                          width="2880"
+                          height="1680"
+                          style="
+                            width: 416.6666666666667%;
+                            max-width: none;
+                            position: absolute;
+                            left: -4.166666666666667%;
+                            top: -80.76923076923077%;
+                          "
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File в самом верхнем левом углу и выбери Save As.
+                        Для уже сохранённого файла достаточно Save.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Открылось окно, где можно
+                        выбрать папку и имя файла.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Назови и сохрани файл</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/22-save-dialog.jpg"
+                        data-screenshot="save-dialog"
+                        data-caption="Назови и сохрани файл — Вместе со взрослым выбери свою папку. Внизу дай файлу имя, например robot.blend, и нажми Save As. Если появится вопрос о замене существующего файла, решите вместе со взрослым."
+                        aria-label="Увеличить: Назови и сохрани файл"
+                        ><img
+                          src="assets/blender/22-save-dialog.jpg"
+                          alt="Скриншот Blender 5.2: Назови файл robot.blend"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Вместе со взрослым выбери свою папку. Внизу дай файлу
+                        имя, например robot.blend, и нажми Save As. Если
+                        появится вопрос о замене существующего файла, решите
+                        вместе со взрослым.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Файл сохранён в выбранной
+                        папке. Запомни её вместе со взрослым.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>File → Open — продолжи завтра</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/23-open-dialog.jpg"
+                        data-screenshot="open-dialog"
+                        data-caption="File → Open — продолжи завтра — Открой File → Open. Найди свою папку, выбери robot.blend и нажми Open."
+                        aria-label="Увеличить: File → Open — продолжи завтра"
+                        ><img
+                          src="assets/blender/23-open-dialog.jpg"
+                          alt="Скриншот Blender 5.2: File → Open — продолжи завтра"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File → Open. Найди свою папку, выбери robot.blend
+                        и нажми Open.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Твой сохранённый робот снова
+                        появился в Blender.
+                      </p>
+                    </li>
+                  </ol>
+                </details>
               </details>
               <div class="checklist">
                 <h3>Что у меня получилось</h3>
@@ -372,6 +1233,194 @@
                       глубиной. Второй глаз можно скопировать через Shift+D,
                       затем X.
                     </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="eye-front view-menu eye-side"
+                    >
+                      <summary>
+                        Покажи мне: проверить глаз спереди и сбоку
+                      </summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Поставь глаз спереди</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/14-eye-front.jpg"
+                            data-screenshot="eye-front"
+                            data-caption="Поставь глаз спереди — На виде Front двигай шарик по X и Z, чтобы поставить его на лицо. Затем G и Y помогут вынести его перед головой."
+                            aria-label="Увеличить: Поставь глаз спереди"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/14-eye-front.jpg"
+                              alt="Скриншот Blender 5.2: Поставь глаз спереди"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            На виде Front двигай шарик по X и Z, чтобы поставить
+                            его на лицо. Затем G и Y помогут вынести его перед
+                            головой.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Глаз виден на лице, а не
+                            спрятан внутри головы.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Front — спереди, Right — сбоку</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/08-view-menu.jpg"
+                            data-screenshot="view-menu"
+                            data-caption="Front — спереди, Right — сбоку — Нажми Front, чтобы смотреть на лицо. Right покажет робота сбоку. Это поворачивает твой взгляд, а не модель."
+                            aria-label="Увеличить: Front — спереди, Right — сбоку"
+                            style="aspect-ratio: 60480 / 57120"
+                            ><img
+                              src="assets/blender/08-view-menu.jpg"
+                              alt="Скриншот Blender 5.2: Front — спереди, Right — сбоку"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 476.1904761904762%;
+                                max-width: none;
+                                position: absolute;
+                                left: -4.761904761904762%;
+                                top: -173.52941176470588%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Нажми Front, чтобы смотреть на лицо. Right покажет
+                            робота сбоку. Это поворачивает твой взгляд, а не
+                            модель.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Над рабочей областью
+                            написано Front Orthographic или Right Orthographic.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Проверь глубину сбоку</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/15-eye-side.jpg"
+                            data-screenshot="eye-side"
+                            data-caption="Проверь глубину сбоку — Открой View → Viewpoint → Right. На виде сбоку проверь, что глаз выступает перед головой. G, затем Y двигает его вперёд-назад."
+                            aria-label="Увеличить: Проверь глубину сбоку"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/15-eye-side.jpg"
+                              alt="Скриншот Blender 5.2: Проверь глубину сбоку"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Открой View → Viewpoint → Right. На виде сбоку
+                            проверь, что глаз выступает перед головой. G, затем
+                            Y двигает его вперёд-назад.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Шарик касается передней
+                            стороны головы. Потом вернись в Front.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details
+                    class="visual-help"
+                    data-actions="sphere-menu eye-front"
+                  >
+                    <summary>Покажи мне: добавить шарик</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Add → Mesh → UV Sphere</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/13-add-sphere-menu.jpg"
+                          data-screenshot="sphere-menu"
+                          data-caption="Add → Mesh → UV Sphere — Открой Add, затем Mesh. Выбери UV Sphere — это шарик для глаза или антенны."
+                          aria-label="Увеличить: Add → Mesh → UV Sphere"
+                          style="aspect-ratio: 60480 / 57120"
+                          ><img
+                            src="assets/blender/13-add-sphere-menu.jpg"
+                            alt="Скриншот Blender 5.2: Add → Mesh → UV Sphere"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 476.1904761904762%;
+                              max-width: none;
+                              position: absolute;
+                              left: -4.761904761904762%;
+                              top: -173.52941176470588%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Открой Add, затем Mesh. Выбери UV Sphere — это шарик
+                          для глаза или антенны.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>В сцене появился шар.
+                          Уменьши его с помощью S.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Поставь глаз спереди</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/14-eye-front.jpg"
+                          data-screenshot="eye-front"
+                          data-caption="Поставь глаз спереди — На виде Front двигай шарик по X и Z, чтобы поставить его на лицо. Затем G и Y помогут вынести его перед головой."
+                          aria-label="Увеличить: Поставь глаз спереди"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/14-eye-front.jpg"
+                            alt="Скриншот Blender 5.2: Поставь глаз спереди"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          На виде Front двигай шарик по X и Z, чтобы поставить
+                          его на лицо. Затем G и Y помогут вынести его перед
+                          головой.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Глаз виден на лице, а не
+                          спрятан внутри головы.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -388,6 +1437,123 @@
                       кубические уши. Улыбка, зрачки и пуговица на схеме —
                       необязательные украшения. Достаточно одной своей детали.
                     </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="sphere-menu rotate"
+                    >
+                      <summary>Покажи мне: смешная антенна</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Add → Mesh → UV Sphere</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/13-add-sphere-menu.jpg"
+                            data-screenshot="sphere-menu"
+                            data-caption="Add → Mesh → UV Sphere — Открой Add, затем Mesh. Выбери UV Sphere — это шарик для глаза или антенны."
+                            aria-label="Увеличить: Add → Mesh → UV Sphere"
+                            style="aspect-ratio: 60480 / 57120"
+                            ><img
+                              src="assets/blender/13-add-sphere-menu.jpg"
+                              alt="Скриншот Blender 5.2: Add → Mesh → UV Sphere"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 476.1904761904762%;
+                                max-width: none;
+                                position: absolute;
+                                left: -4.761904761904762%;
+                                top: -173.52941176470588%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Открой Add, затем Mesh. Выбери UV Sphere — это шарик
+                            для глаза или антенны.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>В сцене появился шар.
+                            Уменьши его с помощью S.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>R, затем Y — помаши рукой</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/16-rotate.jpg"
+                            data-screenshot="rotate"
+                            data-caption="R, затем Y — помаши рукой — Выбери руку, нажми R, затем Y. Чуть подвигай мышь и щёлкни. Можно оставить руки прямыми."
+                            aria-label="Увеличить: R, затем Y — помаши рукой"
+                            style="aspect-ratio: 109440 / 90720"
+                            ><img
+                              src="assets/blender/16-rotate.jpg"
+                              alt="Скриншот Blender 5.2: R, затем Y — помаши рукой"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 263.1578947368421%;
+                                max-width: none;
+                                position: absolute;
+                                left: -57.89473684210526%;
+                                top: -44.44444444444444%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери руку, нажми R, затем Y. Чуть подвигай мышь и
+                            щёлкни. Можно оставить руки прямыми.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Повернулась только
+                            выбранная рука.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="rotate">
+                    <summary>Покажи мне: повернуть руку</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>R, затем Y — помаши рукой</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/16-rotate.jpg"
+                          data-screenshot="rotate"
+                          data-caption="R, затем Y — помаши рукой — Выбери руку, нажми R, затем Y. Чуть подвигай мышь и щёлкни. Можно оставить руки прямыми."
+                          aria-label="Увеличить: R, затем Y — помаши рукой"
+                          style="aspect-ratio: 109440 / 90720"
+                          ><img
+                            src="assets/blender/16-rotate.jpg"
+                            alt="Скриншот Blender 5.2: R, затем Y — помаши рукой"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 263.1578947368421%;
+                              max-width: none;
+                              position: absolute;
+                              left: -57.89473684210526%;
+                              top: -44.44444444444444%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Выбери руку, нажми R, затем Y. Чуть подвигай мышь и
+                          щёлкни. Можно оставить руки прямыми.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Повернулась только выбранная
+                          рука.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
               </ol>
@@ -403,6 +1569,98 @@
                   As. В следующий раз: File → Open и этот файл. Если он уже
                   сохранён, достаточно File → Save.
                 </p>
+
+                <details
+                  class="visual-help"
+                  data-actions="file-menu save-dialog open-dialog"
+                >
+                  <summary>Покажи мне: сохранить и снова открыть</summary>
+                  <p class="guide-intro">
+                    Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть
+                    её крупнее. Твоя модель может выглядеть иначе.
+                  </p>
+                  <ol class="screenshot-steps">
+                    <li>
+                      <h4>File → Save As</h4>
+                      <a
+                        class="screenshot-frame screenshot-cropped"
+                        href="assets/blender/21-file-menu.jpg"
+                        data-screenshot="file-menu"
+                        data-caption="File → Save As — Открой File в самом верхнем левом углу и выбери Save As. Для уже сохранённого файла достаточно Save."
+                        aria-label="Увеличить: File → Save As"
+                        style="aspect-ratio: 69120 / 87360"
+                        ><img
+                          src="assets/blender/21-file-menu.jpg"
+                          alt="Скриншот Blender 5.2: File → Save As"
+                          width="2880"
+                          height="1680"
+                          style="
+                            width: 416.6666666666667%;
+                            max-width: none;
+                            position: absolute;
+                            left: -4.166666666666667%;
+                            top: -80.76923076923077%;
+                          "
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File в самом верхнем левом углу и выбери Save As.
+                        Для уже сохранённого файла достаточно Save.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Открылось окно, где можно
+                        выбрать папку и имя файла.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Назови и сохрани файл</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/22-save-dialog.jpg"
+                        data-screenshot="save-dialog"
+                        data-caption="Назови и сохрани файл — Вместе со взрослым выбери свою папку. Внизу дай файлу имя, например robot.blend, и нажми Save As. Если появится вопрос о замене существующего файла, решите вместе со взрослым."
+                        aria-label="Увеличить: Назови и сохрани файл"
+                        ><img
+                          src="assets/blender/22-save-dialog.jpg"
+                          alt="Скриншот Blender 5.2: Назови файл robot.blend"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Вместе со взрослым выбери свою папку. Внизу дай файлу
+                        имя, например robot.blend, и нажми Save As. Если
+                        появится вопрос о замене существующего файла, решите
+                        вместе со взрослым.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Файл сохранён в выбранной
+                        папке. Запомни её вместе со взрослым.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>File → Open — продолжи завтра</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/23-open-dialog.jpg"
+                        data-screenshot="open-dialog"
+                        data-caption="File → Open — продолжи завтра — Открой File → Open. Найди свою папку, выбери robot.blend и нажми Open."
+                        aria-label="Увеличить: File → Open — продолжи завтра"
+                        ><img
+                          src="assets/blender/23-open-dialog.jpg"
+                          alt="Скриншот Blender 5.2: File → Open — продолжи завтра"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File → Open. Найди свою папку, выбери robot.blend
+                        и нажми Open.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Твой сохранённый робот снова
+                        появился в Blender.
+                      </p>
+                    </li>
+                  </ol>
+                </details>
               </details>
               <div class="checklist">
                 <h3>Что у меня получилось</h3>
@@ -469,6 +1727,173 @@
                       появится цвет. Остальные настройки материала пока не
                       нужны.
                     </p>
+
+                    <details class="visual-help" data-actions="preview">
+                      <summary>Покажи мне: включить цветной вид</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Включи Material Preview</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/19-preview.jpg"
+                            data-screenshot="preview"
+                            data-caption="Включи Material Preview — Вверху справа над рабочей областью нажми третий из четырёх шариков — Material Preview. Подожди, пока Blender покажет материалы."
+                            aria-label="Увеличить: Включи Material Preview"
+                            style="aspect-ratio: 63360 / 31920"
+                            ><img
+                              src="assets/blender/19-preview.jpg"
+                              alt="Скриншот Blender 5.2: Включи Material Preview"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 454.54545454545456%;
+                                max-width: none;
+                                position: absolute;
+                                left: -272.72727272727275%;
+                                top: 0%;
+                              " /><span
+                              class="screenshot-target"
+                              aria-hidden="true"
+                              style="--x: 79%; --y: 16%; --w: 8%; --h: 16%"
+                            ></span
+                          ></a>
+                          <p class="screenshot-caption">
+                            Вверху справа над рабочей областью нажми третий из
+                            четырёх шариков — Material Preview. Подожди, пока
+                            Blender покажет материалы.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Цвет виден на модели, а не
+                            только в настройках.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details
+                    class="visual-help"
+                    data-actions="material-new base-color preview"
+                  >
+                    <summary>Покажи мне: покрасить робота</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Открой красный шарик и нажми New</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/17-material-new.jpg"
+                          data-screenshot="material-new"
+                          data-caption="Открой красный шарик и нажми New — Выбери тело. Справа нажми вкладку Material Properties с красным шариком. Если материала ещё нет, нажми New."
+                          aria-label="Увеличить: Открой красный шарик и нажми New"
+                          style="aspect-ratio: 51840 / 107520"
+                          ><img
+                            src="assets/blender/17-material-new.jpg"
+                            alt="Скриншот Blender 5.2: Открой красный шарик и нажми New"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 555.5555555555555%;
+                              max-width: none;
+                              position: absolute;
+                              left: -455.55555555555554%;
+                              top: -32.8125%;
+                            " /><span
+                            class="screenshot-target"
+                            aria-hidden="true"
+                            style="--x: 35%; --y: 32%; --w: 63%; --h: 6%"
+                          ></span
+                        ></a>
+                        <p class="screenshot-caption">
+                          Выбери тело. Справа нажми вкладку Material Properties
+                          с красным шариком. Если материала ещё нет, нажми New.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Вместо кнопки New появились
+                          настройки материала.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Base Color — любимый цвет</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/18-base-color.jpg"
+                          data-screenshot="base-color"
+                          data-caption="Base Color — любимый цвет — В разделе Surface нажми цветной прямоугольник рядом с Base Color. В открывшейся палитре выбери цвет, затем щёлкни рядом, чтобы закрыть её."
+                          aria-label="Увеличить: Base Color — любимый цвет"
+                          style="aspect-ratio: 51840 / 107520"
+                          ><img
+                            src="assets/blender/18-base-color.jpg"
+                            alt="Скриншот Blender 5.2: Base Color — любимый цвет"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 555.5555555555555%;
+                              max-width: none;
+                              position: absolute;
+                              left: -455.55555555555554%;
+                              top: -32.8125%;
+                            " /><span
+                            class="screenshot-target"
+                            aria-hidden="true"
+                            style="--x: 54%; --y: 48%; --w: 36%; --h: 6%"
+                          ></span
+                        ></a>
+                        <p class="screenshot-caption">
+                          В разделе Surface нажми цветной прямоугольник рядом с
+                          Base Color. В открывшейся палитре выбери цвет, затем
+                          щёлкни рядом, чтобы закрыть её.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Прямоугольник Base Color
+                          показывает твой цвет.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Включи Material Preview</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/19-preview.jpg"
+                          data-screenshot="preview"
+                          data-caption="Включи Material Preview — Вверху справа над рабочей областью нажми третий из четырёх шариков — Material Preview. Подожди, пока Blender покажет материалы."
+                          aria-label="Увеличить: Включи Material Preview"
+                          style="aspect-ratio: 63360 / 31920"
+                          ><img
+                            src="assets/blender/19-preview.jpg"
+                            alt="Скриншот Blender 5.2: Включи Material Preview"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 454.54545454545456%;
+                              max-width: none;
+                              position: absolute;
+                              left: -272.72727272727275%;
+                              top: 0%;
+                            " /><span
+                            class="screenshot-target"
+                            aria-hidden="true"
+                            style="--x: 79%; --y: 16%; --w: 8%; --h: 16%"
+                          ></span
+                        ></a>
+                        <p class="screenshot-caption">
+                          Вверху справа над рабочей областью нажми третий из
+                          четырёх шариков — Material Preview. Подожди, пока
+                          Blender покажет материалы.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Цвет виден на модели, а не
+                          только в настройках.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -486,6 +1911,101 @@
                       пользователей рядом с именем материала — появится
                       отдельная копия. Затем можно выбрать другой Base Color.
                     </p>
+
+                    <details class="visual-help" data-actions="shared-material">
+                      <summary>Покажи мне: сделать отдельный материал</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Отдельный цвет для одной детали</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/20-shared-material.jpg"
+                            data-screenshot="shared-material"
+                            data-caption="Отдельный цвет для одной детали — Выбери другую деталь. В Material Properties выбери существующий материал из списка. Если он общий и нужен другой цвет, нажми число рядом с его именем — получится отдельная копия."
+                            aria-label="Увеличить: Отдельный цвет для одной детали"
+                            style="aspect-ratio: 51840 / 107520"
+                            ><img
+                              src="assets/blender/20-shared-material.jpg"
+                              alt="Скриншот Blender 5.2: Отдельный цвет для одной детали"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 555.5555555555555%;
+                                max-width: none;
+                                position: absolute;
+                                left: -455.55555555555554%;
+                                top: -32.8125%;
+                              " /><span
+                              class="screenshot-target"
+                              aria-hidden="true"
+                              style="--x: 46%; --y: 29%; --w: 13%; --h: 6%"
+                            ></span
+                          ></a>
+                          <p class="screenshot-caption">
+                            Выбери другую деталь. В Material Properties выбери
+                            существующий материал из списка. Если он общий и
+                            нужен другой цвет, нажми число рядом с его именем —
+                            получится отдельная копия.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>После копирования
+                            материала цвет одной руки можно менять отдельно.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details class="visual-help" data-actions="shared-material">
+                    <summary>Покажи мне: покрасить другую деталь</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>Отдельный цвет для одной детали</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/20-shared-material.jpg"
+                          data-screenshot="shared-material"
+                          data-caption="Отдельный цвет для одной детали — Выбери другую деталь. В Material Properties выбери существующий материал из списка. Если он общий и нужен другой цвет, нажми число рядом с его именем — получится отдельная копия."
+                          aria-label="Увеличить: Отдельный цвет для одной детали"
+                          style="aspect-ratio: 51840 / 107520"
+                          ><img
+                            src="assets/blender/20-shared-material.jpg"
+                            alt="Скриншот Blender 5.2: Отдельный цвет для одной детали"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 555.5555555555555%;
+                              max-width: none;
+                              position: absolute;
+                              left: -455.55555555555554%;
+                              top: -32.8125%;
+                            " /><span
+                            class="screenshot-target"
+                            aria-hidden="true"
+                            style="--x: 46%; --y: 29%; --w: 13%; --h: 6%"
+                          ></span
+                        ></a>
+                        <p class="screenshot-caption">
+                          Выбери другую деталь. В Material Properties выбери
+                          существующий материал из списка. Если он общий и нужен
+                          другой цвет, нажми число рядом с его именем —
+                          получится отдельная копия.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>После копирования материала
+                          цвет одной руки можно менять отдельно.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
                 <li>
@@ -512,6 +2032,343 @@
                       не сохраняет PNG. Если настройка утомляет, оставьте фото
                       на другую встречу — миссия уже удалась.
                     </p>
+
+                    <details
+                      class="visual-help"
+                      data-actions="camera-menu camera-frame add-light light-settings render-menu render-result image-menu image-save"
+                    >
+                      <summary>Покажи мне: сделать фото вместе</summary>
+                      <p class="guide-intro">
+                        Настоящий Blender 5.2. Нажми на картинку, чтобы
+                        рассмотреть её крупнее. Твоя модель может выглядеть
+                        иначе.
+                      </p>
+                      <ol class="screenshot-steps">
+                        <li>
+                          <h4>Совмести камеру с видом</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/24-camera-menu.jpg"
+                            data-screenshot="camera-menu"
+                            data-caption="Совмести камеру с видом — Вместе со взрослым выбери удобный вид. Открой View → Align View → Align Active Camera to View. В стандартной сцене камера уже есть."
+                            aria-label="Увеличить: Совмести камеру с видом"
+                            style="aspect-ratio: 123840 / 42000"
+                            ><img
+                              src="assets/blender/24-camera-menu.jpg"
+                              alt="Скриншот Blender 5.2: Совмести камеру с видом"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 232.5581395348837%;
+                                max-width: none;
+                                position: absolute;
+                                left: 0%;
+                                top: -244%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Вместе со взрослым выбери удобный вид. Открой View →
+                            Align View → Align Active Camera to View. В
+                            стандартной сцене камера уже есть.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Камера смотрит туда, куда
+                            ты только что смотрел.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Проверь рамку камеры</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/25-camera-frame.jpg"
+                            data-screenshot="camera-frame"
+                            data-caption="Проверь рамку камеры — Открой View → Cameras → Active Camera. Если камеры нет, сначала Add → Camera, затем View → Cameras → Set Active Object as Camera."
+                            aria-label="Увеличить: Проверь рамку камеры"
+                            style="aspect-ratio: 126720 / 75600"
+                            ><img
+                              src="assets/blender/25-camera-frame.jpg"
+                              alt="Скриншот Blender 5.2: Проверь рамку камеры"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 227.27272727272728%;
+                                max-width: none;
+                                position: absolute;
+                                left: -43.18181818181818%;
+                                top: -51.111111111111114%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Открой View → Cameras → Active Camera. Если камеры
+                            нет, сначала Add → Camera, затем View → Cameras →
+                            Set Active Object as Camera.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Весь робот помещается
+                            внутри рамки. За её пределами в фото ничего не
+                            попадёт.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Добавь солнышко</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/26-add-light.jpg"
+                            data-screenshot="add-light"
+                            data-caption="Добавь солнышко — Со взрослым открой Add → Light → Sun. Это простой источник света для первого фото."
+                            aria-label="Увеличить: Добавь солнышко"
+                            style="aspect-ratio: 66240 / 43680"
+                            ><img
+                              src="assets/blender/26-add-light.jpg"
+                              alt="Скриншот Blender 5.2: Добавь солнышко"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 434.7826086956522%;
+                                max-width: none;
+                                position: absolute;
+                                left: -4.3478260869565215%;
+                                top: -234.6153846153846%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Со взрослым открой Add → Light → Sun. Это простой
+                            источник света для первого фото.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>В сцене и списке объектов
+                            появился Sun.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Поверни свет и проверь яркость</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/27-light-settings.jpg"
+                            data-screenshot="light-settings"
+                            data-caption="Поверни свет и проверь яркость — Выбери Sun. Со взрослым поверни его клавишей R. Во вкладке зелёного значка света параметр Strength меняет яркость. Начните, например, с 2."
+                            aria-label="Увеличить: Поверни свет и проверь яркость"
+                            style="aspect-ratio: 51840 / 107520"
+                            ><img
+                              src="assets/blender/27-light-settings.jpg"
+                              alt="Скриншот Blender 5.2: Поверни свет и проверь яркость"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 555.5555555555555%;
+                                max-width: none;
+                                position: absolute;
+                                left: -455.55555555555554%;
+                                top: -32.8125%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери Sun. Со взрослым поверни его клавишей R. Во
+                            вкладке зелёного значка света параметр Strength
+                            меняет яркость. Начните, например, с 2.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Свет есть; окончательную
+                            яркость проверим на фото.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Render → Render Image</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/28-render-menu.jpg"
+                            data-screenshot="render-menu"
+                            data-caption="Render → Render Image — Открой Render в самой верхней строке и выбери Render Image. Подожди, пока Blender посчитает картинку."
+                            aria-label="Увеличить: Render → Render Image"
+                            style="aspect-ratio: 66240 / 90720"
+                            ><img
+                              src="assets/blender/28-render-menu.jpg"
+                              alt="Скриншот Blender 5.2: Render → Render Image"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 434.7826086956522%;
+                                max-width: none;
+                                position: absolute;
+                                left: 0%;
+                                top: -74.07407407407408%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Открой Render в самой верхней строке и выбери Render
+                            Image. Подожди, пока Blender посчитает картинку.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Появилось изображение из
+                            камеры. Если темно или тесно, поправьте свет или
+                            камеру и повторите.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Посмотри на первое фото</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/29-render-result.jpg"
+                            data-screenshot="render-result"
+                            data-caption="Посмотри на первое фото — Это настоящий результат нашей простой модели в Blender. У твоего робота могут быть другие цвета, детали и ракурс."
+                            aria-label="Увеличить: Посмотри на первое фото"
+                            style="aspect-ratio: 95040 / 90720"
+                            ><img
+                              src="assets/blender/29-render-result.jpg"
+                              alt="Скриншот Blender 5.2: Посмотри на первое фото"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 303.030303030303%;
+                                max-width: none;
+                                position: absolute;
+                                left: -75.75757575757575%;
+                                top: -38.888888888888886%;
+                              "
+                          /></a>
+                          <p class="screenshot-caption">
+                            Это настоящий результат нашей простой модели в
+                            Blender. У твоего робота могут быть другие цвета,
+                            детали и ракурс.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Модель видна целиком.
+                            Сначала сохрани её .blend, а сейчас отдельно
+                            сохраним картинку.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Image → Save As</h4>
+                          <a
+                            class="screenshot-frame screenshot-cropped"
+                            href="assets/blender/30-image-menu.jpg"
+                            data-screenshot="image-menu"
+                            data-caption="Image → Save As — В окне готового изображения открой Image и выбери Save As. Сохранение проекта через File → Save не сохраняет эту картинку."
+                            aria-label="Увеличить: Image → Save As"
+                            style="aspect-ratio: 48960 / 85680"
+                            ><img
+                              src="assets/blender/30-image-menu.jpg"
+                              alt="Скриншот Blender 5.2: Image → Save As"
+                              width="2880"
+                              height="1680"
+                              style="
+                                width: 588.2352941176471%;
+                                max-width: none;
+                                position: absolute;
+                                left: -5.882352941176471%;
+                                top: -94.11764705882354%;
+                              " /><span
+                              class="screenshot-target"
+                              aria-hidden="true"
+                              style="--x: 6%; --y: 55%; --w: 79%; --h: 6%"
+                            ></span
+                          ></a>
+                          <p class="screenshot-caption">
+                            В окне готового изображения открой Image и выбери
+                            Save As. Сохранение проекта через File → Save не
+                            сохраняет эту картинку.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>Открылось окно сохранения
+                            изображения.
+                          </p>
+                        </li>
+                        <li>
+                          <h4>Сохрани robot.png</h4>
+                          <a
+                            class="screenshot-frame"
+                            href="assets/blender/31-image-save.jpg"
+                            data-screenshot="image-save"
+                            data-caption="Сохрани robot.png — Выбери свою папку. Справа в File Format выбери PNG, внизу дай картинке имя, например robot.png. Если кнопка красная и пишет Overwrite, такое имя уже занято: придумай новое. Затем нажми Save As Image."
+                            aria-label="Увеличить: Сохрани robot.png"
+                            ><img
+                              src="assets/blender/31-image-save.jpg"
+                              alt="Скриншот Blender 5.2: Сохрани robot.png"
+                              width="1639"
+                              height="1200"
+                          /></a>
+                          <p class="screenshot-caption">
+                            Выбери свою папку. Справа в File Format выбери PNG,
+                            внизу дай картинке имя, например robot.png. Если
+                            кнопка красная и пишет Overwrite, такое имя уже
+                            занято: придумай новое. Затем нажми Save As Image.
+                          </p>
+                          <p class="screenshot-result">
+                            <strong>Проверь: </strong>В папке есть отдельная
+                            картинка robot.png — её можно показать семье.
+                          </p>
+                        </li>
+                      </ol>
+                    </details>
+                  </details>
+
+                  <details
+                    class="visual-help"
+                    data-actions="file-menu save-dialog"
+                  >
+                    <summary>Покажи мне: сохранить свою работу</summary>
+                    <p class="guide-intro">
+                      Настоящий Blender 5.2. Нажми на картинку, чтобы
+                      рассмотреть её крупнее. Твоя модель может выглядеть иначе.
+                    </p>
+                    <ol class="screenshot-steps">
+                      <li>
+                        <h4>File → Save As</h4>
+                        <a
+                          class="screenshot-frame screenshot-cropped"
+                          href="assets/blender/21-file-menu.jpg"
+                          data-screenshot="file-menu"
+                          data-caption="File → Save As — Открой File в самом верхнем левом углу и выбери Save As. Для уже сохранённого файла достаточно Save."
+                          aria-label="Увеличить: File → Save As"
+                          style="aspect-ratio: 69120 / 87360"
+                          ><img
+                            src="assets/blender/21-file-menu.jpg"
+                            alt="Скриншот Blender 5.2: File → Save As"
+                            width="2880"
+                            height="1680"
+                            style="
+                              width: 416.6666666666667%;
+                              max-width: none;
+                              position: absolute;
+                              left: -4.166666666666667%;
+                              top: -80.76923076923077%;
+                            "
+                        /></a>
+                        <p class="screenshot-caption">
+                          Открой File в самом верхнем левом углу и выбери Save
+                          As. Для уже сохранённого файла достаточно Save.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Открылось окно, где можно
+                          выбрать папку и имя файла.
+                        </p>
+                      </li>
+                      <li>
+                        <h4>Назови и сохрани файл</h4>
+                        <a
+                          class="screenshot-frame"
+                          href="assets/blender/22-save-dialog.jpg"
+                          data-screenshot="save-dialog"
+                          data-caption="Назови и сохрани файл — Вместе со взрослым выбери свою папку. Внизу дай файлу имя, например robot.blend, и нажми Save As. Если появится вопрос о замене существующего файла, решите вместе со взрослым."
+                          aria-label="Увеличить: Назови и сохрани файл"
+                          ><img
+                            src="assets/blender/22-save-dialog.jpg"
+                            alt="Скриншот Blender 5.2: Назови файл robot.blend"
+                            width="1639"
+                            height="1200"
+                        /></a>
+                        <p class="screenshot-caption">
+                          Вместе со взрослым выбери свою папку. Внизу дай файлу
+                          имя, например robot.blend, и нажми Save As. Если
+                          появится вопрос о замене существующего файла, решите
+                          вместе со взрослым.
+                        </p>
+                        <p class="screenshot-result">
+                          <strong>Проверь: </strong>Файл сохранён в выбранной
+                          папке. Запомни её вместе со взрослым.
+                        </p>
+                      </li>
+                    </ol>
                   </details>
                 </li>
               </ol>
@@ -527,6 +2384,98 @@
                   As. В следующий раз: File → Open и этот файл. Если он уже
                   сохранён, достаточно File → Save.
                 </p>
+
+                <details
+                  class="visual-help"
+                  data-actions="file-menu save-dialog open-dialog"
+                >
+                  <summary>Покажи мне: сохранить и снова открыть</summary>
+                  <p class="guide-intro">
+                    Настоящий Blender 5.2. Нажми на картинку, чтобы рассмотреть
+                    её крупнее. Твоя модель может выглядеть иначе.
+                  </p>
+                  <ol class="screenshot-steps">
+                    <li>
+                      <h4>File → Save As</h4>
+                      <a
+                        class="screenshot-frame screenshot-cropped"
+                        href="assets/blender/21-file-menu.jpg"
+                        data-screenshot="file-menu"
+                        data-caption="File → Save As — Открой File в самом верхнем левом углу и выбери Save As. Для уже сохранённого файла достаточно Save."
+                        aria-label="Увеличить: File → Save As"
+                        style="aspect-ratio: 69120 / 87360"
+                        ><img
+                          src="assets/blender/21-file-menu.jpg"
+                          alt="Скриншот Blender 5.2: File → Save As"
+                          width="2880"
+                          height="1680"
+                          style="
+                            width: 416.6666666666667%;
+                            max-width: none;
+                            position: absolute;
+                            left: -4.166666666666667%;
+                            top: -80.76923076923077%;
+                          "
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File в самом верхнем левом углу и выбери Save As.
+                        Для уже сохранённого файла достаточно Save.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Открылось окно, где можно
+                        выбрать папку и имя файла.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Назови и сохрани файл</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/22-save-dialog.jpg"
+                        data-screenshot="save-dialog"
+                        data-caption="Назови и сохрани файл — Вместе со взрослым выбери свою папку. Внизу дай файлу имя, например robot.blend, и нажми Save As. Если появится вопрос о замене существующего файла, решите вместе со взрослым."
+                        aria-label="Увеличить: Назови и сохрани файл"
+                        ><img
+                          src="assets/blender/22-save-dialog.jpg"
+                          alt="Скриншот Blender 5.2: Назови файл robot.blend"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Вместе со взрослым выбери свою папку. Внизу дай файлу
+                        имя, например robot.blend, и нажми Save As. Если
+                        появится вопрос о замене существующего файла, решите
+                        вместе со взрослым.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Файл сохранён в выбранной
+                        папке. Запомни её вместе со взрослым.
+                      </p>
+                    </li>
+                    <li>
+                      <h4>File → Open — продолжи завтра</h4>
+                      <a
+                        class="screenshot-frame"
+                        href="assets/blender/23-open-dialog.jpg"
+                        data-screenshot="open-dialog"
+                        data-caption="File → Open — продолжи завтра — Открой File → Open. Найди свою папку, выбери robot.blend и нажми Open."
+                        aria-label="Увеличить: File → Open — продолжи завтра"
+                        ><img
+                          src="assets/blender/23-open-dialog.jpg"
+                          alt="Скриншот Blender 5.2: File → Open — продолжи завтра"
+                          width="1639"
+                          height="1200"
+                      /></a>
+                      <p class="screenshot-caption">
+                        Открой File → Open. Найди свою папку, выбери robot.blend
+                        и нажми Open.
+                      </p>
+                      <p class="screenshot-result">
+                        <strong>Проверь: </strong>Твой сохранённый робот снова
+                        появился в Blender.
+                      </p>
+                    </li>
+                  </ol>
+                </details>
               </details>
               <div class="checklist">
                 <h3>Что у меня получилось</h3>
@@ -602,7 +2551,7 @@
                   >✦</span
                 >
               </div>
-              <p class="celebration" id="celebration" hidden>
+              <p class="celebration" id="celebration" hidden="">
                 Все четыре миссии пройдены. Бип тобой гордится!
               </p>
               <p class="storage-note" id="storage-note">
@@ -662,9 +2611,11 @@
           <h3>Об иллюстрациях</h3>
           <p>
             Сиреневый герой — иллюстрация для вдохновения. Картинки внутри
-            миссий — авторские схемы форм, а не скриншоты Blender и не обещание
-            точного результата. Скругления, блики и все украшения повторять не
-            нужно. Настоящий интерфейс смотрим в открытом Blender.
+            миссий — авторские схемы форм. В раскрываемых подсказках «Покажи
+            мне» — настоящие снимки интерфейса Blender 5.2, сделанные на
+            отдельной учебной модели. Их можно увеличить. Модель ребёнка
+            получится другой, и это хорошо. Скругления, блики и украшения
+            иллюстрации повторять не нужно.
           </p>
           <h3>Если ребёнок хочет больше</h3>
           <p>
@@ -672,7 +2623,7 @@
             глаз. Точный ввод координат, Edit Mode, модификаторы и сложные
             материалы для этой недели не нужны.
           </p>
-          <h3>Справка Blender</h3>
+          <h3>Справка Blender для взрослых</h3>
           <p>
             <a
               href="https://docs.blender.org/manual/en/5.2/scene_layout/object/editing/transform/introduction.html"
@@ -701,5 +2652,16 @@
         ><span>Blender 5.2 LTS · На русском · Без регистрации</span>
       </footer>
     </div>
+
+    <dialog id="screenshot-viewer" aria-labelledby="screenshot-caption">
+      <div class="screenshot-toolbar">
+        <p id="screenshot-caption"></p>
+        <button type="button" autofocus="">Закрыть ✕</button>
+      </div>
+      <div class="screenshot-scroll"><img alt="" /></div>
+      <p class="image-zoom-note">
+        На маленьком экране картинку можно прокрутить в стороны. Esc — закрыть.
+      </p>
+    </dialog>
   </body>
 </html>
