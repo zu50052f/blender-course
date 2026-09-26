@@ -40,6 +40,16 @@ ul,ol{padding-left:1.35rem}.task-list-item{list-style:none;margin-left:-1.2rem}.
 @media(max-width:620px){.hero,.layout,.footer{padding-left:16px;padding-right:16px}.mobile-nav{padding-left:16px;padding-right:16px}.hero{padding-top:42px}.hero-inner{border-radius:22px;padding:28px 20px}.hero h1{font-size:2.65rem}.stats{grid-template-columns:1fr 1fr}.stat{padding:12px}.chapter-card,.lesson-card{border-radius:18px;padding:22px 18px}.lesson-title{padding-right:0}.lesson-card:before{display:none}table{display:block;overflow-x:auto}.progress-panel{min-width:150px}.progress-panel small,.reset{display:none}}
 @media print{body{background:white;color:black}.toc,.top-progress,.progress-panel,.backtop,.mobile-nav{display:none}.layout{display:block;padding:0}.hero{padding:0}.hero-inner,.chapter-card,.lesson-card{box-shadow:none;background:white;color:black;border:1px solid #ccc}.hero h1,.chapter-card h1,.lesson-card h1,h2,h3,strong{color:black}.hero p,p,li,td{color:#222}a{color:#000;text-decoration:underline}img{box-shadow:none;break-inside:avoid}.chapter-card,.lesson-card{break-inside:avoid-page}}
 </style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Blender Course">
+<style>
+.course-home{position:fixed;z-index:9999;left:14px;bottom:14px;padding:10px 14px;border-radius:999px;background:rgba(10,12,18,.88);border:1px solid rgba(255,255,255,.16);color:#fff!important;text-decoration:none!important;font:700 13px/1 system-ui,-apple-system,sans-serif;backdrop-filter:blur(12px);box-shadow:0 8px 26px rgba(0,0,0,.28)}
+@media print{.course-home{display:none}}
+</style>
 </head>
 <body id="top">
 <div class="top-progress"><i></i></div>
@@ -1249,5 +1259,10 @@ PNG
     checks.forEach(c=>c.checked=false); saved={}; localStorage.removeItem(key); updateChecks();
   });
 })();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+}
 </script>
 </body></html>
