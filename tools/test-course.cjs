@@ -99,6 +99,28 @@ function setup(saved, fail = false, hash = "") {
     0,
   );
   nojs.window.close();
+  const visual = new JSDOM(html, { url: "http://localhost:8080/week-01.html", runScripts: "outside-only" });
+  const visualDoc = visual.window.document;
+  const shots = JSON.parse(fs.readFileSync(root + "assets/blender/screenshots.json", "utf8"));
+  assert.equal(visualDoc.querySelectorAll(".mission .steps>li>.visual-help").length, 11);
+  assert.ok(visualDoc.querySelectorAll("details.hint .visual-help").length >= 10);
+  for (const [id, shot] of Object.entries(shots)) {
+    assert.ok(fs.existsSync(root + "assets/blender/" + shot.file), `missing screenshot ${id}`);
+    assert.ok(visualDoc.querySelector(`a[data-screenshot="${id}"]`), `unused screenshot ${id}`);
+  }
+  let opened = false;
+  let closed = false;
+  const viewer = visualDoc.querySelector("#screenshot-viewer");
+  viewer.showModal = () => { opened = true; };
+  viewer.close = () => { closed = true; };
+  visual.window.eval(fs.readFileSync(root + "visual-guides.js", "utf8"));
+  const sample = visualDoc.querySelector('a[data-screenshot="select"]');
+  sample.click();
+  assert.ok(opened);
+  assert.match(viewer.querySelector("img").src, /01-select\.jpg$/);
+  viewer.querySelector("button").click();
+  assert.ok(closed);
+  visual.window.close();
   for (const file of ["index.html", "week-01.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
@@ -139,6 +161,7 @@ function setup(saved, fail = false, hash = "") {
           ? new URL(r, "http://localhost:8080/").href
           : r.url,
       ),
+    put: async (r, response) => data.set(r.url, response),
   };
   const ctx = {
     self: {
@@ -181,6 +204,10 @@ function setup(saved, fail = false, hash = "") {
   );
   assert.equal((await request("missing", "navigate")).path, "./index.html");
   assert.equal((await request("missing.png", "no-cors")).type, "error");
+  ctx.fetch = async () => ({ ok: true, clone() { return this; }, source: "network" });
+  assert.equal((await request("assets/blender/01-select.jpg", "no-cors")).source, "network");
+  ctx.fetch = async () => { throw Error("offline"); };
+  assert.equal((await request("assets/blender/01-select.jpg", "no-cors")).source, "network");
   console.log(
     "PASS: navigation, stable progress, reload state, reset/cancel, all badges, malformed/denied storage, legacy anchors, no-JS content, local links/assets, SW precache, scoped cleanup, offline fallbacks.",
   );

@@ -1,0 +1,211 @@
+.visual-help {
+  margin: 18px 0 0;
+  border: 2px solid #dcd0f4;
+  border-radius: 16px;
+  background: #faf7ff;
+  overflow: hidden;
+}
+.visual-help > summary {
+  cursor: pointer;
+  padding: 15px 17px;
+  min-height: 52px;
+  font-weight: 800;
+  color: #5735af;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+.visual-help[open] > summary {
+  border-bottom: 1px solid #e7dff4;
+  background: #f2ebff;
+}
+.visual-help .guide-intro {
+  padding: 14px 17px 0;
+  color: #6b657c;
+  font-size: 0.82rem;
+}
+.screenshot-steps {
+  list-style: none;
+  padding: 0 16px 16px !important;
+  margin: 0 !important;
+  counter-reset: visual-step;
+}
+.screenshot-steps > li {
+  counter-increment: visual-step;
+  margin: 18px 0 0;
+  padding: 0;
+  border: 0;
+}
+.screenshot-steps h4 {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin: 0 0 10px;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.screenshot-steps h4:before {
+  content: counter(visual-step);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #7050c9;
+  color: white;
+  border-radius: 8px;
+  width: 27px;
+  height: 27px;
+  font-size: 0.8rem;
+}
+.screenshot-frame {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #c4b5db;
+  border-radius: 12px;
+  background: #303030;
+  line-height: 0;
+}
+.screenshot-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+.screenshot-frame:hover {
+  outline: 3px solid #baa3e8;
+  outline-offset: 2px;
+}
+.screenshot-target {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  border: 3px solid #ffcf59;
+  box-shadow: 0 0 0 2px #302b49;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.screenshot-target:before {
+  content: "↓";
+  position: absolute;
+  top: -31px;
+  left: 0;
+  color: #302b49;
+  background: #ffcf59;
+  border-radius: 7px;
+  font: bold 22px/27px sans-serif;
+  width: 27px;
+  text-align: center;
+}
+.visual-help .screenshot-caption {
+  margin: 9px 0 0;
+  font-size: 0.88rem;
+  color: #443853;
+  line-height: 1.55;
+}
+.visual-help .screenshot-result {
+  padding: 9px 12px;
+  background: #edf4e7;
+  border-radius: 10px;
+  font-size: 0.81rem;
+  color: #375b36;
+  margin: 9px 0 0;
+}
+.visual-help .screenshot-result strong {
+  color: inherit;
+}
+.image-zoom-note {
+  font-size: 0.72rem;
+  color: #776b8d;
+  margin-top: 5px;
+}
+#screenshot-viewer {
+  width: min(96vw, 1500px);
+  max-width: 96vw;
+  max-height: 94vh;
+  padding: 18px;
+  border: 0;
+  border-radius: 18px;
+  background: #fffaf0;
+  color: #302b49;
+  box-shadow: 0 20px 90px #0005;
+}
+#screenshot-viewer::backdrop {
+  background: #171322c9;
+}
+.screenshot-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+.screenshot-toolbar p {
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+.screenshot-toolbar button {
+  flex-shrink: 0;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 15px;
+  background: #7050c9;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.screenshot-scroll {
+  overflow: auto;
+  max-height: 76vh;
+  background: #303030;
+  border-radius: 10px;
+}
+.screenshot-scroll img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  min-width: 900px;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .visual-help > summary {
+    font-size: 0.87rem;
+    padding: 13px;
+  }
+  .screenshot-steps {
+    padding: 0 11px 13px !important;
+  }
+  .screenshot-target {
+    border-width: 2px;
+  }
+  .screenshot-target:before {
+    width: 20px;
+    font-size: 17px;
+    line-height: 21px;
+    top: -24px;
+  }
+  .screenshot-toolbar {
+    align-items: flex-start;
+  }
+  .screenshot-toolbar p {
+    font-size: 0.8rem;
+  }
+  #screenshot-viewer {
+    padding: 11px;
+  }
+  .screenshot-toolbar button {
+    font-size: 0.82rem;
+  }
+}
+@media print {
+  .visual-help {
+    break-inside: avoid;
+  }
+  #screenshot-viewer {
+    display: none;
+  }
+}
