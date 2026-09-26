@@ -1,125 +1,115 @@
 # Blender Course
 
-Interactive Russian-language Blender 5.2 LTS course for children and teenagers aged 10–14.
+Русскоязычный интерактивный курс Blender 5.2 LTS для детей и подростков 10–14 лет.
 
-The course is designed around a simple progression:
+Курс построен вокруг траектории:
 
-**idea → shapes → model → materials → texture → light → camera → render**
+**идея → формы → модель → материалы → текстура → свет → камера → рендер**
 
-## Status
+## Открыть курс
 
-- Course roadmap: **10 weeks**
-- Week 1: **implemented as an interactive web lesson**
-- Weeks 2–10: roadmap prepared, lesson pages to be added incrementally
-- UI language: **Russian**
-- Application/runtime: **Rust**
+Основной способ использования — опубликованный статический сайт через GitHub Pages.
 
-## Stack
+После публикации адрес проекта будет:
 
-- [Rust](https://www.rust-lang.org/)
-- [Axum](https://github.com/tokio-rs/axum)
-- \`rust-embed\` for embedding the static course site into the executable
-- Plain HTML/CSS/JavaScript for the lesson UI
-- Docker for deployment
-- GitHub Actions for CI
+```text
+https://zu50052f.github.io/blender-course/
+```
 
-There is deliberately no Node.js frontend build step. The current course does not need an entire JavaScript civilization just to display lessons and remember checkboxes.
+На iPad откройте сайт в Safari → **Поделиться** → **На экран Домой**. Курс поддерживает PWA-режим и кэширует основные страницы для офлайн-использования после первого открытия.
 
-## Run locally
+## Статус
 
-Requirements: a recent stable Rust toolchain.
+- Общая программа: **10 недель**
+- Неделя 1: **готова как интерактивный веб-урок**
+- Недели 2–10: находятся в roadmap и будут добавляться постепенно
+- Язык интерфейса курса: **русский**
+- Runtime/backend: **не требуется**
 
-~~~bash
-cargo run
-~~~
+## Технологии
 
-Open:
+- HTML
+- CSS
+- JavaScript
+- Web App Manifest
+- Service Worker
+- GitHub Pages
 
-~~~text
-http://127.0.0.1:8080
-~~~
+Никакого обязательного Node.js, Rust-сервера или Docker. Для текущей задачи статическому учебнику сервер нужен примерно так же, как тостеру Kubernetes.
 
-Useful routes:
+## Структура
 
-- \`/\` — course overview
-- \`/week-01.html\` — complete Week 1
-- \`/healthz\` — health check
-
-Override bind address or port:
-
-~~~bash
-HOST=0.0.0.0 PORT=3000 cargo run
-~~~
-
-## Docker
-
-Build:
-
-~~~bash
-docker build -t blender-course .
-~~~
-
-Run:
-
-~~~bash
-docker run --rm -p 8080:8080 blender-course
-~~~
-
-Then open \`http://localhost:8080\`.
-
-## Project structure
-
-~~~text
+```text
 .
-├── Cargo.toml
 ├── COURSE.md
-├── Dockerfile
 ├── README.md
-├── src/
-│   └── main.rs
+├── .github/
+│   └── workflows/
+│       └── pages.yml
 └── site/
     ├── index.html
-    └── week-01.html
-~~~
+    ├── week-01.html
+    ├── manifest.webmanifest
+    ├── service-worker.js
+    ├── icon-192.png
+    ├── icon-512.png
+    └── .nojekyll
+```
 
-The \`site/\` directory is embedded into the Rust binary at compile time. This makes deployment simple: the runtime container only needs the executable.
+## Локальный просмотр
 
-## Course approach
+Можно открыть `site/index.html` напрямую, но Service Worker требует HTTP/HTTPS. Для проверки PWA локально используйте любой простой статический сервер.
 
-The detailed course principles live in [COURSE.md](COURSE.md).
+Например, если Python уже установлен:
 
-The important constraints are:
+```bash
+python3 -m http.server 8080 --directory site
+```
 
-- 4 required lessons per week plus an optional creative/buffer lesson;
-- usually 45–60 minutes per lesson;
-- example → variation rather than blind repetition;
-- reduce project scope when needed, but keep the key concept;
-- evaluate independence by skill, not by a single total grade;
-- keep the first course focused: no premature detours into rigging, simulations, Geometry Nodes, or advanced compositing.
+После этого откройте:
 
-Detailed web lessons should be checked against the current Blender 5.2 LTS interface and official/current documentation. The web lessons are not based on copied chapters from the Adonin book.
+```text
+http://localhost:8080
+```
 
-## Content roadmap
+## GitHub Pages
 
-See [COURSE.md](COURSE.md) for all ten weeks, project outcomes, teaching method, assessment model, and technical habits.
+Публикация выполняется workflow `.github/workflows/pages.yml` при push в `main`.
 
-## Deployment notes
+Если Pages ещё не включён в настройках репозитория, один раз выберите:
 
-The server reads:
+**Settings → Pages → Source → GitHub Actions**
 
-- \`HOST\` (default \`0.0.0.0\`)
-- \`PORT\` (default \`8080\`)
+Для GitHub Free Pages требует публичный репозиторий. GitHub Pro поддерживает Pages и для приватных репозиториев.
 
-This makes the container suitable for common container platforms. A platform-specific manifest can be added later without changing the course content.
+## PWA и iPad
 
-## Contributing
+`manifest.webmanifest` задаёт standalone-режим и иконки приложения.
 
-When adding a new week:
+`service-worker.js` кэширует карту курса, первую неделю и PWA-файлы. После первого успешного посещения опубликованной версии эти страницы могут открываться без сети.
 
-1. keep the lesson page self-contained where practical;
-2. add it to the course overview;
-3. preserve the Russian learner-facing language;
-4. include expected results and visual checkpoints;
-5. verify Blender UI instructions against Blender 5.2 LTS/current documentation;
-6. keep external assets licensed and attributable.
+Прогресс интерактивных чек-листов Week 1 хранится локально в браузере устройства, поэтому он не синхронизируется между iPad и другими устройствами. Сервер понадобится только если позже появятся аккаунты и синхронизация.
+
+## Методика
+
+Полная десятинедельная программа находится в [COURSE.md](COURSE.md).
+
+Основные ограничения курса:
+
+- 4 обязательных урока в неделю + 1 необязательный творческий/резервный;
+- обычно 45–60 минут на урок;
+- принцип «пример → вариация» вместо механического повторения;
+- уменьшаем объём проекта при необходимости, но сохраняем ключевое понятие;
+- оцениваем самостоятельность по навыкам, а не одной итоговой оценкой;
+- не уходим раньше времени в Rigging, Geometry Nodes, симуляции и прочие приятные способы не закончить первый курс.
+
+## Добавление новой недели
+
+1. Создать `site/week-XX.html`.
+2. Добавить карточку и ссылку на `site/index.html`.
+3. Добавить страницу в список `CORE_ASSETS` в `site/service-worker.js`.
+4. Сохранять learner-facing текст на русском.
+5. Добавлять ожидаемые результаты и визуальные контрольные точки.
+6. Проверять действия в интерфейсе по Blender 5.2 LTS / актуальной документации.
+7. Не копировать целые главы защищённых авторским правом книг.
 
