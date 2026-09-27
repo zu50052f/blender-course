@@ -331,6 +331,9 @@ function setup(saved, fail = false, hash = "") {
   assert.match(planeHtml, /Add Modifier → Generate → Mirror/);
   assert.match(planeHtml, /кабина открыта|открытая кабина|открыть кабину/i);
   assert.match(planeHtml, /робота-пилота/);
+  assert.match(planeHtml, /Add → Mesh → Cylinder/);
+  assert.match(planeHtml, /13-plane-hero.webp/);
+  assert.doesNotMatch(planeHtml, /куб для кабины|закрытая коробочка/i);
   assert.equal(plane.window.document.querySelectorAll(".mirror-compare img").length, 2);
   for (const [id, shot] of Object.entries(planeShots)) {
     assert.ok(fs.existsSync(root + "assets/blender/plane/" + shot.file), `missing plane view ${id}`);
@@ -511,8 +514,9 @@ function setup(saved, fail = false, hash = "") {
   assert.equal((await request("week-01.html", "navigate")).source, "network");
   assert.equal(
     (await request("assets/blender/01-select.jpg", "no-cors")).source,
-    "old",
+    "network",
   );
+  assert.equal((await cacheFor("blender-course-visuals-v1").match(oldVisual)).source, "network");
   const prepared = await message("SAVE_WEEK_VISUALS", [chestOne, chestTwo]);
   assert.deepEqual(JSON.parse(JSON.stringify(prepared.at(-1))),
     { type: "done", saved: 2, total: 2, ready: true });

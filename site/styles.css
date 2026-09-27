@@ -378,6 +378,9 @@ small {
 .world-card:nth-child(3n) .world-visual {
   background: #e9f1e6;
 }
+.world-card .plane-world-visual {
+  background: linear-gradient(130deg, #d7f1fc, #f3fbff);
+}
 .world-card p {
   font-size: 0.9rem;
   color: var(--muted);
