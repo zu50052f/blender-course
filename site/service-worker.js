@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v15-tiny-town";
+const CACHE_NAME = "blender-course-v16-treasure-chest";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,8 @@ const CORE_ASSETS = [
   "./week-02.css",
   "./week-03.html",
   "./week-03.css",
+  "./week-04.html",
+  "./week-04.css",
   "./styles.css",
   "./theme.css",
   "./course.js",
@@ -19,6 +21,7 @@ const CORE_ASSETS = [
   "./assets/robot-mascot.jpg",
   "./assets/rocket-mascot.svg",
   "./assets/town-mascot.svg",
+  "./assets/chest-mascot.svg",
   "./assets/step-1.svg",
   "./assets/step-2.svg",
   "./assets/step-3.svg",
