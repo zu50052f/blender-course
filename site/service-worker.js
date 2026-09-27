@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v19-plane-cockpit";
+const CACHE_NAME = "blender-course-v22-plane-shape";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -27,7 +27,7 @@ const CORE_ASSETS = [
   "./assets/rocket-mascot.svg",
   "./assets/town-mascot.svg",
   "./assets/chest-mascot.svg",
-  "./assets/plane-mascot.svg",
+  "./assets/blender/plane/13-plane-hero.webp",
   "./assets/step-1.svg",
   "./assets/step-2.svg",
   "./assets/step-3.svg",
@@ -149,7 +149,7 @@ self.addEventListener("fetch", (event) => {
       const visual = url.href.startsWith(VISUAL_ROOT);
       const cache = visual ? await caches.open(VISUAL_CACHE_NAME) : coreCache;
       const cached = await cache.match(event.request);
-      if (cached) return cached;
+      if (cached && !visual) return cached;
       try {
         const response = await fetch(event.request);
         if (response.ok && visual)
@@ -158,9 +158,9 @@ self.addEventListener("fetch", (event) => {
           } catch (_) {
             /* Cache may be full; keep the network image. */
           }
-        return response;
+        return response.ok ? response : (cached || response);
       } catch (_) {
-        return Response.error();
+        return cached || Response.error();
       }
     }),
   );
