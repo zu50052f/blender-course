@@ -67,6 +67,9 @@ function setup(saved, fail = false, hash = "") {
   themed = themePage("week-02.html", "dark");
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
   themed.close();
+  themed = themePage("week-03.html", "dark");
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  themed.close();
   themed = themePage("index.html", "invalid", true);
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -232,7 +235,47 @@ function setup(saved, fail = false, hash = "") {
   rocket.window.document.querySelector("#reset-progress").click();
   assert.equal(rocketChecks[0].checked, false);
   rocket.window.close();
-  for (const file of ["index.html", "week-01.html", "week-02.html"]) {
+  const townHtml = fs.readFileSync(root + "week-03.html", "utf8");
+  const townShots = JSON.parse(
+    fs.readFileSync(root + "assets/blender/town/screenshots.json", "utf8"),
+  );
+  const town = new JSDOM(townHtml, {
+    url: "http://localhost:8080/week-03.html#mission-2",
+    runScripts: "outside-only",
+    pretendToBeVisual: true,
+  });
+  town.window.HTMLElement.prototype.scrollIntoView = function () {};
+  town.window.confirm = () => true;
+  town.window.eval(js);
+  assert.equal(
+    town.window.document.querySelector(".mission:not([hidden])").id,
+    "mission-2",
+  );
+  const townChecks = town.window.document.querySelectorAll("[data-progress]");
+  assert.equal(townChecks.length, 8);
+  townChecks[2].click();
+  assert.equal(
+    JSON.parse(town.window.localStorage.getItem("kubik-week03-progress-v1"))
+      .copy,
+    true,
+  );
+  assert.equal(town.window.localStorage.getItem("kubik-week02-progress-v1"), null);
+  assert.equal(town.window.document.querySelectorAll(".visual-help").length, 10);
+  assert.match(townHtml, /Что ты заметил\?/);
+  for (const [id, shot] of Object.entries(townShots)) {
+    assert.ok(
+      fs.existsSync(root + "assets/blender/town/" + shot.file),
+      `missing town screenshot ${id}`,
+    );
+    assert.ok(
+      town.window.document.querySelector(`a[data-screenshot="town-${id}"]`),
+      `unused town screenshot ${id}`,
+    );
+  }
+  town.window.document.querySelector("#reset-progress").click();
+  assert.equal(townChecks[2].checked, false);
+  town.window.close();
+  for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
     for (const el of doc.querySelectorAll("[src],a[href],link[href]")) {
