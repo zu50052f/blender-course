@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v18-plane";
+const CACHE_NAME = "blender-course-v19-plane-cockpit";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",

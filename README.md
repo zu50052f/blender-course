@@ -9,7 +9,7 @@
 - Во второй неделе узнаём, как цилиндр, конус и их пропорции меняют силуэт ракеты; добавляем стабилизаторы и иллюминатор, придумываем пассажира и сохраняем файл.
 - В третьей неделе открываем, что копию домика можно передвинуть и изменить отдельно от оригинала; строим улицу из двух разных соседей.
 - В четвёртой неделе превращаем знакомый куб в полый сундук, меняя одну грань, и добавляем отдельную крышку.
-- В пятой неделе строим самолёт и узнаём, как Mirror создаёт симметричное второе крыло и обновляет его при правке первого.
+- В пятой неделе строим самолёт и узнаём, как Mirror создаёт симметричное второе крыло и обновляет его при правке первого. Затем повторяем Inset и Extrude для открытой кабины и сажаем в неё маленького робота-пилота.
 - Интерфейс на русском; названия команд Blender на английском с пояснениями.
 - У каждого нового действия есть раскрываемая подсказка «Покажи мне» с настоящими скриншотами Blender 5.2. Нажмите на снимок для увеличения.
 - В шапке страниц есть переключатель светлой и тёмной темы. Выбор сохраняется в этом браузере; без доступа к хранилищу действует до перезагрузки страницы.
@@ -71,7 +71,7 @@ site/
 
 Создайте страницу, обновите карточку, добавьте локальные ресурсы в `CORE_ASSETS` и измените `CACHE_NAME`. Используйте пути относительно страницы для GitHub Pages в подкаталоге. Не удаляйте кэши других приложений на том же origin.
 
-Сверяйте команды и снимки с используемой версией Blender и проходите урок в самой программе перед занятием. Для недели 1 правьте `site/assets/blender/screenshots.json` и `tools/build-visual-guides.cjs`; для недели 2 — `site/assets/blender/rocket/screenshots.json` и `tools/build-rocket-guides.cjs`; для недели 3 — `site/assets/blender/town/screenshots.json` и `tools/build-town-guides.cjs`; для недели 4 — `site/assets/blender/chest/screenshots.json` и `tools/build-chest-guides.cjs`. Для недели 5 правьте `site/assets/blender/plane/screenshots.json` и `tools/build-plane-lesson.cjs`; её виды воспроизводятся через `tools/render-plane-guides.py` в Blender 5.2 и преобразуются из PNG в WebP. После правки запустите соответствующий builder. Снимки недель 3 и 4 можно переснять через `tools/capture-town.py` и `tools/capture-chest.py` в Python Console Blender, затем преобразовать PNG в WebP.
+Сверяйте команды и снимки с используемой версией Blender и проходите урок в самой программе перед занятием. Для недели 1 правьте `site/assets/blender/screenshots.json` и `tools/build-visual-guides.cjs`; для недели 2 — `site/assets/blender/rocket/screenshots.json` и `tools/build-rocket-guides.cjs`; для недели 3 — `site/assets/blender/town/screenshots.json` и `tools/build-town-guides.cjs`; для недели 4 — `site/assets/blender/chest/screenshots.json` и `tools/build-chest-guides.cjs`. Для недели 5 правьте `site/assets/blender/plane/screenshots.json` и `tools/build-plane-lesson.cjs`; её модельные виды воспроизводятся через `tools/render-plane-guides.py` в Blender 5.2, а реальные снимки панели сделаны отдельным процессом через `tools/capture-plane-ui.py`. PNG преобразуются в WebP. После правки запустите соответствующий builder. Снимки недель 3 и 4 можно переснять через `tools/capture-town.py` и `tools/capture-chest.py` в Python Console Blender, затем преобразовать PNG в WebP.
 
 ## Проверка изменений
 
