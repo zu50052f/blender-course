@@ -325,10 +325,13 @@ function setup(saved, fail = false, hash = "") {
   planeChecks[4].click();
   assert.equal(JSON.parse(plane.window.localStorage.getItem("kubik-week05-progress-v1")).mirror, true);
   assert.equal(plane.window.localStorage.getItem("kubik-week04-progress-v1"), null);
-  assert.equal(plane.window.document.querySelectorAll(".visual-help").length, 11);
+  assert.equal(plane.window.document.querySelectorAll(".visual-help").length, 14);
   assert.match(planeHtml, /одно крыло/i);
   assert.match(planeHtml, /Edit Mode/);
   assert.match(planeHtml, /Add Modifier → Generate → Mirror/);
+  assert.match(planeHtml, /кабина открыта|открытая кабина|открыть кабину/i);
+  assert.match(planeHtml, /робота-пилота/);
+  assert.equal(plane.window.document.querySelectorAll(".mirror-compare img").length, 2);
   for (const [id, shot] of Object.entries(planeShots)) {
     assert.ok(fs.existsSync(root + "assets/blender/plane/" + shot.file), `missing plane view ${id}`);
     assert.ok(plane.window.document.querySelector(`a[data-screenshot="plane-${id}"]`), `unused plane view ${id}`);

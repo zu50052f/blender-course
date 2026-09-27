@@ -3,5 +3,11 @@
 .plane-figure-image img{display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center}
 @media(max-width:680px){.lesson-visual{grid-template-columns:1fr}.plane-figure-image{height:210px}}
 
-.screenshot-frame:has(img[src$="10-modifier-panel.png"]){max-width:420px}
-.screenshot-credit{font-size:.75rem;color:var(--muted);margin-top:.4rem}
+.screenshot-frame:has(img[src$="-panel.webp"]){max-width:430px}
+.mirror-compare{margin:1.4rem 0;padding:1rem;border-radius:16px;background:var(--white);border:1px solid var(--line)}
+.mirror-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.mirror-compare-grid>div{min-width:0}
+.mirror-compare img{display:block;width:100%;height:auto;border-radius:9px}
+.compare-label{display:block;font-weight:800;margin:0 0 .45rem;color:var(--ink)}
+.mirror-compare figcaption{margin-top:.8rem;color:var(--muted)}
+@media(max-width:680px){.mirror-compare-grid{grid-template-columns:1fr}}

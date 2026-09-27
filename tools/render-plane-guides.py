@@ -72,14 +72,33 @@ mirror.use_axis[0] = True
 mirror.use_clip = True
 save('05-mirror.png')
 for vertex in wing.data.vertices:
-    vertex.co.x += .15
+    vertex.co.x = .17 + (vertex.co.x - .17) * 1.35
 wing.data.update()
 save('06-edit-pair.png')
 fin = cube('Самолёт · хвост', (0, 1.30, 1.72), (.07, .38, .55), (.42, .75, 1))
 save('07-tail.png')
-cockpit = sphere('Самолёт · окно пилота', (0, -.58, 1.73), (.36, .57, .24), (.54, .38, .78))
-save('08-cockpit.png')
+cockpit = cube('Самолёт · открытая кабина', (0, -.58, 2.02), (.44, .60, .28), (.54, .38, .78))
+bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+save('08-cockpit-box.png')
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.select_all(action='DESELECT')
+bpy.ops.object.mode_set(mode='OBJECT')
+for polygon in cockpit.data.polygons:
+    polygon.select = polygon.normal.z > .9
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.inset(thickness=.11, depth=0)
+bpy.ops.object.mode_set(mode='OBJECT')
+save('09-cockpit-inset.png')
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={'value': (0, 0, -.34)})
+bpy.ops.object.mode_set(mode='OBJECT')
+save('10-cockpit-open.png')
+pilot_body = cube('Пилот · тело робота', (0, -.58, 2.03), (.13, .12, .15), (.93, .92, .73))
+pilot_head = cube('Пилот · голова робота', (0, -.58, 2.25), (.16, .14, .15), (.93, .92, .73))
+sphere('Пилот · левый глаз', (-.075, -.73, 2.28), (.025, .025, .025), (.10, .23, .45))
+sphere('Пилот · правый глаз', (.075, -.73, 2.28), (.025, .025, .025), (.10, .23, .45))
+save('11-pilot.png')
 camera.location = (0, -1.5, 8.5)
 camera.rotation_euler = (Vector((0, 0, 1.1)) - camera.location).to_track_quat('-Z', 'Y').to_euler()
-save('09-plane.png')
-print('Rendered 9 Week 5 Blender views')
+save('12-plane.png')
+print('Rendered 12 Week 5 Blender views')
