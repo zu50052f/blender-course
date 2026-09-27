@@ -1,0 +1,7 @@
+.plane-lesson .hero-art img{mix-blend-mode:normal}
+.plane-figure-image{height:220px;overflow:hidden;border-radius:10px;background:#cad8e3}
+.plane-figure-image img{display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center}
+@media(max-width:680px){.lesson-visual{grid-template-columns:1fr}.plane-figure-image{height:210px}}
+
+.screenshot-frame:has(img[src$="10-modifier-panel.png"]){max-width:420px}
+.screenshot-credit{font-size:.75rem;color:var(--muted);margin-top:.4rem}
