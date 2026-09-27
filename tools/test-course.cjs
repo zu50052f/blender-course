@@ -70,6 +70,9 @@ function setup(saved, fail = false, hash = "") {
   themed = themePage("week-03.html", "dark");
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
   themed.close();
+  themed = themePage("week-04.html", "dark");
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  themed.close();
   themed = themePage("index.html", "invalid", true);
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -275,7 +278,35 @@ function setup(saved, fail = false, hash = "") {
   town.window.document.querySelector("#reset-progress").click();
   assert.equal(townChecks[2].checked, false);
   town.window.close();
-  for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html"]) {
+  const chestHtml = fs.readFileSync(root + "week-04.html", "utf8");
+  const chestShots = JSON.parse(
+    fs.readFileSync(root + "assets/blender/chest/screenshots.json", "utf8"),
+  );
+  const chest = new JSDOM(chestHtml, {
+    url: "http://localhost:8080/week-04.html#mission-2",
+    runScripts: "outside-only",
+    pretendToBeVisual: true,
+  });
+  chest.window.HTMLElement.prototype.scrollIntoView = function () {};
+  chest.window.confirm = () => true;
+  chest.window.eval(js);
+  assert.equal(chest.window.document.querySelector(".mission:not([hidden])").id, "mission-2");
+  const chestChecks = chest.window.document.querySelectorAll("[data-progress]");
+  assert.equal(chestChecks.length, 8);
+  chestChecks[2].click();
+  assert.equal(JSON.parse(chest.window.localStorage.getItem("kubik-week04-progress-v1")).face, true);
+  assert.equal(chest.window.localStorage.getItem("kubik-week03-progress-v1"), null);
+  assert.equal(chest.window.document.querySelectorAll(".visual-help").length, 10);
+  assert.match(chestHtml, /Миссия 1 \/ 4 · лёгкий разогрев/);
+  assert.match(chestHtml, /Миссия 2 \/ 4 · новое действие с помощью/);
+  for (const [id, shot] of Object.entries(chestShots)) {
+    assert.ok(fs.existsSync(root + "assets/blender/chest/" + shot.file), `missing chest screenshot ${id}`);
+    assert.ok(chest.window.document.querySelector(`a[data-screenshot="chest-${id}"]`), `unused chest screenshot ${id}`);
+  }
+  chest.window.document.querySelector("#reset-progress").click();
+  assert.equal(chestChecks[2].checked, false);
+  chest.window.close();
+  for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html", "week-04.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
     for (const el of doc.querySelectorAll("[src],a[href],link[href]")) {

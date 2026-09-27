@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="620" viewBox="0 0 720 620" role="img" aria-labelledby="title">
+  <title id="title">Весёлый сундук с приподнятой крышкой и сияющим сокровищем</title>
+  <defs>
+    <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#fff1b7"/><stop offset="1" stop-color="#ffd5c3"/></linearGradient>
+    <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#f4ae61"/><stop offset="1" stop-color="#db784b"/></linearGradient>
+  </defs>
+  <rect width="720" height="620" rx="70" fill="url(#sky)"/>
+  <circle cx="106" cy="102" r="43" fill="#fff9e5" opacity=".8"/><circle cx="612" cy="471" r="67" fill="#fff9e5" opacity=".55"/>
+  <path d="M96 507q264 77 527-2" fill="none" stroke="#f5b68f" stroke-width="22" stroke-linecap="round"/>
+  <path d="M155 286 367 224 579 277 367 341Z" fill="#9f583f" stroke="#754438" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M155 286v170q203 95 424 0V277L367 341Z" fill="url(#wood)" stroke="#754438" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M155 286 367 341 579 277M367 341v190" fill="none" stroke="#754438" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M155 375q104 46 212 53 111-4 212-53" fill="none" stroke="#ffc689" stroke-width="14"/>
+  <path d="M244 224 423 169 588 208 409 265Z" fill="#ffe19e" stroke="#754438" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M244 224v54l165 50v-63ZM409 265v63l179-62v-58Z" fill="#f0a55e" stroke="#754438" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M282 225 426 181" stroke="#fff1bf" stroke-width="13" stroke-linecap="round"/>
+  <path d="M357 326v57" stroke="#ffe19e" stroke-width="24" stroke-linecap="round"/>
+  <rect x="336" y="370" width="63" height="78" rx="16" fill="#ffdc6a" stroke="#754438" stroke-width="10"/>
+  <circle cx="355" cy="403" r="5" fill="#754438"/><circle cx="381" cy="403" r="5" fill="#754438"/><path d="M354 421q14 13 28 0" fill="none" stroke="#754438" stroke-width="5" stroke-linecap="round"/>
+  <path d="M490 139l13 22 23 12-23 12-13 23-12-23-24-12 24-12Z" fill="#42c7c2" stroke="#257c83" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M135 182l7 12 13 7-13 7-7 13-7-13-13-7 13-7Z" fill="#fff"/>
+  <circle cx="578" cy="115" r="9" fill="#ff836c"/><circle cx="115" cy="352" r="8" fill="#53beb7"/>
+</svg>
