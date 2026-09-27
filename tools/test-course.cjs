@@ -73,6 +73,9 @@ function setup(saved, fail = false, hash = "") {
   themed = themePage("week-04.html", "dark");
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
   themed.close();
+  themed = themePage("week-05.html", "dark");
+  assert.equal(themed.document.documentElement.dataset.theme, "dark");
+  themed.close();
   themed = themePage("index.html", "invalid", true);
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -306,7 +309,34 @@ function setup(saved, fail = false, hash = "") {
   chest.window.document.querySelector("#reset-progress").click();
   assert.equal(chestChecks[2].checked, false);
   chest.window.close();
-  for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html", "week-04.html"]) {
+  const planeHtml = fs.readFileSync(root + "week-05.html", "utf8");
+  const planeShots = JSON.parse(fs.readFileSync(root + "assets/blender/plane/screenshots.json", "utf8"));
+  const plane = new JSDOM(planeHtml, {
+    url: "http://localhost:8080/week-05.html#mission-3",
+    runScripts: "outside-only",
+    pretendToBeVisual: true,
+  });
+  plane.window.HTMLElement.prototype.scrollIntoView = function () {};
+  plane.window.confirm = () => true;
+  plane.window.eval(js);
+  assert.equal(plane.window.document.querySelector(".mission:not([hidden])").id, "mission-3");
+  const planeChecks = plane.window.document.querySelectorAll("[data-progress]");
+  assert.equal(planeChecks.length, 8);
+  planeChecks[4].click();
+  assert.equal(JSON.parse(plane.window.localStorage.getItem("kubik-week05-progress-v1")).mirror, true);
+  assert.equal(plane.window.localStorage.getItem("kubik-week04-progress-v1"), null);
+  assert.equal(plane.window.document.querySelectorAll(".visual-help").length, 11);
+  assert.match(planeHtml, /одно крыло/i);
+  assert.match(planeHtml, /Edit Mode/);
+  assert.match(planeHtml, /Add Modifier → Generate → Mirror/);
+  for (const [id, shot] of Object.entries(planeShots)) {
+    assert.ok(fs.existsSync(root + "assets/blender/plane/" + shot.file), `missing plane view ${id}`);
+    assert.ok(plane.window.document.querySelector(`a[data-screenshot="plane-${id}"]`), `unused plane view ${id}`);
+  }
+  plane.window.document.querySelector("#reset-progress").click();
+  assert.equal(planeChecks[4].checked, false);
+  plane.window.close();
+  for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html", "week-04.html", "week-05.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
     if (file.startsWith("week-")) {

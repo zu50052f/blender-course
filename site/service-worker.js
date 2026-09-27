@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v17-offline-guides";
+const CACHE_NAME = "blender-course-v18-plane";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -10,6 +10,8 @@ const CORE_ASSETS = [
   "./week-03.css",
   "./week-04.html",
   "./week-04.css",
+  "./week-05.html",
+  "./week-05.css",
   "./styles.css",
   "./theme.css",
   "./course.js",
@@ -25,6 +27,7 @@ const CORE_ASSETS = [
   "./assets/rocket-mascot.svg",
   "./assets/town-mascot.svg",
   "./assets/chest-mascot.svg",
+  "./assets/plane-mascot.svg",
   "./assets/step-1.svg",
   "./assets/step-2.svg",
   "./assets/step-3.svg",
