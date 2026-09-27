@@ -309,6 +309,10 @@ function setup(saved, fail = false, hash = "") {
   for (const file of ["index.html", "week-01.html", "week-02.html", "week-03.html", "week-04.html"]) {
     const dom = new JSDOM(fs.readFileSync(root + file, "utf8"));
     const doc = dom.window.document;
+    if (file.startsWith("week-")) {
+      assert.ok(doc.querySelector('script[src="offline-week.js"]'), `${file}: offline script missing`);
+      assert.ok(doc.querySelector('link[href="offline-week.css"]'), `${file}: offline style missing`);
+    }
     for (const el of doc.querySelectorAll("[src],a[href],link[href]")) {
       const ref = el.getAttribute("src") || el.getAttribute("href");
       if (/^https?:/.test(ref)) continue;
@@ -324,31 +328,86 @@ function setup(saved, fail = false, hash = "") {
     }
     dom.window.close();
   }
-  // Exercise service-worker install, scoped cleanup, cache hits and offline fallback.
-  const handlers = {};
-  const data = new Map();
-  const deleted = [];
-  const keys = ["blender-course-v1", "unrelated-app"];
-  const cache = {
-    addAll: async (requests) => {
-      for (const request of requests) {
-        const p =
-          new URL(request.url).pathname.replace(/^\//, "") || "index.html";
-        assert.equal(request.cache, "reload");
-        assert.ok(fs.existsSync(root + p));
-        data.set(request.url, {
-          path: p === "index.html" ? "./index.html" : "./" + p,
-        });
-      }
-    },
-    match: async (r) =>
-      data.get(
-        typeof r === "string"
-          ? new URL(r, "http://localhost:8080/").href
-          : r.url,
-      ),
-    put: async (r, response) => data.set(r.url, response),
+  const offlinePage = new JSDOM(chestHtml, {
+    url: "http://localhost:8080/week-04.html",
+    runScripts: "outside-only",
+  });
+  const offlineWindow = offlinePage.window;
+  offlineWindow.caches = {};
+  offlineWindow.MessageChannel = class {
+    constructor() {
+      this.port1 = { onmessage: null, close() {} };
+      this.port2 = { receiver: this.port1 };
+    }
   };
+  const worker = {
+    postMessage: (message, ports) => {
+      const reply = (data) => ports[0].receiver.onmessage({ data });
+      Promise.resolve().then(() => {
+        if (message.type === "CHECK_WEEK_VISUALS")
+          reply({ type: "done", saved: 0, total: message.urls.length, ready: false });
+        else {
+          reply({ type: "progress", saved: message.urls.length, total: message.urls.length });
+          reply({ type: "done", saved: message.urls.length, total: message.urls.length, ready: true });
+        }
+      });
+    },
+  };
+  let activeWorker = { postMessage() {} }; // Previous service worker has no offline protocol.
+  let controllerChanged;
+  Object.defineProperty(offlineWindow.navigator, "serviceWorker", {
+    value: {
+      ready: Promise.resolve({ get active() { return activeWorker; } }),
+      addEventListener: (event, callback) => {
+        if (event === "controllerchange") controllerChanged = callback;
+      },
+    },
+  });
+  offlineWindow.eval(fs.readFileSync(root + "offline-week.js", "utf8"));
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const offlinePanel = offlineWindow.document.querySelector(".offline-panel");
+  assert.ok(offlinePanel);
+  assert.match(offlinePanel.querySelector(".offline-status").textContent, /Проверяем/);
+  activeWorker = worker;
+  controllerChanged();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.match(offlinePanel.querySelector(".offline-status").textContent, /Сохранено 0 из/);
+  offlinePanel.querySelector("button").click();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.match(offlinePanel.querySelector(".offline-status").textContent, /доступны без интернета/);
+  assert.equal(offlinePanel.querySelector("button").disabled, true);
+  const broken = offlineWindow.document.querySelector('a[data-screenshot="chest-inset"] img');
+  broken.dispatchEvent(new offlineWindow.Event("error"));
+  assert.ok(broken.closest(".screenshot-frame").nextElementSibling.classList.contains("offline-image-error"));
+  offlineWindow.close();
+  // Exercise fresh-install offline failure, explicit week preparation, and persistence.
+  const handlers = {};
+  const cacheData = new Map();
+  const deleted = [];
+  const oldVisual = "http://localhost:8080/assets/blender/01-select.jpg";
+  cacheData.set("blender-course-v1", new Map([[oldVisual, { source: "old" }]]));
+  let quotaFail = false;
+  function cacheFor(name) {
+    if (!cacheData.has(name)) cacheData.set(name, new Map());
+    const data = cacheData.get(name);
+    const urlOf = (r) => typeof r === "string" ? new URL(r, "http://localhost:8080/").href : r.url;
+    return {
+      addAll: async (requests) => {
+        for (const request of requests) {
+          const p = new URL(request.url).pathname.replace(/^\//, "") || "index.html";
+          assert.equal(request.cache, "reload");
+          assert.ok(fs.existsSync(root + p));
+          data.set(request.url, { path: p === "index.html" ? "./index.html" : "./" + p });
+        }
+      },
+      match: async (r) => data.get(urlOf(r)),
+      put: async (r, response) => {
+        if (quotaFail && r.url.endsWith("10-treasure.webp")) throw Error("quota");
+        data.set(r.url, response);
+      },
+      keys: async () => [...data.keys()].map((url) => new Request(url)),
+    };
+  }
   const ctx = {
     self: {
       location: { origin: "http://localhost:8080" },
@@ -358,9 +417,9 @@ function setup(saved, fail = false, hash = "") {
       addEventListener: (e, h) => (handlers[e] = h),
     },
     caches: {
-      open: async () => cache,
-      keys: async () => keys,
-      delete: async (k) => deleted.push(k),
+      open: async (name) => cacheFor(name),
+      keys: async () => [...cacheData.keys(), "unrelated-app"],
+      delete: async (k) => { deleted.push(k); cacheData.delete(k); },
     },
     URL,
     Request,
@@ -377,6 +436,7 @@ function setup(saved, fail = false, hash = "") {
     handlers.activate({ waitUntil: (p) => p.then(resolve, reject) }),
   );
   assert.deepEqual(deleted, ["blender-course-v1"]);
+  assert.equal((await cacheFor("blender-course-visuals-v1").match(oldVisual)).source, "old");
   async function request(path, mode) {
     let promise;
     handlers.fetch({
@@ -391,6 +451,23 @@ function setup(saved, fail = false, hash = "") {
   );
   assert.equal((await request("missing", "navigate")).path, "./index.html");
   assert.equal((await request("missing.png", "no-cors")).type, "error");
+  const chestOne = "http://localhost:8080/assets/blender/chest/01-body.webp";
+  const chestTwo = "http://localhost:8080/assets/blender/chest/02-edit-mode.webp";
+  assert.equal((await request("assets/blender/chest/01-body.webp", "no-cors")).type, "error");
+  async function message(type, urls) {
+    const messages = [];
+    let promise;
+    handlers.message({
+      data: { type, urls },
+      ports: [{ postMessage: (value) => messages.push(value) }],
+      waitUntil: (value) => (promise = value),
+    });
+    await promise;
+    return messages;
+  }
+  assert.deepEqual(JSON.parse(JSON.stringify(await message("CHECK_WEEK_VISUALS", [chestOne, chestTwo]))), [
+    { type: "done", saved: 0, total: 2, ready: false },
+  ]);
   ctx.fetch = async () => ({
     ok: true,
     clone() {
@@ -401,18 +478,30 @@ function setup(saved, fail = false, hash = "") {
   assert.equal((await request("week-01.html", "navigate")).source, "network");
   assert.equal(
     (await request("assets/blender/01-select.jpg", "no-cors")).source,
-    "network",
+    "old",
   );
+  const prepared = await message("SAVE_WEEK_VISUALS", [chestOne, chestTwo]);
+  assert.deepEqual(JSON.parse(JSON.stringify(prepared.at(-1))),
+    { type: "done", saved: 2, total: 2, ready: true });
+  assert.equal((await message("CHECK_WEEK_VISUALS", [chestOne, chestTwo]))[0].ready, true);
+  quotaFail = true;
+  assert.equal((await message("SAVE_WEEK_VISUALS", [
+    "http://localhost:8080/assets/blender/chest/10-treasure.webp",
+  ]))[0].type, "error");
+  assert.equal((await message("CHECK_WEEK_VISUALS", [
+    "http://localhost:8080/assets/blender/chest/10-treasure.webp",
+  ]))[0].ready, false);
+  assert.equal((await message("SAVE_WEEK_VISUALS", ["https://example.com/private"]))[0].type, "error");
   ctx.fetch = async () => {
     throw Error("offline");
   };
   assert.equal((await request("week-01.html", "navigate")).source, "network");
   assert.equal(
-    (await request("assets/blender/01-select.jpg", "no-cors")).source,
+    (await request("assets/blender/chest/01-body.webp", "no-cors")).source,
     "network",
   );
   console.log(
-    "PASS: theme switching/persistence/fallback, navigation, progress, reset, storage failures, local assets, SW precache and offline fallbacks.",
+    "PASS: theme, navigation, progress, local assets, offline week preparation, worker updates, cache migration and failure handling.",
   );
 })().catch((e) => {
   console.error(e);
