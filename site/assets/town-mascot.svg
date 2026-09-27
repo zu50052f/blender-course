@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" role="img" aria-labelledby="title">
+  <title id="title">Три весёлых домика на солнечной улице</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d9f3ff"/><stop offset="1" stop-color="#fff8df"/></linearGradient>
+  </defs>
+  <rect width="720" height="620" rx="46" fill="url(#sky)"/>
+  <circle cx="594" cy="115" r="54" fill="#ffcf59"/>
+  <path d="M0 490q200-90 390-16t330 6v140H0" fill="#bfe2b0"/>
+  <path d="M0 566q360-70 720 10v44H0" fill="#f5dcad"/>
+  <g stroke="#302b49" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62 324 178 210l116 114" fill="#f59674"/>
+    <rect x="77" y="322" width="202" height="200" rx="14" fill="#ffe1bb"/>
+    <rect x="153" y="412" width="58" height="110" rx="13" fill="#bb78d7"/>
+    <rect x="101" y="358" width="51" height="51" rx="11" fill="#8bdded"/>
+    <rect x="206" y="358" width="51" height="51" rx="11" fill="#8bdded"/>
+    <path d="M116 380v9m106-9v9" fill="none"/>
+    <path d="M159 450q22 19 43 0" fill="none"/>
+    <path d="M260 287 412 133l152 154" fill="#8a6bd7"/>
+    <rect x="277" y="285" width="270" height="245" rx="17" fill="#d8c8f4"/>
+    <rect x="362" y="416" width="75" height="114" rx="14" fill="#fbb773"/>
+    <rect x="309" y="337" width="68" height="59" rx="12" fill="#9de1ea"/>
+    <rect x="447" y="337" width="68" height="59" rx="12" fill="#9de1ea"/>
+    <path d="M329 360v11m138-11v11" fill="none"/>
+    <path d="M392 448q16 15 32 0" fill="none"/>
+    <path d="M489 364 592 260l103 104" fill="#ffc75a"/>
+    <rect x="503" y="363" width="179" height="166" rx="14" fill="#bde8d5"/>
+    <rect x="564" y="452" width="53" height="77" rx="10" fill="#f59b88"/>
+    <rect x="526" y="396" width="43" height="43" rx="10" fill="#8bd6e5"/>
+    <rect x="619" y="396" width="43" height="43" rx="10" fill="#8bd6e5"/>
+    <path d="M540 416v7m92-7v7" fill="none"/>
+  </g>
+  <path d="M37 89q12-17 25 0t25 0M126 117q12-17 25 0t25 0" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+</svg>

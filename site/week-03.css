@@ -1,0 +1,29 @@
+.town-figure-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  background: #303030;
+}
+
+.town-figure-image img {
+  display: block;
+  position: absolute;
+  left: -10%;
+  top: 50%;
+  width: 175%;
+  max-width: none;
+  max-height: none;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+.town-lesson .hero-art img {
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 680px) {
+  .lesson-visual { grid-template-columns: 1fr; }
+  .town-figure-image { height: 210px; }
+}
