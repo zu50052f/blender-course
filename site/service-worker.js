@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v22-plane-shape";
+const CACHE_NAME = "blender-course-v23-plane-shape-styles";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   "./week-04.html",
   "./week-04.css",
   "./week-05.html",
-  "./week-05.css",
+  "./week-05.css?v=plane-shape",
   "./styles.css",
   "./theme.css",
   "./course.js",

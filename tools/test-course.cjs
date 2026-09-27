@@ -316,6 +316,7 @@ function setup(saved, fail = false, hash = "") {
     runScripts: "outside-only",
     pretendToBeVisual: true,
   });
+  assert.equal(plane.window.document.querySelector('link[href^="week-05.css"]').getAttribute("href"), "week-05.css?v=plane-shape");
   plane.window.HTMLElement.prototype.scrollIntoView = function () {};
   plane.window.confirm = () => true;
   plane.window.eval(js);
@@ -353,7 +354,7 @@ function setup(saved, fail = false, hash = "") {
       const ref = el.getAttribute("src") || el.getAttribute("href");
       if (/^https?:/.test(ref)) continue;
       const [path, hash] = ref.split("#");
-      const target = path || file;
+      const target = path.split("?")[0] || file;
       assert.ok(fs.existsSync(root + target), `${file}: missing ${target}`);
       if (hash) {
         const targetDoc = path

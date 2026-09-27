@@ -8,7 +8,7 @@ const shots = JSON.parse(fs.readFileSync(path.join(root, 'assets/blender/plane/s
 const head = d.head;
 head.querySelector('meta[name="description"]').content = 'Неделя 5 курса Blender для детей 6–10 лет: строим самолёт и учимся создавать симметричные крылья модификатором Mirror.';
 head.querySelector('title').textContent = 'Неделя 5 — Облачный самолёт · Кубик';
-head.querySelector('link[href="week-04.css"]').href = 'week-05.css';
+head.querySelector('link[href="week-04.css"]').href = 'week-05.css?v=plane-shape';
 d.body.className = 'plane-lesson';
 d.body.dataset.progressKey = 'kubik-week05-progress-v1';
 d.body.dataset.resetMessage = 'Убрать отметки этой недели? Твой самолёт в Blender останется на месте.';
