@@ -1,4 +1,5 @@
-const CACHE_NAME = "blender-course-v16-treasure-chest";
+const CACHE_NAME = "blender-course-v17-offline-guides";
+const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -15,6 +16,8 @@ const CORE_ASSETS = [
   "./theme.js",
   "./visual-guides.css",
   "./visual-guides.js",
+  "./offline-week.css",
+  "./offline-week.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
@@ -27,6 +30,48 @@ const CORE_ASSETS = [
   "./assets/step-3.svg",
   "./assets/step-4.svg",
 ];
+const VISUAL_ROOT = new URL("./assets/blender/", self.registration.scope).href;
+
+function checkedVisualUrls(value) {
+  if (!Array.isArray(value) || value.length === 0 || value.length > 120)
+    throw new Error("Invalid visual guide list");
+  return [...new Set(value.map((entry) => {
+    if (typeof entry !== "string") throw new Error("Invalid visual guide URL");
+    const url = new URL(entry, self.registration.scope);
+    if (!url.href.startsWith(VISUAL_ROOT) || url.search || url.hash)
+      throw new Error("Visual guide outside this course");
+    return url.href;
+  }))];
+}
+
+self.addEventListener("message", (event) => {
+  const port = event.ports && event.ports[0];
+  const type = event.data && event.data.type;
+  if (!port || !["CHECK_WEEK_VISUALS", "SAVE_WEEK_VISUALS"].includes(type)) return;
+  event.waitUntil((async () => {
+    try {
+      const urls = checkedVisualUrls(event.data.urls);
+      const cache = await caches.open(VISUAL_CACHE_NAME);
+      let saved = 0;
+      for (const url of urls) {
+        const request = new Request(url, { cache: "reload" });
+        if (await cache.match(request)) {
+          saved++;
+        } else if (type === "SAVE_WEEK_VISUALS") {
+          const response = await fetch(request);
+          if (!response.ok) throw new Error("Visual guide download failed");
+          await cache.put(request, response.clone());
+          saved++;
+        }
+        if (type === "SAVE_WEEK_VISUALS")
+          port.postMessage({ type: "progress", saved, total: urls.length });
+      }
+      port.postMessage({ type: "done", saved, total: urls.length, ready: saved === urls.length });
+    } catch (_) {
+      port.postMessage({ type: "error" });
+    }
+  })());
+});
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -48,15 +93,25 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) =>
-        Promise.all(
-          keys
-            .filter(
-              (key) => key.startsWith("blender-course-") && key !== CACHE_NAME,
-            )
-            .map((key) => caches.delete(key)),
-        ),
-      )
+      .then(async (keys) => {
+        const visualCache = await caches.open(VISUAL_CACHE_NAME);
+        for (const key of [...keys].reverse()) {
+          if (!key.startsWith("blender-course-") ||
+              key === CACHE_NAME || key === VISUAL_CACHE_NAME) continue;
+          const oldCache = await caches.open(key);
+          for (const request of await oldCache.keys()) {
+            if (!request.url.startsWith(VISUAL_ROOT) ||
+                await visualCache.match(request)) continue;
+            const response = await oldCache.match(request);
+            try {
+              await visualCache.put(request, response);
+            } catch (_) {
+              // The new cache may be full. The readiness check will report gaps.
+            }
+          }
+          await caches.delete(key);
+        }
+      })
       .then(() => self.clients.claim()),
   );
 });
@@ -69,13 +124,13 @@ self.addEventListener("fetch", (event) => {
   )
     return;
   event.respondWith(
-    caches.open(CACHE_NAME).then(async (cache) => {
+    caches.open(CACHE_NAME).then(async (coreCache) => {
       if (event.request.mode === "navigate") {
         try {
           const response = await fetch(event.request);
           if (response.ok) {
             try {
-              await cache.put(event.request, response.clone());
+              await coreCache.put(event.request, response.clone());
             } catch (_) {
               // Keep showing the fetched page if caching is unavailable.
             }
@@ -83,16 +138,18 @@ self.addEventListener("fetch", (event) => {
           return response;
         } catch (_) {
           return (
-            (await cache.match(event.request)) ||
-            (await cache.match("./index.html"))
+            (await coreCache.match(event.request)) ||
+            (await coreCache.match("./index.html"))
           );
         }
       }
+      const visual = url.href.startsWith(VISUAL_ROOT);
+      const cache = visual ? await caches.open(VISUAL_CACHE_NAME) : coreCache;
       const cached = await cache.match(event.request);
       if (cached) return cached;
       try {
         const response = await fetch(event.request);
-        if (response.ok && url.pathname.includes("/assets/blender/"))
+        if (response.ok && visual)
           try {
             await cache.put(event.request, response.clone());
           } catch (_) {
