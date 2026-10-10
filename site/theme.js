@@ -19,6 +19,7 @@
     const label = dark ? "Светлая тема" : "Тёмная тема";
     button.hidden = false;
     button.setAttribute("aria-pressed", String(dark));
+    button.setAttribute("aria-label", label);
     button.title = label;
     button.querySelector(".theme-icon").textContent = dark ? "☀" : "☾";
     button.querySelector(".theme-label").textContent = label;

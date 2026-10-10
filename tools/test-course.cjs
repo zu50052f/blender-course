@@ -54,6 +54,10 @@ function setup(saved, fail = false, hash = "") {
     "true",
   );
   assert.equal(themed.localStorage.getItem("kubik-theme"), "dark");
+  assert.equal(
+    themed.document.querySelector("#theme-switch").getAttribute("aria-label"),
+    "Светлая тема",
+  );
   themed.close();
   themed = themePage("week-01.html", "dark");
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -63,6 +67,10 @@ function setup(saved, fail = false, hash = "") {
   );
   themed.document.querySelector("#theme-switch").click();
   assert.equal(themed.document.documentElement.dataset.theme, "light");
+  assert.equal(
+    themed.document.querySelector("#theme-switch").getAttribute("aria-label"),
+    "Тёмная тема",
+  );
   themed.close();
   themed = themePage("week-02.html", "dark");
   assert.equal(themed.document.documentElement.dataset.theme, "dark");
@@ -140,6 +148,24 @@ function setup(saved, fail = false, hash = "") {
   w.document.querySelectorAll("[data-progress]").forEach((c) => c.click());
   assert.equal(w.document.querySelector("#celebration").hidden, false);
   assert.equal(w.document.querySelectorAll(".badge.earned").length, 4);
+  w.close();
+  w = setup();
+  async function historyChange(action) {
+    const changed = new Promise((resolve) =>
+      w.addEventListener("hashchange", resolve, { once: true }),
+    );
+    action();
+    await changed;
+  }
+  await historyChange(() => { w.location.hash = "#mission-2"; });
+  await historyChange(() => w.history.back());
+  assert.equal(w.location.hash, "");
+  assert.equal(w.document.querySelector(".mission:not([hidden])").id, "mission-1");
+  assert.equal(w.document.querySelector('.mission-link[aria-current="step"]').hash, "#mission-1");
+  await historyChange(() => w.history.forward());
+  assert.equal(w.document.querySelector(".mission:not([hidden])").id, "mission-2");
+  await historyChange(() => { w.location.hash = "#grownups"; });
+  assert.equal(w.document.querySelector(".mission:not([hidden])").id, "mission-2");
   w.close();
   w = setup(undefined, false, "#lesson-4");
   assert.equal(
@@ -488,6 +514,11 @@ function setup(saved, fail = false, hash = "") {
   );
   assert.equal((await request("missing", "navigate")).path, "./index.html");
   assert.equal((await request("missing.png", "no-cors")).type, "error");
+  const planeHero = "assets/blender/plane/13-plane-hero.webp";
+  assert.equal((await request(planeHero, "no-cors")).path, "./" + planeHero);
+  assert.equal((await request(planeHero, "navigate")).path, "./" + planeHero);
+  assert.equal((await request("assets/blender/01-select.jpg", "navigate")).source, "old");
+  assert.equal((await request("assets/blender/missing.jpg", "navigate")).type, "error");
   const chestOne = "http://localhost:8080/assets/blender/chest/01-body.webp";
   const chestTwo = "http://localhost:8080/assets/blender/chest/02-edit-mode.webp";
   assert.equal((await request("assets/blender/chest/01-body.webp", "no-cors")).type, "error");
@@ -536,6 +567,10 @@ function setup(saved, fail = false, hash = "") {
   assert.equal((await request("week-01.html", "navigate")).source, "network");
   assert.equal(
     (await request("assets/blender/chest/01-body.webp", "no-cors")).source,
+    "network",
+  );
+  assert.equal(
+    (await request("assets/blender/chest/01-body.webp", "navigate")).source,
     "network",
   );
   console.log(

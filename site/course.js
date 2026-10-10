@@ -93,7 +93,7 @@
     showMission();
     update();
     addEventListener("hashchange", () => {
-      if (/^#(?:mission-|lesson-)[1-4]$/.test(location.hash)) {
+      if (!location.hash || /^#(?:mission-|lesson-)[1-4]$/.test(location.hash)) {
         showMission(true);
         document.getElementById(activeId()).scrollIntoView({ block: "start" });
       }

@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v23-plane-shape-styles";
+const CACHE_NAME = "blender-course-v24-review-fixes";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -128,7 +128,8 @@ self.addEventListener("fetch", (event) => {
     return;
   event.respondWith(
     caches.open(CACHE_NAME).then(async (coreCache) => {
-      if (event.request.mode === "navigate") {
+      const visual = url.href.startsWith(VISUAL_ROOT);
+      if (event.request.mode === "navigate" && !visual) {
         try {
           const response = await fetch(event.request);
           if (response.ok) {
@@ -146,9 +147,10 @@ self.addEventListener("fetch", (event) => {
           );
         }
       }
-      const visual = url.href.startsWith(VISUAL_ROOT);
       const cache = visual ? await caches.open(VISUAL_CACHE_NAME) : coreCache;
-      const cached = await cache.match(event.request);
+      // Some essential visuals (such as the airplane hero) are precached in core.
+      const cached = (await cache.match(event.request)) ||
+        (visual ? await coreCache.match(event.request) : undefined);
       if (cached && !visual) return cached;
       try {
         const response = await fetch(event.request);
