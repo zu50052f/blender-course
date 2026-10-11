@@ -5,6 +5,7 @@ Open a temporary factory .blend with --factory-startup --no-window-focus
 Viewport/panel images contain real Blender pixels; the hero is a Cycles render.
 """
 import bpy
+import bmesh
 import json
 import math
 import shutil
@@ -54,11 +55,22 @@ for x in (-.20, .20):
     bpy.ops.mesh.primitive_uv_sphere_add(segments=20, ring_count=12, radius=.085, location=(x, -.42, 2.61))
     bpy.context.object.data.materials.append(dark)
 
+# Familiar primitives make the robot's new antenna.
+bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=.10, depth=.16, location=(0, 0, 3.04))
+antenna_base = bpy.context.object
+antenna_base.name = 'Antenna base'
+bpy.ops.mesh.primitive_cone_add(vertices=32, radius1=.16, radius2=0, depth=.34, location=(0, 0, 3.29))
+antenna_tip = bpy.context.object
+antenna_tip.name = 'Antenna tip'
+planter = None
+stems, buds = [], []
+gloves = None
+
 area = next(a for a in bpy.context.screen.areas if a.type == 'VIEW_3D')
 props = next(a for a in bpy.context.screen.areas if a.type == 'PROPERTIES')
 space = area.spaces.active
-space.region_3d.view_distance = 6.6
-space.region_3d.view_location = Vector((0, 0, 1.5))
+space.region_3d.view_distance = 7.5
+space.region_3d.view_location = Vector((0, 0, 1.7))
 space.region_3d.view_rotation = Euler((math.radians(77), 0, math.radians(-18)), 'XYZ').to_quaternion()
 space.region_3d.view_perspective = 'ORTHO'
 space.shading.type = 'SOLID'
@@ -73,6 +85,87 @@ def select(obj):
     bpy.context.view_layer.objects.active = obj
     area.tag_redraw()
     props.tag_redraw()
+
+
+def new_shapes():
+    select(antenna_tip)
+
+
+def planter_base():
+    global planter
+    planter = cube('Planter', (0, -.85, 1.20), (.56, .45, .32))
+    # Apply demo scale so Inset has uniform thickness; student proportions remain free.
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    select(planter)
+
+
+def planter_face():
+    # Close, higher view makes the selected top and the recessed bottom visible.
+    space.region_3d.view_distance = 3.8
+    space.region_3d.view_location = Vector((0, -.65, 1.3))
+    space.region_3d.view_rotation = Euler((math.radians(55), 0, math.radians(-18)), 'XYZ').to_quaternion()
+    select(planter)
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.select_all(action='DESELECT')
+    bpy.context.tool_settings.mesh_select_mode = (False, False, True)
+    bm = bmesh.from_edit_mesh(planter.data)
+    for face in bm.faces:
+        face.select_set(face.normal.z > .9)
+    bmesh.update_edit_mesh(planter.data)
+
+
+def planter_inset():
+    bpy.ops.mesh.inset(thickness=.07, depth=0)
+
+
+def planter_open():
+    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={'value': (0, 0, -.48)})
+
+
+def first_flower():
+    if bpy.context.object.mode != 'OBJECT':
+        bpy.ops.object.mode_set(mode='OBJECT')
+    sun.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value = (1, .58, .045, 1)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=24, radius=.028, depth=.62, location=(-.28, -.85, 1.59))
+    stem = bpy.context.object
+    stem.name = 'Stem 1'
+    stems.append(stem)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=24, ring_count=16, radius=.19, location=(-.28, -.85, 1.95))
+    bud = bpy.context.object
+    bud.name = 'Flower 1'
+    buds.append(bud)
+    select(bud)
+
+
+def flower_copies():
+    for i, (x, height) in enumerate(((.02, .16), (.30, -.03)), start=2):
+        for original, collection in ((stems[0], stems), (buds[0], buds)):
+            obj = original.copy()
+            obj.data = original.data.copy()
+            bpy.context.collection.objects.link(obj)
+            obj.location.x = x
+            obj.location.z += height
+            obj.name = ('Stem ' if collection is stems else 'Flower ') + str(i)
+            collection.append(obj)
+    select(buds[-1])
+    stems[-1].select_set(True)
+
+
+def mirror_gloves():
+    global gloves
+    # Model in Edit Mode, leaving the object origin at the world centre like Week 5.
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=24, ring_count=16, radius=1, location=(0, 0, 0))
+    gloves = bpy.context.object
+    gloves.name = 'Mirrored gloves'
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.transform.resize(value=(.19, .19, .19))
+    bpy.ops.transform.translate(value=(.88, 0, .98))
+    bpy.ops.object.mode_set(mode='OBJECT')
+    gloves.data.materials.append(berry)
+    mod = gloves.modifiers.new('Mirror', 'MIRROR')
+    mod.use_axis[0] = True
+    select(gloves)
+    props.spaces.active.context = 'MODIFIER'
 
 
 def new_panel():
@@ -90,7 +183,12 @@ def preview():
 
 
 def share():
+    bpy.ops.object.mode_set(mode='OBJECT')
+    space.region_3d.view_distance = 7.5
+    space.region_3d.view_location = Vector((0, 0, 1.7))
+    space.region_3d.view_rotation = Euler((math.radians(65), 0, math.radians(-18)), 'XYZ').to_quaternion()
     arm.data.materials.append(sun)
+    planter.data.materials.append(sun)
     select(arm)
 
 
@@ -108,6 +206,12 @@ def palette():
     other_arm.data.materials.append(sun)
     for leg in (left_leg, right_leg):
         leg.data.materials.append(berry)
+    antenna_base.data.materials.append(sky)
+    antenna_tip.data.materials.append(sun)
+    for stem in stems:
+        stem.data.materials.append(sky)
+    for bud in buds:
+        bud.data.materials.append(berry)
     select(head)
 
 
@@ -154,15 +258,19 @@ def capture(name, surface):
 
 
 def render_hero():
+    # Gloves are an optional extra and are excluded from the main target picture.
+    if gloves:
+        bpy.data.objects.remove(gloves, do_unlink=True)
     sky.node_tree.nodes.get('Principled BSDF').inputs['Roughness'].default_value = .4
     bpy.ops.object.camera_add(location=(5, -9, 5.4))
     camera = bpy.context.object
-    camera.rotation_euler = (Vector((0, 0, 1.5)) - camera.location).to_track_quat('-Z', 'Y').to_euler()
-    camera.data.type, camera.data.ortho_scale = 'ORTHO', 4.6
+    camera.rotation_euler = (Vector((0, 0, 1.7)) - camera.location).to_track_quat('-Z', 'Y').to_euler()
+    camera.data.type, camera.data.ortho_scale = 'ORTHO', 4.9
     scene = bpy.context.scene
     scene.camera = camera
     scene.render.engine = 'CYCLES'
-    scene.cycles.samples = 32
+    scene.cycles.samples = 64
+    scene.cycles.use_denoising = True
     scene.render.resolution_x, scene.render.resolution_y = 720, 620
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = 'PNG'
@@ -172,28 +280,37 @@ def render_hero():
         bpy.ops.object.light_add(type='AREA', location=location)
         light = bpy.context.object
         light.data.energy, light.data.shape, light.data.size = energy, 'DISK', size
-        light.rotation_euler = (Vector((0, 0, 1.5)) - light.location).to_track_quat('-Z', 'Y').to_euler()
+        light.rotation_euler = (Vector((0, 0, 1.7)) - light.location).to_track_quat('-Z', 'Y').to_euler()
     temporary = Path(tempfile.gettempdir()) / 'blender-course-colour-hero.png'
     scene.render.filepath = str(temporary)
     bpy.ops.render.render(write_still=True)
-    subprocess.run([CWEBP, '-quiet', '-q', '88', str(temporary), '-o', str(OUT / '14-colour-hero.webp')], check=True)
+    subprocess.run([CWEBP, '-quiet', '-q', '88', str(temporary), '-o', str(OUT / 'garden-14-colour-hero.webp')], check=True)
     temporary.unlink()
 
 
 states = [
-    ('01-new-panel.webp', new_panel, 'panel'),
-    ('02-base-colour-panel.webp', base_colour, 'panel'),
-    ('03-material-preview.webp', preview, 'viewport'),
-    ('04-shared-panel.webp', share, 'panel'),
-    ('05-shared-parts.webp', lambda: None, 'viewport'),
-    ('06-shared-change.webp', change_shared, 'viewport'),
-    ('07-palette-panel.webp', palette, 'panel'),
-    ('08-three-colours.webp', lambda: None, 'viewport'),
-    ('09-independent-panel.webp', independent, 'panel'),
-    ('10-independent-part.webp', lambda: None, 'viewport'),
-    ('11-shiny-panel.webp', shiny, 'panel'),
-    ('12-shiny.webp', lambda: None, 'viewport'),
-    ('13-matte.webp', matte, 'viewport'),
+    ('garden-15-new-shapes.webp', new_shapes, 'viewport'),
+    ('garden-01-new-panel.webp', new_panel, 'panel'),
+    ('garden-02-base-colour-panel.webp', base_colour, 'panel'),
+    ('garden-03-material-preview.webp', preview, 'viewport'),
+    ('garden-16-planter-base.webp', planter_base, 'viewport'),
+    ('garden-17-planter-face.webp', planter_face, 'viewport'),
+    ('garden-18-planter-inset.webp', planter_inset, 'viewport'),
+    ('garden-19-planter-open.webp', planter_open, 'viewport'),
+    ('garden-04-shared-panel.webp', share, 'panel'),
+    ('garden-05-shared-parts.webp', lambda: None, 'viewport'),
+    ('garden-06-shared-change.webp', change_shared, 'viewport'),
+    ('garden-20-first-flower.webp', first_flower, 'viewport'),
+    ('garden-07-palette-panel.webp', palette, 'panel'),
+    ('garden-21-flower-copies.webp', flower_copies, 'viewport'),
+    ('garden-08-three-colours.webp', lambda: None, 'viewport'),
+    ('garden-09-independent-panel.webp', independent, 'panel'),
+    ('garden-10-independent-part.webp', lambda: None, 'viewport'),
+    ('garden-11-shiny-panel.webp', shiny, 'panel'),
+    ('garden-12-shiny.webp', lambda: None, 'viewport'),
+    ('garden-13-matte.webp', matte, 'viewport'),
+    ('garden-22-mirrored-gloves.webp', mirror_gloves, 'viewport'),
+    ('garden-23-mirror-panel.webp', lambda: None, 'panel'),
 ]
 index, ready = 0, False
 LOG.write_text('started\n')
@@ -217,7 +334,7 @@ def tick():
         if not ready:
             action()
             ready = True
-            return 8.0 if name == '03-material-preview.webp' else 1.6
+            return 8.0 if name == 'garden-03-material-preview.webp' else 1.6
         capture(name, surface)
         index += 1
         ready = False

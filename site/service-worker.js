@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v26-week6-colour-factory";
+const CACHE_NAME = "blender-course-v27-week6-robot-gardener-final";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -11,8 +11,8 @@ const CORE_ASSETS = [
   "./week-04.html",
   "./week-04.css",
   "./week-06.html",
-  "./week-06.css?v=colour-factory",
-  "./assets/blender/colour/14-colour-hero.webp",
+  "./week-06.css?v=robot-gardener",
+  "./assets/blender/colour/garden-14-colour-hero.webp",
   "./week-05.html",
   "./week-05.css?v=visual-checkpoints",
   "./styles.css",
