@@ -391,12 +391,14 @@ function setup(saved, fail = false, hash = "") {
   const cd = colour.window.document;
   colour.window.HTMLElement.prototype.scrollIntoView = function () {};
   colour.window.confirm = () => true;
+  colour.window.localStorage.setItem('kubik-week06-progress-v1', JSON.stringify({shared:true}));
   colour.window.eval(js);
   assert.equal(cd.querySelector('.mission:not([hidden])').id, 'mission-2');
   const colourChecks = cd.querySelectorAll('[data-progress]');
   assert.equal(colourChecks.length, 8);
+  assert.equal(colourChecks[2].checked, false, 'earlier simple lesson must not complete the new build');
   colourChecks[2].click();
-  assert.equal(JSON.parse(colour.window.localStorage.getItem('kubik-week06-progress-v1')).shared, true);
+  assert.equal(JSON.parse(colour.window.localStorage.getItem('kubik-week06-progress-v2')).shared, true);
   assert.equal(colour.window.localStorage.getItem('kubik-week05-progress-v1'), null);
   assert.equal(cd.querySelectorAll('.optional-experiment [data-progress]').length, 0);
   assert.equal(cd.querySelectorAll('.material-compare img').length, 2);
@@ -410,6 +412,12 @@ function setup(saved, fail = false, hash = "") {
     assert.ok(fs.existsSync(root+'assets/blender/colour/'+shot.file), `missing colour shot ${id}`);
     assert.ok(cd.querySelector(`a[data-screenshot="colour-${id}"]`), `unused colour shot ${id}`);
   }
+  for (const id of ['planter-base', 'planter-face', 'planter-inset', 'planter-open']) {
+    assert.ok(cd.querySelector(`#mission-2 a[data-screenshot="colour-${id}"]`), `missing planter stage ${id}`);
+  }
+  assert.ok(cd.querySelector('#mission-3 a[data-screenshot="colour-flower-copies"]'));
+  assert.ok(cd.querySelector('#mission-4 .optional-experiment a[data-screenshot="colour-mirror-panel"]'));
+  assert.doesNotMatch(colourHtml, /Сегодня не строим новую сложную форму/);
   assert.doesNotMatch(colourHtml, /plane\.blend|plane-lesson|Облачный самолёт/);
   cd.querySelector('#reset-progress').click();
   assert.equal(colourChecks[2].checked, false);
@@ -560,8 +568,8 @@ function setup(saved, fail = false, hash = "") {
   assert.equal((await request("missing", "navigate")).path, "./index.html");
   assert.equal((await request("missing.png", "no-cors")).type, "error");
   assert.equal((await request("week-06.html", "navigate")).path, "./week-06.html");
-  assert.equal((await request("week-06.css?v=colour-factory", "no-cors")).path, "./week-06.css");
-  const colourHero = "assets/blender/colour/14-colour-hero.webp";
+  assert.equal((await request("week-06.css?v=robot-gardener", "no-cors")).path, "./week-06.css");
+  const colourHero = "assets/blender/colour/garden-14-colour-hero.webp";
   assert.equal((await request(colourHero, "no-cors")).path, "./" + colourHero);
   const planeHero = "assets/blender/plane/13-plane-hero.webp";
   assert.equal((await request(planeHero, "no-cors")).path, "./" + planeHero);

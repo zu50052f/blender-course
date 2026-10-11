@@ -19,7 +19,7 @@
 
   function show(saved, total, ready) {
     if (ready) {
-      status.textContent = `Готово: все ${total} снимков доступны без интернета на этом устройстве.`;
+      status.textContent = `Готово: снимки сохранены (${total}) и доступны без интернета на этом устройстве.`;
       button.textContent = "Снимки сохранены ✓";
       button.disabled = true;
     } else {
