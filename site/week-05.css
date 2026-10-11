@@ -20,3 +20,9 @@ html[data-theme="dark"] .plane-lesson .plane-hero-image img{background:transpare
 .compare-label{display:block;font-weight:800;margin:0 0 .45rem;color:var(--ink)}
 .mirror-compare figcaption{margin-top:.8rem;color:var(--muted)}
 @media(max-width:680px){.mirror-compare-grid{grid-template-columns:1fr}}
+
+.plane-viewport-image{height:auto}
+.plane-viewport-image img{height:auto;object-fit:contain}
+.save-checkpoint{margin:1.4rem 0;padding:1rem 1.2rem;background:var(--white);border:2px solid var(--line);border-radius:16px}
+.save-checkpoint h3{margin:0 0 .5rem}
+.save-checkpoint p{margin:.5rem 0;line-height:1.6}

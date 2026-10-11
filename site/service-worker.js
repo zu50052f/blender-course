@@ -1,4 +1,4 @@
-const CACHE_NAME = "blender-course-v24-review-fixes";
+const CACHE_NAME = "blender-course-v25-week5-visual-checkpoints";
 const VISUAL_CACHE_NAME = "blender-course-visuals-v1";
 const CORE_ASSETS = [
   "./",
@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   "./week-04.html",
   "./week-04.css",
   "./week-05.html",
-  "./week-05.css?v=plane-shape",
+  "./week-05.css?v=visual-checkpoints",
   "./styles.css",
   "./theme.css",
   "./course.js",
