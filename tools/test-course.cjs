@@ -342,7 +342,7 @@ function setup(saved, fail = false, hash = "") {
     runScripts: "outside-only",
     pretendToBeVisual: true,
   });
-  assert.equal(plane.window.document.querySelector('link[href^="week-05.css"]').getAttribute("href"), "week-05.css?v=plane-shape");
+  assert.equal(plane.window.document.querySelector('link[href^="week-05.css"]').getAttribute("href"), "week-05.css?v=visual-checkpoints");
   plane.window.HTMLElement.prototype.scrollIntoView = function () {};
   plane.window.confirm = () => true;
   plane.window.eval(js);
@@ -352,7 +352,7 @@ function setup(saved, fail = false, hash = "") {
   planeChecks[4].click();
   assert.equal(JSON.parse(plane.window.localStorage.getItem("kubik-week05-progress-v1")).mirror, true);
   assert.equal(plane.window.localStorage.getItem("kubik-week04-progress-v1"), null);
-  assert.equal(plane.window.document.querySelectorAll(".visual-help").length, 14);
+  assert.equal(plane.window.document.querySelectorAll(".visual-help").length, 18);
   assert.match(planeHtml, /одно крыло/i);
   assert.match(planeHtml, /Edit Mode/);
   assert.match(planeHtml, /Add Modifier → Generate → Mirror/);
@@ -362,6 +362,19 @@ function setup(saved, fail = false, hash = "") {
   assert.match(planeHtml, /13-plane-hero.webp/);
   assert.doesNotMatch(planeHtml, /куб для кабины|закрытая коробочка/i);
   assert.equal(plane.window.document.querySelectorAll(".mirror-compare img").length, 2);
+  for (const mission of plane.window.document.querySelectorAll('.mission')) {
+    const checkpoint = mission.querySelector('.save-checkpoint');
+    assert.ok(checkpoint, `${mission.id}: missing save checkpoint`);
+    assert.match(checkpoint.textContent, /plane\.blend/);
+    assert.match(checkpoint.textContent, /File → Open/);
+    assert.ok(checkpoint.querySelector('a[data-screenshot="plane-save-menu"]'));
+  }
+  for (const id of ['wing-edit', 'one-wing', 'edit-pair', 'cockpit-top', 'cockpit-inset', 'cockpit-open']) {
+    assert.match(planeShots[id].file, /-viewport\.webp$/, `${id}: must show real selection and mode UI`);
+  }
+  const originGuide = plane.window.document.querySelector('a[data-screenshot="plane-one-wing"]');
+  assert.ok(originGuide.querySelector('.screenshot-target'), 'origin needs a visible pointer');
+  assert.ok(plane.window.document.querySelector('#mission-4 a[data-screenshot="plane-cockpit-top"]'));
   for (const [id, shot] of Object.entries(planeShots)) {
     assert.ok(fs.existsSync(root + "assets/blender/plane/" + shot.file), `missing plane view ${id}`);
     assert.ok(plane.window.document.querySelector(`a[data-screenshot="plane-${id}"]`), `unused plane view ${id}`);
