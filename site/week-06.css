@@ -1,0 +1,17 @@
+.colour-lesson .hero-art img{mix-blend-mode:normal}
+.colour-hero-image{overflow:hidden;border-radius:24px;background:radial-gradient(circle at 50% 30%,#fff9db,#d6f3ed 80%)}
+.colour-hero-image img{width:100%;height:auto}
+html[data-theme="dark"] .colour-hero-image{background:radial-gradient(circle at 50% 30%,#394b59,#252c40 80%)}
+html[data-theme="dark"] .colour-lesson .hero-art img{background:transparent}
+.colour-art-note{margin:.65rem 0;text-align:center;color:var(--muted);font-size:.8rem;line-height:1.5}
+.colour-figure-image img{display:block;width:100%;height:auto;max-height:none;border-radius:10px}
+.material-compare{margin:1.4rem 0;padding:1rem;border-radius:16px;background:var(--white);border:1px solid var(--line)}
+.material-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.material-compare-grid>div{min-width:0}
+.material-compare img{display:block;width:100%;height:auto;border-radius:9px;margin-top:.5rem}
+.material-compare figcaption{margin-top:.8rem;color:var(--muted)}
+.screenshot-frame:has(img[src$="-panel.webp"]){max-width:430px}
+.save-checkpoint,.optional-experiment,.extra-help{margin:1.4rem 0;padding:1rem 1.2rem;background:var(--white);border:2px solid var(--line);border-radius:16px}
+.save-checkpoint h3{margin:0 0 .5rem}.save-checkpoint p{margin:.5rem 0;line-height:1.6}
+.optional-experiment>summary,.extra-help>summary{cursor:pointer;font-weight:800;line-height:1.5}
+@media(max-width:680px){.lesson-visual,.material-compare-grid{grid-template-columns:1fr}.colour-lesson .week-hero{grid-template-columns:1fr;gap:12px}.colour-lesson .week-hero .hero-art{width:100%;max-width:355px;justify-self:center;align-self:auto;margin:8px 0 0}.colour-lesson .week-hero .actions,.colour-lesson .week-hero .facts{grid-column:auto}}
